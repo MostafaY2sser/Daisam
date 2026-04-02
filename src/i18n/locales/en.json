@@ -1,0 +1,239 @@
+{
+  "home": "Home",
+  "about": "About",
+  "services": "Services",
+  "doctors": "Doctors",
+  "devices": "Devices",
+  "contact": "Contact",
+  "arabic": "Arabic",
+  "english": "English",
+  "social_facebook": "Facebook",
+  "social_twitter": "Twitter",
+  "social_instagram": "Instagram",
+  "social_linkedin": "LinkedIn",
+  "edit" :"Edit",
+  "add_new_doctor" :"Add New Doctor",
+  "name_ar": "Name (Arabic)",
+  "name_en": "Name (English)",
+  "specialty_ar": "Specialty (Arabic)",
+  "specialty_en": "Specialty (English)",
+  "description_ar": "Description (Arabic)",
+  "description_en": "Description (English)",
+  "doctor_image": "Doctor Image",
+  "preview_image": "Preview Image:",
+  "certificates_label": "Certificates (You can upload more than one)",
+  "certificates": "Certificate",
+  "adding": "Adding...",
+  "add_doctor": "Add Doctor",
+  "add_failed": "Failed to add doctor. Please check the images and try again.",
+  "add_success": "Doctor added successfully!",
+  "update_doctor": "Update Doctor",
+  "update_failed": "Failed to update doctor. Please check the data and try again.",
+  "update_success": "Doctor updated successfully!",
+  "loading_doctor": "Loading doctor data...",
+
+
+
+
+
+
+
+
+  "notfound_title": "Page Not Found",
+  "notfound_message": "Sorry, the page you are looking for does not exist or has been moved.",
+  "notfound_home": "Go Back Home",
+
+
+
+
+
+
+
+
+
+  "center_tagline": "Specialized Center for Laser • Dermatology • Medical Aesthetics",
+  "center_slogan": "Healthy Skin… Natural Beauty That Lasts",
+  "center_technologies": "Latest Laser, Dermatology, and Aesthetic Technologies",
+  "center_description": "We provide comprehensive solutions for skin and hair concerns, laser sessions, non-surgical aesthetic treatments, and advanced dermatology care using the latest medical devices to ensure safe and effective results tailored to your needs.",
+  "book_now": "Book Your Appointment Now",
+  "why_choose_us": "Why Choose Our Center?",
+  "feature_doctors": "Certified dermatology and aesthetic doctors with extensive medical experience",
+  "feature_laser_devices": "Advanced laser devices for hair removal, pigmentation, and scar treatments",
+  "feature_non_surgical": "Non-surgical aesthetic services with natural and safe results",
+  "feature_followup": "Medical follow-up and personalized treatment plans for every case",
+
+
+
+
+
+
+
+
+
+  "about_badge": "About Us",
+  "about_title": "Specialized Center for Laser, Dermatology, and Medical Aesthetics",
+  "about_subtitle": "Comprehensive Care and Safe Results with Medical Standards",
+  "about_description": "We provide advanced services for treating skin and hair concerns, laser sessions, and non-surgical aesthetic treatments using the latest medical devices under the supervision of expert dermatologists to deliver safe and natural results that boost your confidence.",
+  "about_feature_doctors": "Certified dermatology and aesthetic doctors with extensive medical experience",
+  "about_feature_devices": "Advanced laser devices for hair removal, pigmentation, and scar treatments",
+  "about_feature_plans": "Personalized treatment plans for every case with close follow-up",
+  "learn_more": "Learn More",
+
+
+
+
+
+
+
+
+
+
+
+
+
+  "testimonials_tagline": "Customer Reviews",
+  "testimonials_title": "Our Clients' Trust is Our Success Secret",
+
+  "testimonial1_name": "Ahmed Mohamed",
+  "testimonial1_role": "Buyer",
+  "testimonial1_comment": "I purchased a residential unit from the project and it was a very smooth experience. The team guided us through every step from booking to handover.",
+
+  "testimonial2_name": "Khaled Abdullah",
+  "testimonial2_role": "Investor",
+  "testimonial2_comment": "The location is excellent and the designs are modern. It was a very successful investment and I am satisfied with the services provided.",
+
+  "testimonial3_name": "Mahmoud Ali",
+  "testimonial3_role": "Buyer",
+  "testimonial3_comment": "The financing options were very flexible and made it easy for me to own a unit comfortably and conveniently.",
+
+  "testimonial4_name": "Saeed Salem",
+  "testimonial4_role": "Investor",
+  "testimonial4_comment": "The projects are well-organized and strategically located. I felt my investment is safe and highly reliable.",
+
+  "testimonial5_name": "Tarek Ahmed",
+  "testimonial5_role": "Buyer",
+  "testimonial5_comment": "Customer service was excellent, and I received clear information about the project and my unit before purchasing.",
+
+  "testimonial6_name": "Omar Abdullah",
+  "testimonial6_role": "Investor",
+  "testimonial6_comment": "The support team is always ready to answer any inquiries. A very smooth and comfortable buying and investment experience.",
+
+
+
+
+
+
+
+
+  "faq_tagline": "Frequently Asked Questions",
+  "faq_title": "Answers to the Most Common Questions",
+
+  "faq1_question": "What are the sales office hours?",
+  "faq1_answer": "The sales office is open from Saturday to Thursday, from 9 AM to 6 PM, providing all information about available projects and units.",
+
+  "faq2_question": "Do I need to book an appointment to view the units?",
+  "faq2_answer": "Yes, it’s recommended to book in advance to ensure the sales team is available to guide you and help choose the best unit.",
+
+  "faq3_question": "What financing options are available for purchasing units?",
+  "faq3_answer": "We offer multiple financing options in cooperation with banks and finance companies, including salary-free financing and Sharia-compliant options.",
+
+  "faq4_question": "Can I sell or rent my unit through the company?",
+  "faq4_answer": "Yes, we provide a service to list your property for sale or rent, with full support from photography to negotiation with buyers or tenants.",
+
+  "faq5_question": "Does the company provide after-sales services?",
+  "faq5_answer": "We offer after-sales support, including unit maintenance assistance and responding to any inquiries to ensure customer satisfaction.",
+
+
+
+
+
+
+
+  "contact_tagline": "Contact Us",
+  "contact_title_prefix": "Book",
+  "contact_title_highlight": "Your Appointment",
+  "contact_title_suffix": "or Ask Us",
+  "contact_description": "For any inquiries or appointment booking, use the form below or the contact details of the center.",
+  "contact_location": "Location",
+  "contact_location_address": "Eastern Province - Dammam - Saihat - Al-Muntazah District - Ibrahim Al-Shatbi Street - JFC Commercial Complex, 4th Floor",
+  "contact_email": "Email",
+  "contact_form_name": "Your Name",
+  "contact_form_email": "Email",
+  "contact_form_phone": "Phone Number",
+  "contact_form_message": "Your Message",
+  "contact_form_submit": "Send Message",
+
+
+
+
+
+
+
+
+
+
+  "about_hero_title": "About Us",
+  "about_hero_description": "We are a specialized center in laser, dermatology, and medical aesthetics, committed to providing the best health and beauty care for every client using the latest medical devices.",
+  "about_vision_title": "Our Vision & Mission",
+  "about_vision_text": "Our vision is to be the leading center in the Kingdom in laser, dermatology, and medical aesthetics, by providing high-quality services based on the latest technologies and medical devices.",
+  "about_mission_text": "Our mission is to provide a safe and comfortable environment for all our clients, with a specialized medical team ensuring each patient receives the best health and aesthetic care.",
+  "about_history_title": "Our History & Achievements",
+  "about_history_founding_title": "Founding the Center",
+  "about_history_founding_text": "We are a modern center specializing in laser, skincare, and medical aesthetics, committed to providing the best services using the latest devices and technologies.",
+  "about_history_latest_devices_title": "Latest Devices",
+  "about_history_latest_devices_text": "We provide the latest laser and dermatological examination devices to ensure accurate and effective results for every client.",
+  "about_history_our_team_title": "Our Medical Team",
+  "about_history_our_team_text": "The center includes a group of qualified dermatologists and aesthetic doctors with extensive experience in various dermatological and cosmetic treatments.",
+  "about_values_title": "Our Core Values",
+  "about_values_quality_icon": "🎯",
+  "about_values_quality_title": "Medical Quality",
+  "about_values_quality_text": "Providing the highest standards of quality and safety in all laser, dermatology, and aesthetic services.",
+  "about_values_safety_icon": "🛡️",
+  "about_values_safety_title": "Safe Environment",
+  "about_values_safety_text": "Providing a healthy and safe environment for all clients during all medical and aesthetic procedures.",
+  "about_values_innovation_icon": "💡",
+  "about_values_innovation_title": "Innovation",
+  "about_values_innovation_text": "Using the latest innovative medical technologies and devices to achieve the best results.",
+  "about_values_respect_icon": "🤝",
+  "about_values_respect_title": "Respect",
+  "about_values_respect_text": "Treating every client with respect and care to ensure a comfortable and exceptional treatment experience.",
+
+
+
+  
+
+
+
+
+
+  "contact_hero_title": "Contact Us",
+  "contact_hero_description": "For any inquiry or appointment, you can contact us directly or send a message through the form.",
+  "contact_intro_title": "We’re Always Here to Help",
+  "contact_intro_description": "Our medical team is ready to answer all your questions and provide the best healthcare. Don’t hesitate to contact us or book your appointment now.",
+  "contact_button_text": "Contact Now",
+  "message_sent_successfully":"Message sent successfully",
+  "error_sending_message":"Error sending message",
+  "sending":"Sending...",
+
+
+
+
+
+
+
+
+
+  "footer_description": "A Saudi company specialized in real estate marketing and financing, we work to connect those seeking the ideal property with the best available options in the market, while providing flexible and secure financing solutions that meet their needs and aspirations.",
+  "contact_us": "Contact Us",
+  "contact_location_link": "https://share.google/wgXwzqDvhuFcmS1To",
+  "quick_links": "Quick Links",
+  "about_us": "About Us",
+  "footer_rights": "Opal Diamond Clinic. All rights reserved.",
+
+
+  "dashboard_welcome": "Welcome to the Dashboard",
+  "doctors_not_found":"No doctors to display",
+  "devices_not_found":"No devices to display"
+
+
+}
