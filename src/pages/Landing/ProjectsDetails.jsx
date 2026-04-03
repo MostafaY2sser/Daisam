@@ -32,6 +32,11 @@ const ProjectsDetails = () => {
 
       <div className="relative max-w-7xl mx-auto px-4 py-10 space-y-10">
 
+        {/* Sold Banner */}
+        {project.status === "sold" && (
+            <img src="/images/sold.png" alt="sold" className={`absolute -top-16 sm:-top-20 ${isRTL ? "left-0" : "right-0"} w-36 sm:w-64`} />
+        )}
+
         {/* ===== Basic Info ===== */}
         <div className="bg-white p-6 rounded-xl shadow">
           <h2 className="text-xl font-bold mb-4">
@@ -124,26 +129,29 @@ const ProjectsDetails = () => {
 
         {/* ===== Gallery ===== */}
         <div className="bg-white p-6 rounded-xl shadow">
-          <h2 className="text-xl font-bold mb-4">
-              صور المشروع 
-          </h2>
+          <h2 className="text-xl font-bold mb-4">صور المشروع</h2>
 
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
             {project.gallery_images.map((img, i) => (
-              <img 
-                key={i} 
-                src={img} 
-                className="rounded-lg w-full h-32 sm:h-48 object-cover" 
-                 onClick={() => setLightboxIndex(i)}    
-            />
+              <div
+                key={i}
+                className="relative group cursor-pointer"
+                onClick={() => setLightboxIndex(i)}
+              >
+                <img
+                  src={img}
+                  className="rounded-lg w-full h-32 sm:h-48 object-cover transition group-hover:brightness-50"
+                />
+
+                {/* Hover Overlay */}
+                <div className="absolute inset-0 flex flex-col items-center justify-center gap-1 opacity-0 group-hover:opacity-100 transition">
+                  <span className="text-white font-bold text-lg">عرض</span>
+                  <span className="text-white/70 text-sm">{i + 1} / {project.gallery_images.length}</span>
+                </div>
+              </div>
             ))}
           </div>
         </div>
-
-        {/* Sold Banner */}
-        {project.status === "sold" && (
-            <img src="/images/sold.png" alt="sold" className={`absolute -top-16 sm:-top-20 ${isRTL ? "left-0" : "right-0"} w-36 sm:w-64`} />
-        )}
 
       </div>
 
@@ -178,7 +186,7 @@ const ProjectsDetails = () => {
             {/* Image */}
             <img
                 src={project.gallery_images[lightboxIndex]}
-                className="object-contain rounded-lg max-h-[90vh] md:max-w-[90vw]  "
+                className="object-contain rounded-lg max-h-[90vh] max-w-[90vw]  "
             />
 
             {/* Close Button */}
@@ -189,7 +197,7 @@ const ProjectsDetails = () => {
                 <IoClose/>
             </button>
         </div>
-    )}
+      )}
 
 
     </div>
