@@ -88,7 +88,7 @@ const Navbar = () => {
                     <NavLink
                       to={link.path}
                       className={({ isActive }) =>
-                        ` text-lg  transition ${scrolled?'hover:text-primary':'hover:text-white'} ${
+                        ` text-lg   transition ${scrolled?'text-text hover:text-primary':'hover:text-white text-gray-50'} ${
                           isActive
                             ? "text-white bg-primary px-4 rounded-full py-1 hover:text-text"
                             : ""
@@ -100,7 +100,7 @@ const Navbar = () => {
                   ) : (
                     <>
                       {/* Parent */}
-                      <span className={`cursor-pointer ${scrolled? 'hover:text-primary' : 'hover:text-white'}  text-lg transition flex items-center gap-1`}>
+                      <span className={`cursor-pointer ${scrolled? 'hover:text-primary text-text' : 'hover:text-white text-white'}  text-lg transition flex items-center gap-1`}>
                         {link.label}
                         <FaChevronDown className="text-xs mt-1 group-hover:rotate-180 transition-transform duration-200" />
                       </span>
@@ -111,7 +111,7 @@ const Navbar = () => {
                           <li key={i}>
                             <NavLink
                               to={child.path}
-                              className="block px-4 py-2 hover:bg-secondary transition text-base"
+                              className="block  px-4 py-2 hover:bg-secondary transition text-base"
                             >
                               {child.label}
                             </NavLink>
@@ -129,38 +129,47 @@ const Navbar = () => {
           
           {/* Toggle Lang */}
           <div className={`relative group ${isRTL ? 'ml-14 md:ml-0' : 'mr-14 md:mr-0'}`}>
-              {/* Button */}
-              <button
-                className={`flex items-center gap-1 sm:gap-2 text-text font-semibold sm:border-2 border-primary sm:p-2 rounded-xl cursor-pointer ${ scrolled? 'hover:text-primary' : 'hover:text-white' }  transition-colors duration-200 `}
-              >
+            {/* Button */}
+            <button className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full border transition-all duration-200
+              ${scrolled
+                ? 'border-primary text-primary hover:bg-primary hover:text-white'
+                : 'border-white/60 text-white hover:border-white hover:bg-white/10'
+              }`}
+            >
+              {/* Globe icon */}
+              <svg xmlns="http://www.w3.org/2000/svg" className="w-3.5 h-3.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+              </svg>
+              <span className="text-xs font-bold tracking-widest uppercase">
                 {i18n.language === "ar" ? "AR" : "EN"}
-                <FaChevronDown className="text-xs transition group-hover:rotate-180 " />
+              </span>
+              <FaChevronDown className="text-[10px] transition-transform duration-200 group-hover:rotate-180" />
+            </button>
+
+            {/* Dropdown */}
+            <div className="absolute top-full mt-2 right-0 bg-white border border-gray-100 shadow-xl rounded-xl overflow-hidden w-[130px] opacity-0 invisible group-hover:visible group-hover:opacity-100 transition-all duration-200 z-50">
+
+              <button
+                onClick={() => { i18n.changeLanguage("ar"); localStorage.setItem("lang", "ar"); }}
+                className={`flex items-center justify-between w-full px-4 py-2.5 text-sm transition hover:bg-primary/5
+                  ${i18n.language === "ar" ? "text-primary font-semibold bg-primary/5" : "text-gray-600"}`}
+              >
+                <span>عربي</span>
+                <span className="text-xs text-gray-400 font-normal">AR</span>
               </button>
 
-              {/* Dropdown */}
-              <div
-                className="absolute mt-2 right-0 bg-primary text-text shadow-lg rounded-lg overflow-hidden w-[100px] opacity-0 invisible group-hover:visible group-hover:opacity-100 transition-all duration-200"
-              >
-                <button
-                  onClick={() => {
-                    i18n.changeLanguage("ar");
-                    localStorage.setItem("lang", "ar");
-                  }}
-                  className="block w-full text-right px-4 py-2 hover:bg-secondary"
-                >
-                  عربي
-                </button>
+              <div className="h-px bg-gray-100" />
 
-                <button
-                  onClick={() => {
-                    i18n.changeLanguage("en");
-                    localStorage.setItem("lang", "en");
-                  }}
-                  className="block w-full text-right px-4 py-2 hover:bg-gray-100"
-                >
-                  إنجليزي
-                </button>
-              </div>
+              <button
+                onClick={() => { i18n.changeLanguage("en"); localStorage.setItem("lang", "en"); }}
+                className={`flex items-center justify-between w-full px-4 py-2.5 text-sm transition hover:bg-primary/5
+                  ${i18n.language === "en" ? "text-primary font-semibold bg-primary/5" : "text-gray-600"}`}
+              >
+                <span>English</span>
+                <span className="text-xs text-gray-400 font-normal">EN</span>
+              </button>
+
+            </div>
           </div>
 
           {/* Social Media Links */}

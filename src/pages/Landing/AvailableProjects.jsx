@@ -1,13 +1,42 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import MainHero from '../../components/common/MainHero'
 import ProjectCard from '../../components/landing/ProjectCard'
-import {projects} from '../../data/projects'
+import { supabase } from '../../lib/supabase'; 
+
 
 const AvailableProjects = () => {
+
+    const [projects, setProjects] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+    const fetchProjects = async () => {
+        setLoading(true);
+        try {
+        const { data, error } = await supabase
+            .from("projects") 
+            .select("*"); 
+
+        if (error) throw error;
+
+        setProjects(data || []);
+        } catch (err) {
+        console.log("Error fetching projects:", err.message);
+        } finally {
+        setLoading(false);
+        }
+    };
+
+    fetchProjects();
+    }, []);
 
 
     // Filter projects to only include those with status "available"
     const availableProjects = projects.filter(project => project.status === "available");
+
+    
+      if (loading) return <p className="text-center py-10">جاري تحميل المشاريع...</p>;
+
  
   return (
    <>

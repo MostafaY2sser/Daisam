@@ -39,7 +39,7 @@ const ProjectCard = ({
         {/* Image */}
         <div className="h-64 md:h-72">
           <img src={cover_image} alt={title} className="w-full h-full object-cover" />
-        </div>
+        </div> 
 
         {/* Info */}
         <div className="text-text p-2 sm:p-4 bg-white">

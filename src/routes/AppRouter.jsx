@@ -23,7 +23,7 @@ const Dashboard = lazy(() => import("../pages/Dashboard/Dashboard"));
 const ProjectsList = lazy(() => import("../pages/Dashboard/ProjectsList"));
 const AddProject = lazy(() => import("../pages/Dashboard/AddProject"));
 const EditProject = lazy(() => import("../pages/Dashboard/EditProject"));
-const ProjectDetailsAdmin = lazy(() => import("../pages/Dashboard/projectDetailsAdmin"));
+const AdminProjectDetails = lazy(() => import("../pages/Dashboard/AdminProjectDetails"));
 
 
 
@@ -147,7 +147,7 @@ const router = createBrowserRouter([
         path: "project-details/:id",
         element: (
           <Suspense fallback={<Loader />}>
-            <ProjectDetailsAdmin />
+            <AdminProjectDetails />
           </Suspense>
         )
       },

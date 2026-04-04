@@ -1,9 +1,57 @@
-import React from "react";
-import { projects } from "../../data/projects"; // تأكد إن عندك البيانات هنا
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import ProjectCardAdmin from "../../components/dashboard/ProjectCardAdmin";
+import { supabase } from "../../lib/supabase"; 
+import Loader from "../../components/common/Loader";
+
 
 const ProjectsList = () => {
+
+  const [projects, setProjects] = useState([]);
+  const [loading, setLoading] = useState(true);
+  
+  useEffect(() => {
+    const fetchProjects = async () => {
+      setLoading(true);
+      try {
+        const { data, error } = await supabase
+          .from("projects") 
+          .select("*"); 
+
+        if (error) throw error;
+
+        setProjects(data || []);
+      } catch (err) {
+        console.log("Error fetching projects:", err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProjects();
+    }, []);
+
+
+  //  Delete project handler :------
+  const handleDelete = async (id) => {
+    try {
+      const { error } = await supabase.from("projects").delete().eq("id", id);
+      if (error) throw error;
+
+      // after successful deletion, update the local state to remove the deleted project
+      setProjects(projects.filter((p) => p.id !== id));
+      alert("Project deleted successfully!");
+    } catch (err) {
+      console.log("Error deleting project:", err.message);
+      alert("Failed to delete project!");
+    }
+  };
+  //  Delete project handler :------
+
+
+  // Loader :------ 
+  if (loading) return <Loader />;
+
   return (
     <section className="py-6">
       <div className="max-w-7xl mx-auto px-4">
@@ -43,6 +91,7 @@ const ProjectsList = () => {
               cover_image={project.cover_image}
               models={project.models}
               status={project.status}
+              onDelete={handleDelete}
             />
           ))}
         </div>
