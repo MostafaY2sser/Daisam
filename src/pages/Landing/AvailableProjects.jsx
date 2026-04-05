@@ -15,7 +15,8 @@ const AvailableProjects = () => {
         try {
         const { data, error } = await supabase
             .from("projects") 
-            .select("*"); 
+            .select("*")
+            .eq("status", "available");
 
         if (error) throw error;
 
@@ -30,12 +31,7 @@ const AvailableProjects = () => {
     fetchProjects();
     }, []);
 
-
-    // Filter projects to only include those with status "available"
-    const availableProjects = projects.filter(project => project.status === "available");
-
     
-      if (loading) return <p className="text-center py-10">جاري تحميل المشاريع...</p>;
 
  
   return (
@@ -70,11 +66,20 @@ const AvailableProjects = () => {
             </div>
 
             {/* Projects Grid */}
-            <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {availableProjects.map((project, index) => (
-                    <ProjectCard key={index} {...project} />
-                ))}
-            </div>
+            {loading 
+                ? <p className="text-center py-10">جاري تحميل المشاريع...</p>
+                : (
+                projects.length === 0 ? (
+                    <p className="text-center py-10">لا توجد مشاريع متاحة حالياً. يرجى العودة لاحقاً.</p>
+                ) : (
+                    <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {projects.map((project, index) => (
+                        <ProjectCard key={index} {...project} />
+                    ))}
+                </div>
+                )
+            )}
+            
 
             </div>
         </section>

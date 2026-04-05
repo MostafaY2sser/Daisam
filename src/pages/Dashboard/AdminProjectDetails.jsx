@@ -300,30 +300,6 @@ const AdminProjectDetails = () => {
           </div>
         )}
 
-        {/* ===== Bottom Action Bar ===== */}
-        <div className="flex justify-end gap-3 pb-6 flex-wrap">
-          <button
-            onClick={() => navigate("/dashboard/projects-dashboard")}
-            className="px-6 py-2 border border-gray-300 rounded-lg text-gray-600 hover:bg-gray-50 transition"
-          >
-            {isRTL ? "رجوع" : "Back"}
-          </button>
-          <button
-            onClick={handleEdit}
-            className="flex items-center gap-2 bg-primary text-white px-6 py-2 rounded-lg hover:opacity-90 transition"
-          >
-            <FaEdit />
-            {isRTL ? "تعديل المشروع" : "Edit Project"}
-          </button>
-          <button
-            onClick={handleDelete}
-            disabled={deleteLoading}
-            className="flex items-center gap-2 bg-red-500 text-white px-6 py-2 rounded-lg hover:opacity-90 transition disabled:opacity-60"
-          >
-            <FaTrash />
-            {isRTL ? "حذف المشروع" : "Delete Project"}
-          </button>
-        </div>
       </div>
 
       {/* ===== Lightbox ===== */}

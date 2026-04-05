@@ -40,58 +40,42 @@ const EditProject = () => {
 
   // ── Fetch project from Supabase ───────────────────────────────────────────
   useEffect(() => {
-    const fetchProject = async () => {
-      setLoading(true);
-      try {
-        const { data, error } = await supabase
-          .from("projects")
-          .select("*")
-          .eq("id", id)
-          .single();
+  if (!id) return;
 
-        if (error) throw error;
+  const fetchProject = async () => {
+    setLoading(true);
+    try {
+      const { data, error } = await supabase
+        .from("projects")
+        .select("*")
+        .eq("id", id)
+        .single();
 
-        // Seed form with fetched data
-        setForm({
-          name_ar:             data.name_ar           ?? "",
-          name_en:             data.name_en           ?? "",
-          title_ar:            data.title_ar          ?? "",
-          title_en:            data.title_en          ?? "",
-          city_ar:             data.city_ar           ?? "",
-          city_en:             data.city_en           ?? "",
-          type_ar:             data.type_ar           ?? "",
-          type_en:             data.type_en           ?? "",
-          building_type_ar:    data.building_type_ar  ?? "",
-          building_type_en:    data.building_type_en  ?? "",
-          district_ar:         data.district_ar       ?? "",
-          district_en:         data.district_en       ?? "",
-          location_ar:         data.location_ar       ?? "",
-          location_en:         data.location_en       ?? "",
-          units_count:         data.units_count       ?? "",
-          status:              data.status            ?? "available",
-          description_ar:      data.description_ar    ?? "",
-          description_en:      data.description_en    ?? "",
-          area:                data.area              ?? "",
-          features_ar:         Array.isArray(data.features_ar)       ? data.features_ar       : [],
-          features_en:         Array.isArray(data.features_en)       ? data.features_en       : [],
-          unit_features_ar:    Array.isArray(data.unit_features_ar)  ? data.unit_features_ar  : [],
-          unit_features_en:    Array.isArray(data.unit_features_en)  ? data.unit_features_en  : [],
-          guarantees:          Array.isArray(data.guarantees)        ? data.guarantees        : [],
-          cover_image:         null,
-          cover_image_url:     data.cover_image       ?? "",
-          gallery_images:      [],
-          gallery_images_urls: Array.isArray(data.gallery_images)    ? data.gallery_images    : [],
-        });
-      } catch (err) {
-        console.error("Error fetching project:", err.message);
-        alert("❌ Failed to load project");
-      } finally {
-        setLoading(false);
-      }
-    };
+      if (error) throw error;
 
-    fetchProject();
-  }, [id]);
+      setForm((prev) => ({
+        ...prev,
+        ...data,
+        features_ar: Array.isArray(data.features_ar) ? data.features_ar : [],
+        features_en: Array.isArray(data.features_en) ? data.features_en : [],
+        unit_features_ar: Array.isArray(data.unit_features_ar) ? data.unit_features_ar : [],
+        unit_features_en: Array.isArray(data.unit_features_en) ? data.unit_features_en : [],
+        guarantees: Array.isArray(data.guarantees) ? data.guarantees : [],
+        cover_image: null,
+        cover_image_url: data.cover_image ?? "",
+        gallery_images: [],
+        gallery_images_urls: Array.isArray(data.gallery_images) ? data.gallery_images : [],
+      }));
+
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  fetchProject();
+}, [id]);
 
   // ── Handlers ──────────────────────────────────────────────────────────────
   const handleChange = (e) => {
@@ -227,12 +211,12 @@ const EditProject = () => {
   };
 
   // ── Reusable Field wrapper ────────────────────────────────────────────────
-  const Field = ({ label, children }) => (
-    <div className="flex flex-col gap-1">
-      <label className="text-xs font-semibold uppercase tracking-widest text-gray-400">{label}</label>
-      {children}
-    </div>
-  );
+  // const Field = ({ label, children }) => (
+  //   <div className="flex flex-col gap-1">
+  //     <label className="text-xs font-semibold uppercase tracking-widest text-gray-400">{label}</label>
+  //     {children}
+  //   </div>
+  // );
 
   if (loading) return <Loader />;
 
@@ -532,3 +516,14 @@ const EditProject = () => {
 };
 
 export default EditProject;
+
+
+
+
+
+ const Field = ({ label, children }) => (
+    <div className="flex flex-col gap-1">
+      <label className="text-xs font-semibold uppercase tracking-widest text-gray-400">{label}</label>
+      {children}
+    </div>
+  );
