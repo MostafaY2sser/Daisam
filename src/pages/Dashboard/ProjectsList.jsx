@@ -46,7 +46,7 @@ const ProjectsList = () => {
 
       // after successful deletion, update the local state to remove the deleted project
       setProjects(projects.filter((p) => p.id !== id));
-      alert("Project deleted successfully!");
+      // alert("Project deleted successfully!");
     } catch (err) {
       console.log("Error deleting project:", err.message);
       alert("Failed to delete project!");

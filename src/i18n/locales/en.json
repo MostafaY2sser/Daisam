@@ -1,44 +1,22 @@
 {
   "home": "Home",
-  "about": "About",
-  "services": "Services",
-  "doctors": "Doctors",
-  "devices": "Devices",
-  "contact": "Contact",
+  "about": "About Us",
+  "projects": "Projects",
+  "available_projects": "Available Projects",
+  "sold_projects": "Sold Projects",
+  "financing": "Financing Solutions",
+  "list_your_property": "List Your Property",
+  "contact": "Contact Us",
   "arabic": "Arabic",
   "english": "English",
   "social_facebook": "Facebook",
   "social_twitter": "Twitter",
   "social_instagram": "Instagram",
-  "social_linkedin": "LinkedIn",
-  "edit" :"Edit",
-  "add_new_doctor" :"Add New Doctor",
-  "name_ar": "Name (Arabic)",
-  "name_en": "Name (English)",
-  "specialty_ar": "Specialty (Arabic)",
-  "specialty_en": "Specialty (English)",
-  "description_ar": "Description (Arabic)",
-  "description_en": "Description (English)",
-  "doctor_image": "Doctor Image",
-  "preview_image": "Preview Image:",
-  "certificates_label": "Certificates (You can upload more than one)",
-  "certificates": "Certificate",
-  "adding": "Adding...",
-  "add_doctor": "Add Doctor",
-  "add_failed": "Failed to add doctor. Please check the images and try again.",
-  "add_success": "Doctor added successfully!",
-  "update_doctor": "Update Doctor",
-  "update_failed": "Failed to update doctor. Please check the data and try again.",
-  "update_success": "Doctor updated successfully!",
-  "loading_doctor": "Loading doctor data...",
 
 
 
 
-
-
-
-
+  
   "notfound_title": "Page Not Found",
   "notfound_message": "Sorry, the page you are looking for does not exist or has been moved.",
   "notfound_home": "Go Back Home",
@@ -47,41 +25,17 @@
 
 
 
-
-
-
-
-  "center_tagline": "Specialized Center for Laser • Dermatology • Medical Aesthetics",
-  "center_slogan": "Healthy Skin… Natural Beauty That Lasts",
-  "center_technologies": "Latest Laser, Dermatology, and Aesthetic Technologies",
-  "center_description": "We provide comprehensive solutions for skin and hair concerns, laser sessions, non-surgical aesthetic treatments, and advanced dermatology care using the latest medical devices to ensure safe and effective results tailored to your needs.",
-  "book_now": "Book Your Appointment Now",
-  "why_choose_us": "Why Choose Our Center?",
-  "feature_doctors": "Certified dermatology and aesthetic doctors with extensive medical experience",
-  "feature_laser_devices": "Advanced laser devices for hair removal, pigmentation, and scar treatments",
-  "feature_non_surgical": "Non-surgical aesthetic services with natural and safe results",
-  "feature_followup": "Medical follow-up and personalized treatment plans for every case",
+  "total_projects": "Total Projects",
+  "total_neighborhoods": "Total Neighborhoods",
+  "available_units": "Available Units",
+  "sold_units": "Sold Units",
 
 
 
 
 
 
-
-
-
-  "about_badge": "About Us",
-  "about_title": "Specialized Center for Laser, Dermatology, and Medical Aesthetics",
-  "about_subtitle": "Comprehensive Care and Safe Results with Medical Standards",
-  "about_description": "We provide advanced services for treating skin and hair concerns, laser sessions, and non-surgical aesthetic treatments using the latest medical devices under the supervision of expert dermatologists to deliver safe and natural results that boost your confidence.",
-  "about_feature_doctors": "Certified dermatology and aesthetic doctors with extensive medical experience",
-  "about_feature_devices": "Advanced laser devices for hair removal, pigmentation, and scar treatments",
-  "about_feature_plans": "Personalized treatment plans for every case with close follow-up",
-  "learn_more": "Learn More",
-
-
-
-
+  
 
 
 
@@ -214,12 +168,12 @@
   "contact_location_link": "https://share.google/wgXwzqDvhuFcmS1To",
   "quick_links": "Quick Links",
   "about_us": "About Us",
-  "footer_rights": "Opal Diamond Clinic. All rights reserved.",
+  "footer_rights": "All rights reserved for Desim Real Estate.",
 
 
-  "dashboard_welcome": "Welcome to the Dashboard",
-  "doctors_not_found":"No doctors to display",
-  "devices_not_found":"No devices to display"
+
+
+  "dashboard_welcome": "Welcome to the Dashboard"
 
 
 }

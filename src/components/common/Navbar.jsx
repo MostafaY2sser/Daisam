@@ -24,9 +24,8 @@ const Navbar = () => {
         { path: "/sold-projects", label: t('sold_projects') },
       ],
     },
-    // { path: "/services", label: t("services") },
     { path: "/financing", label: t("financing") },
-    { path: "/list-your-property", label: t("اعرض عقارك") },
+    { path: "/list-your-property", label: t('list_your_property') },
     { path: "/contact", label: t("contact") },
   ];
 

@@ -110,7 +110,10 @@ const ContactSection = () => {
                 {t("contact_location")}
               </h3>
               <p>
-                <a className="md:text-lg flex text-white text-center sm:text-start sm:gap-2">
+                <a 
+                  href="#"
+                  target="_blank"
+                  className="md:text-lg flex text-white text-center sm:text-start sm:gap-2">
                   <FaMapMarkerAlt /> {t("الرياض - الملقا")}
                 </a>
               </p>
@@ -121,10 +124,11 @@ const ContactSection = () => {
                 {t("contact_phone")}
               </h3>
               <a
-                href="tel:966920020535"
+                href="tel:920020535"
                 className="md:text-lg flex items-center text-white gap-2"
               >
-                <FaPhoneAlt /> 966920020535
+                <FaPhoneAlt /> 920020535
+
               </a>
             </div>
 

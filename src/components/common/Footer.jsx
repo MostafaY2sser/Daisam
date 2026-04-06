@@ -66,11 +66,11 @@ const Footer = () => {
             {t("contact_us")}
           </h3>
           <p>
-            <a href={t("contact_location_link")} className="flex justify-center md:justify-start gap-2 text-text">
+            <a href={"#"} target="_blank" className="flex justify-center md:justify-start gap-2 text-text">
               <FaMapMarkerAlt className="text-primary w-4 h-6" /> <span className="text-start">{t("الرياض - الملقا")}</span>
             </a>
           </p>
-          <a href="tel:966920020535" className="flex items-center justify-center md:justify-start gap-2 text-text">
+          <a href="tel:920020535"  className="flex items-center justify-center md:justify-start gap-2 text-text">
             <FaPhoneAlt className="text-primary w-4 h-6" />  920020535
           </a>
           <a  

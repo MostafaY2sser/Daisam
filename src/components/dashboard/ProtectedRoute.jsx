@@ -14,6 +14,7 @@ export default function ProtectedRoute({ children }) {
       setLoading(false);
     });
   }, []);
+  
 
   if (loading) return <Loader/>;
 

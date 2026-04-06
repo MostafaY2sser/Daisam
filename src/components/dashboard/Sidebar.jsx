@@ -29,7 +29,7 @@ export const Sidebar = ( { sidebarOpen, setSidebarOpen } ) => {
                             `block p-2 rounded hover:bg-gray-400 hover:text-white ${isActive ? 'bg-primary text-white' : ''}`
                         }
                         >
-                        {t('المشاريع')}
+                        {t('projects')}
                     </NavLink>
 
                 </nav>
