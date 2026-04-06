@@ -25,7 +25,8 @@ const HeroSection = () => {
             preload="none"
             className="absolute w-full h-full object-cover"
           >
-            <source src="/vedio.mp4" type="video/mp4" />
+            {/* <source src="/vedio.mp4" type="video/mp4" /> */}
+            <source src="/new.mp4" type="video/mp4" />
           </video>
           {/* <img className="absolute w-full h-full object-cover" src="/images/hero_bg.png" alt="" /> */}
 

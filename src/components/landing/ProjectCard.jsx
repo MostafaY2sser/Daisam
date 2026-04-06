@@ -54,9 +54,13 @@ const ProjectCard = ({
             <span className="flex items-center gap-1">
               <FaLayerGroup  className="text-primary" /> {building_type}
             </span>
-            <span className="flex items-center gap-1">
-              <FaDoorOpen  className="text-primary" /> {units_count || 0} {isRTL ? "وحدات" : "Units"}
-            </span>
+            { units_count <= 0 
+              ? ("")
+              :( <span className="flex items-center gap-1">
+                  <FaDoorOpen  className="text-primary" /> {units_count } {isRTL ? "وحدات" : "Units"}
+                </span> )
+            }
+            
           </div>
         </div>
 

@@ -1,6 +1,6 @@
 // src/layouts/DashboardLayout.jsx
-import { Outlet } from "react-router-dom";
-import { useState } from "react";
+import { Outlet, useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { Sidebar } from "../components/dashboard/Sidebar";
 import Navbar from "../components/dashboard/Navbar";
 import { useTranslation } from "react-i18next";

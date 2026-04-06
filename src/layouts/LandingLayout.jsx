@@ -1,10 +1,10 @@
 
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import Navbar from "../components/common/Navbar";
 import Footer from "../components/common/Footer";
-import { useTranslatin } from "react-i18next";
 import WhatsappIcon from "../components/common/whatsappIcon";
 import ScrollToTop from "../components/common/ScrollToTop";
+import { useEffect } from "react";
 
 
 export default function LandingLayout() {
