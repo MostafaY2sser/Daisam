@@ -148,21 +148,23 @@
 
 
 
-
   "contact_tagline": "Contact Us",
   "contact_title_prefix": "Book",
-  "contact_title_highlight": "Your Appointment",
-  "contact_title_suffix": "or Ask Us",
-  "contact_description": "For any inquiries or appointment booking, use the form below or the contact details of the center.",
-  "contact_location": "Location",
-  "contact_location_address": "Eastern Province - Dammam - Saihat - Al-Muntazah District - Ibrahim Al-Shatbi Street - JFC Commercial Complex, 4th Floor",
+  "contact_title_highlight": "Your Property",
+  "contact_title_suffix": "With Us Today",
+  "contact_description": "Our team is ready to help you choose the best real estate opportunities that suit your needs. Contact us now for a free consultation or to schedule a property viewing.",
+  "contact_location": "Our Location",
+  "contact_location_address": "Our projects are available in strategic locations across major cities",
+  "contact_phone": "Phone",
   "contact_email": "Email",
-  "contact_form_name": "Your Name",
-  "contact_form_email": "Email",
+  "contact_form_name": "Full Name",
+  "contact_form_email": "Email Address",
   "contact_form_phone": "Phone Number",
-  "contact_form_message": "Your Message",
-  "contact_form_submit": "Send Message",
-
+  "contact_form_message": "Write your inquiry or specify the type of property you're looking for",
+  "contact_form_submit": "Submit Request",
+  "message_sent_successfully":"Message sent successfully",
+  "error_sending_message":"Error sending message",
+  "sending":"Sending...",
 
 
 
@@ -201,22 +203,6 @@
 
 
   
-
-
-
-
-
-  "contact_hero_title": "Contact Us",
-  "contact_hero_description": "For any inquiry or appointment, you can contact us directly or send a message through the form.",
-  "contact_intro_title": "We’re Always Here to Help",
-  "contact_intro_description": "Our medical team is ready to answer all your questions and provide the best healthcare. Don’t hesitate to contact us or book your appointment now.",
-  "contact_button_text": "Contact Now",
-  "message_sent_successfully":"Message sent successfully",
-  "error_sending_message":"Error sending message",
-  "sending":"Sending...",
-
-
-
 
 
 

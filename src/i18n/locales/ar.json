@@ -102,22 +102,34 @@
 
 
 
-  
   "contact_tagline": "تواصل معنا",
   "contact_title_prefix": "احجز",
-  "contact_title_highlight": "موعدك",
-  "contact_title_suffix": "أو اسألنا",
-  "contact_description": "لأي استفسار أو حجز موعد، استخدم النموذج أدناه أو بيانات الاتصال الخاصة بالمجمع.",
-  "contact_location": "الموقع",
-  "contact_location_address": "المنطقة الشرقية - الدمام - سيهات - حي المنتزه - شارع إبراهيم الشاطبي - مجمع JFC التجاري الدور الرابع",
-  "contact_phone": "الهاتف",
+  "contact_title_highlight": "وحدتك",
+  "contact_title_suffix": "معنا اليوم",
+  "contact_description": "فريقنا جاهز لمساعدتك في اختيار أفضل الفرص العقارية المناسبة لك. تواصل معنا الآن للحصول على استشارة مجانية أو لحجز موعد معاينة.",
+  "contact_location": "موقعنا",
+  "contact_location_address": "مشاريعنا متوفرة في مواقع استراتيجية داخل أهم المدن",
+  "contact_phone": "رقم الهاتف",
   "contact_email": "البريد الإلكتروني",
-  "contact_form_name": "اسمك",
+  "contact_form_name": "الاسم الكامل",
   "contact_form_email": "البريد الإلكتروني",
   "contact_form_phone": "رقم الهاتف",
-  "contact_form_message": "رسالتك",
-  "contact_form_submit": "إرسال الرسالة",
+  "contact_form_message": "اكتب تفاصيل طلبك أو نوع العقار الذي تبحث عنه",
+  "contact_form_submit": "إرسال الطلب الآن",
+  "message_sent_successfully":"تم ارسال الرسالة بنجاح",
+  "error_sending_message":"خطأ في ارسال الرسالة",
+  "sending":"يتم ارسال الرسالة...",
 
+  
+
+
+
+
+
+
+
+
+ 
 
 
 
@@ -165,23 +177,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-  "contact_hero_title": "تواصل معنا",
-  "contact_hero_description": "لأي استفسار أو حجز موعد يمكنك التواصل معنا مباشرة أو إرسال رسالة من خلال النموذج.",
-  "contact_intro_title": "نحن هنا لخدمتك دائمًا",
-  "contact_intro_description": "فريقنا الطبي مستعد للإجابة على جميع استفساراتك وتقديم أفضل رعاية صحية. لا تتردد في التواصل معنا أو حجز موعدك الآن.",
-  "contact_button_text": "تواصل الآن",
-  "message_sent_successfully":"تم إرسال الرسالة بنجاح",
-  "error_sending_message":"حدث خطأ في إرسال الرسائل",
-  "sending":"جاري الارسال...",
 
 
 
