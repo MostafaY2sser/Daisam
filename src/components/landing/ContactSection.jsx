@@ -31,7 +31,7 @@ const ContactSection = () => {
 
     try {
       const response = await fetch(
-        "https://api.sheety.co/c66fe777496213c5aed67f1401370644/contactUs/contactuses",
+        "https://api.sheety.co/c66fe777496213c5aed67f1401370644/daisamForms/contactus",
         {
           method: "POST",
           headers: {
@@ -49,7 +49,6 @@ const ContactSection = () => {
       );
 
       const data = await response.json();
-      console.log(data);
 
       // reset form
       setFormData({

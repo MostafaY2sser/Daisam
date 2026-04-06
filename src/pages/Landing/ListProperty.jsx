@@ -27,7 +27,7 @@ const ListProperty = () => {
 
     try {
       const response = await fetch(
-        "https://api.sheety.co/c66fe777496213c5aed67f1401370644/showYourProperty/showYourProperty",
+        "https://api.sheety.co/c66fe777496213c5aed67f1401370644/daisamForms/showyourproperty",
         {
           method: "POST",
           headers: {
@@ -38,7 +38,7 @@ const ListProperty = () => {
               name:         formData.name || "-",
               phone:        formData.phone || "-",
               email:        formData.email || "-",
-              propertytype: formData.propertyType === "other"   
+              propertyType: formData.propertyType === "other"   
                 ? formData.otherType || "-"
                 : formData.propertyType || "-",
               message:      formData.message || "-",
@@ -48,7 +48,6 @@ const ListProperty = () => {
       );
 
       const data = await response.json();
-      console.log("Sheety response:", data);
 
       if (!response.ok) {
         throw new Error(JSON.stringify(data));

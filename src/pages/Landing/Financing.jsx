@@ -53,7 +53,7 @@ const Financing = () => {
 
     try {
       const response = await fetch(
-        "https://api.sheety.co/c66fe777496213c5aed67f1401370644/financingSolutions/financing",
+        "https://api.sheety.co/c66fe777496213c5aed67f1401370644/daisamForms/financing",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
