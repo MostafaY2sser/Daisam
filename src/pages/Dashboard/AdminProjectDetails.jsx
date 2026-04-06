@@ -100,7 +100,7 @@ const AdminProjectDetails = () => {
 
       {/* ===== Hero ===== */}
       <div className="relative h-[300px] md:h-[400px]">
-        <img src={project.cover_image} className="w-full h-full object-cover" alt="cover" />
+        <img src={project.cover_image} className="w-full h-full object-cover" alt="cover" loading="lazy"/>
         <div className="absolute inset-0 bg-black/50 flex flex-col items-center justify-center gap-3">
           <h1 className="text-white text-2xl md:text-4xl font-bold text-center px-4">
             {isRTL ? project.name_ar : project.name_en}
@@ -114,6 +114,7 @@ const AdminProjectDetails = () => {
           <img
             src="/images/sold.png"
             alt="sold"
+            loading="lazy"
             className={`absolute top-4 ${isRTL ? "left-4" : "right-4"} w-24 sm:w-36`}
           />
         )}
@@ -289,6 +290,7 @@ const AdminProjectDetails = () => {
                     src={img}
                     alt={`gallery-${i}`}
                     className="rounded-lg w-full h-32 sm:h-48 object-cover transition group-hover:brightness-50"
+                    loading="lazy"
                   />
                   <div className="absolute inset-0 flex flex-col items-center justify-center gap-1 opacity-0 group-hover:opacity-100 transition">
                     <span className="text-white font-bold text-lg">{isRTL ? "عرض" : "View"}</span>
@@ -321,6 +323,7 @@ const AdminProjectDetails = () => {
             src={galleryImages[lightboxIndex]}
             className="object-contain rounded-lg max-h-[90vh] md:max-w-[90vw]"
             alt="lightbox"
+            loading="lazy"
           />
           <span className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white bg-black/50 px-4 py-1 rounded-full text-sm">
             {lightboxIndex + 1} / {galleryImages.length}

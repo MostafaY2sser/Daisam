@@ -76,7 +76,9 @@ const SuccessPartners = () => {
                   data-aos="zoom-in"
                   data-aos-delay={200 + index * 50}
                   className="w-36 sm:w-60 object-contain"
-                />            ))}
+                  loading="lazy"
+                /> 
+            ))}
           </div>
         </div>
 

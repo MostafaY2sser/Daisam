@@ -65,7 +65,7 @@ const ProjectsDetails = () => {
 
       {/* ===== Hero ===== */}
       <div className="relative h-[300px] md:h-[400px]">
-        <img src={project.cover_image} className="w-full h-full object-cover" alt="cover" />
+        <img src={project.cover_image} className="w-full h-full object-cover" alt="cover" loading="lazy" />
         <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
           <h1 className="text-white text-2xl md:text-4xl font-bold text-center px-4">
             {isRTL ? project.name_ar : project.name_en}
@@ -81,6 +81,7 @@ const ProjectsDetails = () => {
             src="/images/sold.png"
             alt="sold"
             className={`absolute -top-16 sm:-top-20 ${isRTL ? "left-0" : "right-0"} w-36 sm:w-64`}
+            loading="lazy"
           />
         )}
 
@@ -208,6 +209,7 @@ const ProjectsDetails = () => {
                     src={img}
                     className="rounded-lg w-full h-32 sm:h-48 object-cover transition group-hover:brightness-50"
                     alt={`gallery-${i}`}
+                    loading="lazy"
                   />
                   <div className="absolute inset-0 flex flex-col items-center justify-center gap-1 opacity-0 group-hover:opacity-100 transition">
                     <span className="text-white font-bold text-lg">عرض</span>
@@ -240,6 +242,7 @@ const ProjectsDetails = () => {
             src={galleryImages[lightboxIndex]}
             className="object-contain rounded-lg max-h-[90vh] max-w-[90vw]"
             alt="lightbox"
+            loading="lazy"
           />
           <span className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white bg-black/50 px-4 py-1 rounded-full text-sm">
             {lightboxIndex + 1} / {galleryImages.length}

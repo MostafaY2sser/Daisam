@@ -403,7 +403,7 @@ const EditProject = () => {
             <div className="mb-3">
               <p className="text-xs text-gray-400 uppercase tracking-widest mb-2">Current Cover</p>
               <div className="relative w-fit">
-                <img src={form.cover_image_url} alt="current cover" className="w-48 h-32 object-cover rounded-lg" />
+                <img src={form.cover_image_url} alt="current cover" className="w-48 h-32 object-cover rounded-lg" loading="lazy" />
                 <button
                   type="button"
                   onClick={() => setForm((prev) => ({ ...prev, cover_image_url: "" }))}
@@ -428,7 +428,7 @@ const EditProject = () => {
           {form.cover_image && (
             <div className="mt-3 relative w-fit">
               <p className="text-xs text-gray-400 uppercase tracking-widest mb-2">New Cover Preview</p>
-              <img src={URL.createObjectURL(form.cover_image)} alt="new cover" className="w-48 h-32 object-cover rounded-lg" />
+              <img src={URL.createObjectURL(form.cover_image)} alt="new cover" className="w-48 h-32 object-cover rounded-lg" loading="lazy" />
               <button
                 type="button"
                 onClick={() => setForm((prev) => ({ ...prev, cover_image: null }))}
@@ -449,7 +449,7 @@ const EditProject = () => {
               <div className="grid grid-cols-3 gap-3">
                 {form.gallery_images_urls.map((url, i) => (
                   <div key={i} className="relative">
-                    <img src={url} className="w-full h-24 object-cover rounded-lg" alt={`gallery-${i}`} />
+                    <img src={url} className="w-full h-24 object-cover rounded-lg" alt={`gallery-${i}`} loading="lazy" />
                     <button
                       type="button"
                       onClick={() => removeExistingGalleryImage(i)}
@@ -480,7 +480,7 @@ const EditProject = () => {
               <div className="grid grid-cols-3 gap-3">
                 {form.gallery_images.map((img, i) => (
                   <div key={i} className="relative">
-                    <img src={URL.createObjectURL(img)} className="w-full h-24 object-cover rounded-lg" alt={`new-${i}`} />
+                    <img src={URL.createObjectURL(img)} className="w-full h-24 object-cover rounded-lg" alt={`new-${i}`} loading="lazy" />
                     <button
                       type="button"
                       onClick={() => removeNewGalleryImage(i)}

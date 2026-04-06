@@ -49,12 +49,13 @@ const ProjectCardAdmin = ({
       }
       alt={title}
       className="w-full h-full object-cover"
+      loading="lazy"
     />
 
     {/* Sold Banner */}
     {status === "sold" && (
       <div className="absolute -top-8 left-1/2 -translate-x-1/2 z-10">
-        <img className="w-24" src="/images/sold.png" alt="sold" />
+        <img className="w-24" src="/images/sold.png" alt="sold" loading="lazy" />
       </div>
     )}
   </div>

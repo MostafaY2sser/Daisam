@@ -40,6 +40,7 @@ const LicensedSection = () => {
               data-aos="zoom-in"
               data-aos-delay={200 + index * 50}
               className="h-20 object-contain mx-auto"
+              loading="lazy"
             />
           ))}
         </div>

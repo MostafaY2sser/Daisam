@@ -136,6 +136,7 @@ const Financing = () => {
                   src={item.img}
                   alt={item.title}
                   className="w-full h-56 object-cover group-hover:scale-105 transition duration-300"
+                  loading="lazy"
                 />
                 <div className="p-6">
                   <h3 className="font-bold text-lg mb-2">{item.title}</h3>
