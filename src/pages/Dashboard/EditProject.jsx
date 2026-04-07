@@ -4,6 +4,7 @@ import { supabase } from "../../lib/supabase";
 import Loader from "../../components/common/Loader";
 
 const EditProject = () => {
+
   const { id } = useParams();
   const navigate = useNavigate();
   const [loading, setLoading]       = useState(true);
@@ -27,6 +28,11 @@ const EditProject = () => {
     cover_image_url: "",
     gallery_images: [],
     gallery_images_urls: [],
+    price: "",
+    sold_units: "",
+    available_units: "",
+    nearby_places_ar: [],
+    nearby_places_en: [],
   });
 
   // ── input states for dynamic lists ────────────────────────────────────────
@@ -37,6 +43,9 @@ const EditProject = () => {
   const [gTitleAr, setGTitleAr]             = useState("");
   const [gTitleEn, setGTitleEn]             = useState("");
   const [gValue, setGValue]                 = useState("");
+  const [nearAr, setNearAr] = useState("");
+  const [nearEn, setNearEn] = useState("");
+
 
   // ── Fetch project from Supabase ───────────────────────────────────────────
   useEffect(() => {
@@ -61,6 +70,11 @@ const EditProject = () => {
         unit_features_ar: Array.isArray(data.unit_features_ar) ? data.unit_features_ar : [],
         unit_features_en: Array.isArray(data.unit_features_en) ? data.unit_features_en : [],
         guarantees: Array.isArray(data.guarantees) ? data.guarantees : [],
+        nearby_places_ar: Array.isArray(data.nearby_places_ar) ? data.nearby_places_ar : [],
+        nearby_places_en: Array.isArray(data.nearby_places_en) ? data.nearby_places_en : [],
+        price: data.price || "",
+        sold_units: data.sold_units || "",
+        available_units: data.available_units || "",
         cover_image: null,
         cover_image_url: data.cover_image ?? "",
         gallery_images: [],
@@ -77,13 +91,17 @@ const EditProject = () => {
   fetchProject();
 }, [id]);
 
+
+
   // ── Handlers ──────────────────────────────────────────────────────────────
   const handleChange = (e) => {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
   };
 
-  // Features
+
+
+  // Features :---------------
   const addFeature = () => {
     if (!inputFeatureAr || !inputFeatureEn) return;
     setForm((prev) => ({
@@ -99,25 +117,49 @@ const EditProject = () => {
       features_ar: prev.features_ar.filter((_, idx) => idx !== i),
       features_en: prev.features_en.filter((_, idx) => idx !== i),
     }));
+  // Features :---------------
 
-  // Unit Features
-  const addUnitFeature = () => {
-    if (!unitAr || !unitEn) return;
-    setForm((prev) => ({
-      ...prev,
-      unit_features_ar: [...prev.unit_features_ar, unitAr],
-      unit_features_en: [...prev.unit_features_en, unitEn],
-    }));
-    setUnitAr(""); setUnitEn("");
-  };
-  const removeUnitFeature = (i) =>
-    setForm((prev) => ({
-      ...prev,
-      unit_features_ar: prev.unit_features_ar.filter((_, idx) => idx !== i),
-      unit_features_en: prev.unit_features_en.filter((_, idx) => idx !== i),
-    }));
 
-  // Guarantees
+    // Unit Features :---------------
+    const addUnitFeature = () => {
+      if (!unitAr || !unitEn) return;
+      setForm((prev) => ({
+        ...prev,
+        unit_features_ar: [...prev.unit_features_ar, unitAr],
+        unit_features_en: [...prev.unit_features_en, unitEn],
+      }));
+      setUnitAr(""); setUnitEn("");
+    };
+    const removeUnitFeature = (i) =>
+      setForm((prev) => ({
+        ...prev,
+        unit_features_ar: prev.unit_features_ar.filter((_, idx) => idx !== i),
+        unit_features_en: prev.unit_features_en.filter((_, idx) => idx !== i),
+      }));
+    // Unit Features :---------------
+
+    //  Nearby Place :---------------
+    const addNearbyPlace = () => {
+      if (!nearAr || !nearEn) return;
+      setForm((prev) => ({
+        ...prev,
+        nearby_places_ar: [...prev.nearby_places_ar, nearAr],
+        nearby_places_en: [...prev.nearby_places_en, nearEn],
+      }));
+      setNearAr("");
+      setNearEn("");
+    };
+    const removeNearbyPlace = (i) => {
+      setForm((prev) => ({
+        ...prev,
+        nearby_places_ar: prev.nearby_places_ar.filter((_, idx) => idx !== i),
+        nearby_places_en: prev.nearby_places_en.filter((_, idx) => idx !== i),
+      }));
+    };
+    //  Nearby Place :---------------
+
+
+  // Guarantees :---------------
   const addGuarantee = () => {
     if (!gTitleAr || !gTitleEn || !gValue) return;
     setForm((prev) => ({
@@ -128,12 +170,16 @@ const EditProject = () => {
   };
   const removeGuarantee = (i) =>
     setForm((prev) => ({ ...prev, guarantees: prev.guarantees.filter((_, idx) => idx !== i) }));
+  // Guarantees :---------------
 
-  // Gallery
+
+  // Gallery :---------------
   const removeExistingGalleryImage = (i) =>
     setForm((prev) => ({ ...prev, gallery_images_urls: prev.gallery_images_urls.filter((_, idx) => idx !== i) }));
   const removeNewGalleryImage = (i) =>
     setForm((prev) => ({ ...prev, gallery_images: prev.gallery_images.filter((_, idx) => idx !== i) }));
+  // Gallery :---------------
+
 
   // ── Upload helper ─────────────────────────────────────────────────────────
   const uploadImage = async (file, folder) => {
@@ -146,6 +192,8 @@ const EditProject = () => {
     const { data } = supabase.storage.from("projects").getPublicUrl(fileName);
     return data.publicUrl;
   };
+
+
 
   // ── Submit ────────────────────────────────────────────────────────────────
   const handleSubmit = async (e) => {
@@ -195,6 +243,11 @@ const EditProject = () => {
         guarantees:       form.guarantees,
         cover_image:      finalCoverUrl,
         gallery_images:   finalGalleryUrls,
+        price: form.price,
+        sold_units: Number(form.sold_units) || 0,
+        available_units: Number(form.available_units) || 0,
+        nearby_places_ar: form.nearby_places_ar,
+        nearby_places_en: form.nearby_places_en,
       };
 
       const { error } = await supabase.from("projects").update(payload).eq("id", id);
@@ -210,13 +263,6 @@ const EditProject = () => {
     }
   };
 
-  // ── Reusable Field wrapper ────────────────────────────────────────────────
-  // const Field = ({ label, children }) => (
-  //   <div className="flex flex-col gap-1">
-  //     <label className="text-xs font-semibold uppercase tracking-widest text-gray-400">{label}</label>
-  //     {children}
-  //   </div>
-  // );
 
   if (loading) return <Loader />;
 
@@ -297,20 +343,62 @@ const EditProject = () => {
               <input name="units_count" value={form.units_count} type="number" placeholder="e.g. 120" onChange={handleChange} className="input" />
             </Field>
           </div>
+
+          {/*  Price & Units */}
+          <div className="bg-white  mt-4">
+            {/* <h3 className="font-semibold text-base mb-3 text-text">Price & Units</h3> */}
+
+            <div className="grid md:grid-cols-3 gap-5">
+              <Field label="Price">
+                <input
+                  name="price"
+                  value={form.price}
+                  onChange={handleChange}
+                  className="input"
+                  dir="rtl"
+                />
+              </Field>
+
+              <Field label="Sold Units">
+                <input
+                  name="sold_units"
+                  value={form.sold_units}
+                  onChange={handleChange}
+                  type="number"
+                  className="input"
+                />
+              </Field>
+
+              <Field label="Available Units">
+                <input
+                  name="available_units"
+                  value={form.available_units}
+                  onChange={handleChange}
+                  type="number"
+                  className="input"
+                />
+              </Field>
+            </div>
+          </div>
+          {/*  Price & Units */}
         </div>
+        {/* ── Basic Info ── */}
+
 
         {/* ── Description ── */}
         <div className="bg-white p-6 rounded-xl shadow">
           <h3 className="font-semibold text-lg mb-5 text-primary">Description</h3>
           <div className="grid md:grid-cols-2 gap-5">
             <Field label="Description (AR)">
-              <textarea name="description_ar" value={form.description_ar} placeholder="أدخل وصف المشروع بالعربية..." onChange={handleChange} className="input h-28" dir="rtl" />
+              <textarea name="description_ar" value={form.description_ar} placeholder="أدخل وصف المشروع بالعربية..." onChange={handleChange} className="input h-64" dir="rtl" />
             </Field>
             <Field label="Description (EN)">
-              <textarea name="description_en" value={form.description_en} placeholder="Enter project description in English..." onChange={handleChange} className="input h-28" />
+              <textarea name="description_en" value={form.description_en} placeholder="Enter project description in English..." onChange={handleChange} className="input h-64" />
             </Field>
           </div>
         </div>
+        {/* ── Description ── */}
+
 
         {/* ── Features ── */}
         <div className="bg-white p-6 rounded-xl shadow">
@@ -337,6 +425,8 @@ const EditProject = () => {
             ))}
           </ul>
         </div>
+        {/* ── Features ── */}
+
 
         {/* ── Unit Features ── */}
         <div className="bg-white p-6 rounded-xl shadow">
@@ -363,6 +453,67 @@ const EditProject = () => {
             ))}
           </ul>
         </div>
+         {/* ── Unit Features ── */}
+
+
+        {/* ────── Nearby Places  ────── */}
+        <div className="bg-white p-6 rounded-xl shadow">
+          <h3 className="font-semibold text-lg mb-5 text-primary">
+            Nearby Places
+          </h3>
+
+          <div className="flex gap-2 mb-3">
+            <Field label="Nearby (AR)">
+              <input
+                value={nearAr}
+                onChange={(e) => setNearAr(e.target.value)}
+                className="input"
+                dir="rtl"
+              />
+            </Field>
+
+            <Field label="Nearby (EN)">
+              <input
+                value={nearEn}
+                onChange={(e) => setNearEn(e.target.value)}
+                className="input"
+              />
+            </Field>
+
+            <div className="flex items-end">
+              <button
+                type="button"
+                onClick={addNearbyPlace}
+                className="bg-primary text-white px-5 py-2.5 rounded-lg"
+              >
+                Add
+              </button>
+            </div>
+          </div>
+
+          <ul className="space-y-2">
+            {form.nearby_places_ar.map((p, i) => (
+              <li
+                key={i}
+                className="flex items-center bg-gray-50 border px-4 py-2 rounded-lg text-sm gap-3"
+              >
+                <span dir="rtl" className="flex-1">{p}</span>
+                <span className="text-gray-300">|</span>
+                <span className="flex-1">{form.nearby_places_en[i]}</span>
+
+                <button
+                  type="button"
+                  onClick={() => removeNearbyPlace(i)}
+                  className="text-red-400 hover:text-red-600 font-bold"
+                >
+                  ✕
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
+        {/* ────── Nearby Places  ────── */}
+
 
         {/* ── Guarantees ── */}
         <div className="bg-white p-6 rounded-xl shadow">
@@ -393,6 +544,8 @@ const EditProject = () => {
             ))}
           </ul>
         </div>
+        {/* ── Guarantees ── */}
+
 
         {/* ── Cover Image ── */}
         <div className="bg-white p-6 rounded-xl shadow">
@@ -437,6 +590,8 @@ const EditProject = () => {
             </div>
           )}
         </div>
+        {/* ── Cover Image ── */}
+
 
         {/* ── Gallery ── */}
         <div className="bg-white p-6 rounded-xl shadow">
@@ -492,6 +647,8 @@ const EditProject = () => {
             </div>
           )}
         </div>
+        {/* ── Gallery ── */}
+
 
         {/* ── Submit ── */}
         <button
@@ -509,6 +666,7 @@ const EditProject = () => {
             </>
           ) : "Update Project"}
         </button>
+        {/* ── Submit ── */}
 
       </form>
     </div>

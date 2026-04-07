@@ -22,8 +22,14 @@ const AddProject = () => {
     features_ar: [], features_en: [],
     unit_features_ar: [], unit_features_en: [],
     guarantees: [],
+    price: "",
+    sold_units: "",
+    available_units: "",
+    nearby_places_ar: [],
+    nearby_places_en: [],
   });
 
+ 
   const [inputFeatureAr, setInputFeatureAr] = useState("");
   const [inputFeatureEn, setInputFeatureEn] = useState("");
   const [unitAr, setUnitAr]                 = useState("");
@@ -31,13 +37,18 @@ const AddProject = () => {
   const [gTitleAr, setGTitleAr]             = useState("");
   const [gTitleEn, setGTitleEn]             = useState("");
   const [gValue, setGValue]                 = useState("");
+  const [nearAr, setNearAr]                 = useState("");
+  const [nearEn, setNearEn]                 = useState("");
 
+
+  // Function Handle Change Inputs :---------
   const handleChange = (e) => {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
   };
 
-  // Features
+
+  // Features :---------------
   const addFeature = () => {
     if (!inputFeatureAr || !inputFeatureEn) return;
     setForm((prev) => ({
@@ -53,8 +64,10 @@ const AddProject = () => {
       features_ar: prev.features_ar.filter((_, idx) => idx !== i),
       features_en: prev.features_en.filter((_, idx) => idx !== i),
     }));
+  // Features :---------------
 
-  // Unit Features
+
+  // Unit Features :---------------
   const addUnitFeature = () => {
     if (!unitAr || !unitEn) return;
     setForm((prev) => ({
@@ -70,8 +83,10 @@ const AddProject = () => {
       unit_features_ar: prev.unit_features_ar.filter((_, idx) => idx !== i),
       unit_features_en: prev.unit_features_en.filter((_, idx) => idx !== i),
     }));
+  // Unit Features :---------------
 
-  // Guarantees
+
+  // Guarantees :---------------
   const addGuarantee = () => {
     if (!gTitleAr || !gTitleEn || !gValue) return;
     setForm((prev) => ({
@@ -82,14 +97,19 @@ const AddProject = () => {
   };
   const removeGuarantee = (i) =>
     setForm((prev) => ({ ...prev, guarantees: prev.guarantees.filter((_, idx) => idx !== i) }));
+  // Guarantees :---------------
 
+
+  // Gallery Image :---------------
   const removeGalleryImage = (i) =>
     setForm((prev) => {
       const arr = [...prev.gallery_images];
       arr.splice(i, 1);
       return { ...prev, gallery_images: arr };
     });
+  // Gallery Image :---------------
 
+  // Upload Image :---------------
   const uploadImage = async (file, folder) => {
     const ext = file.name.split(".").pop();
     const fileName = `${folder}/${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`;
@@ -98,6 +118,32 @@ const AddProject = () => {
     const { data } = supabase.storage.from("projects").getPublicUrl(fileName);
     return data.publicUrl;
   };
+  // Upload Image :---------------
+
+
+  // Nearby Place  :---------------
+  const addNearbyPlace = () => {
+    if (!nearAr || !nearEn) return;
+
+    setForm((prev) => ({
+      ...prev,
+      nearby_places_ar: [...prev.nearby_places_ar, nearAr],
+      nearby_places_en: [...prev.nearby_places_en, nearEn],
+    }));
+
+    setNearAr("");
+    setNearEn("");
+  };
+  const removeNearbyPlace = (i) => {
+    setForm((prev) => ({
+      ...prev,
+      nearby_places_ar: prev.nearby_places_ar.filter((_, idx) => idx !== i),
+      nearby_places_en: prev.nearby_places_en.filter((_, idx) => idx !== i),
+    }));
+  };
+  // Nearby Place  :---------------
+
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -122,6 +168,11 @@ const AddProject = () => {
         features_ar: form.features_ar, features_en: form.features_en,
         unit_features_ar: form.unit_features_ar, unit_features_en: form.unit_features_en,
         guarantees: form.guarantees,
+        price: form.price,
+        sold_units: Number(form.sold_units) || 0,
+        available_units: Number(form.available_units) || 0,
+        nearby_places_ar: form.nearby_places_ar,
+        nearby_places_en: form.nearby_places_en,
       };
 
       const { error } = await supabase.from("projects").insert([payload]);
@@ -204,6 +255,46 @@ const AddProject = () => {
             </Field>
           </div>
 
+
+          {/*  */}
+          <div className="bg-white p-6 rounded-xl shadow mt-4">
+            <h3 className="font-semibold text-lg mb-5 text-primary">Price & Units</h3>
+
+            <div className="grid md:grid-cols-3 gap-5">
+              <Field label="Price">
+                <input
+                  name="price"
+                  value={form.price}
+                  onChange={handleChange}
+                  placeholder="مثال: من 550,000 إلى 620,000 ريال"
+                  className="input"
+                  dir="rtl"
+                />
+              </Field>
+
+              <Field label="Sold Units">
+                <input
+                  name="sold_units"
+                  value={form.sold_units}
+                  onChange={handleChange}
+                  type="number"
+                  className="input"
+                />
+              </Field>
+
+              <Field label="Available Units">
+                <input
+                  name="available_units"
+                  value={form.available_units}
+                  onChange={handleChange}
+                  type="number"
+                  className="input"
+                />
+              </Field>
+            </div>
+          </div>
+
+
           <div className="mt-5">
             <Field label="Status">
               <select name="status" value={form.status} onChange={handleChange} className="input">
@@ -280,6 +371,65 @@ const AddProject = () => {
         </div>
 
 
+        {/*  Nearby Places  */}
+        <div className="bg-white p-6 rounded-xl shadow">
+          <h3 className="font-semibold text-lg mb-5 text-primary">
+            Nearby Places
+          </h3>
+
+          <div className="flex gap-2 mb-3">
+            <Field label="Nearby Place (AR)">
+              <input
+                value={nearAr}
+                onChange={(e) => setNearAr(e.target.value)}
+                placeholder="مثال: 5 دقائق من المول"
+                className="input"
+                dir="rtl"
+              />
+            </Field>
+
+            <Field label="Nearby Place (EN)">
+              <input
+                value={nearEn}
+                onChange={(e) => setNearEn(e.target.value)}
+                placeholder="e.g. 5 minutes from mall"
+                className="input"
+              />
+            </Field>
+
+            <div className="flex items-end">
+              <button
+                type="button"
+                onClick={addNearbyPlace}
+                className="bg-primary text-white px-5 py-2.5 rounded-lg"
+              >
+                Add
+              </button>
+            </div>
+          </div>
+
+          <ul className="space-y-2">
+            {form.nearby_places_ar.map((p, i) => (
+              <li
+                key={i}
+                className="flex items-center bg-gray-50 border px-4 py-2 rounded-lg text-sm gap-3"
+              >
+                <span dir="rtl" className="flex-1">{p}</span>
+                <span className="text-gray-300">|</span>
+                <span className="flex-1">{form.nearby_places_en[i]}</span>
+
+                <button
+                  type="button"
+                  onClick={() => removeNearbyPlace(i)}
+                  className="text-red-400 hover:text-red-600 font-bold"
+                >
+                  ✕
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
+
 
         {/* ── Guarantees ── */}
         <div className="bg-white p-6 rounded-xl shadow">
@@ -311,6 +461,7 @@ const AddProject = () => {
           </ul>
         </div>
 
+
         {/* ── Cover Image ── */}
         <div className="bg-white p-6 rounded-xl shadow">
           <h3 className="font-semibold text-lg mb-5 text-primary">Cover Image</h3>
@@ -336,6 +487,7 @@ const AddProject = () => {
             </div>
           )}
         </div>
+
 
         {/* ── Gallery ── */}
         <div className="bg-white p-6 rounded-xl shadow">
@@ -365,6 +517,7 @@ const AddProject = () => {
             ))}
           </div>
         </div>
+
 
         {/* ── Submit ── */}
         <button

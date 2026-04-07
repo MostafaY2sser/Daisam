@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
-import { FaRulerCombined, FaCheckCircle } from "react-icons/fa";
+import { FaRulerCombined, FaCheckCircle, FaMapMarkerAlt } from "react-icons/fa";
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
 import { IoClose } from "react-icons/io5";
 import { FiCalendar } from "react-icons/fi";
@@ -53,6 +53,8 @@ const ProjectsDetails = () => {
 
   const unitFeaturesAr  = safeArray(project.unit_features_ar);
   const unitFeaturesEn  = safeArray(project.unit_features_en);
+  const nearby_places_Ar  = safeArray(project.nearby_places_ar);
+  const nearby_places_En  = safeArray(project.nearby_places_en);
   const featuresAr      = safeArray(project.features_ar);
   const featuresEn      = safeArray(project.features_en);
   const guaranteesList  = safeArray(project.guarantees);
@@ -61,6 +63,7 @@ const ProjectsDetails = () => {
   // pick correct language arrays
   const unitFeaturesList = isRTL ? unitFeaturesAr : unitFeaturesEn;
   const featuresList     = isRTL ? featuresAr     : featuresEn;
+  const nearbyPlacesList = isRTL ? nearby_places_Ar : nearby_places_En;
 
   return (
     <div className="bg-secondary min-h-screen">
@@ -100,14 +103,14 @@ const ProjectsDetails = () => {
             <p className="md:text-lg"><strong className="text-primary">{isRTL ? "الحي:" : "District:"}</strong> {isRTL ? project.district_ar : project.district_en}</p>
             <p className="md:text-lg"><strong className="text-primary">{isRTL ? "نوع المشروع:" : "Type:"}</strong> {isRTL ? project.type_ar : project.type_en}</p>
             <p className="md:text-lg"><strong className="text-primary">{isRTL ? "نوع البناء:" : "Building Type:"}</strong> {isRTL ? project.building_type_ar : project.building_type_en}</p>
-            {project.units_count <= 0
-              ? ("")
-              :(<p><strong className="text-primary">{isRTL ? "عدد الوحدات:" : "Units:"}</strong> {project.units_count}</p>)
-            }
+            <p className="md:text-lg"><strong className="text-primary">اسعار الوحدات:</strong> {project.price}</p>
+            <p className="md:text-lg"><strong className="text-primary">{isRTL ? "عدد الوحدات:" : "Units:"}</strong> {project.units_count}</p>
+            <p className="md:text-lg"><strong className="text-primary">عدد الوحدات  المتاحة في المشروع:</strong> {project.available_units}</p>
+            <p className="md:text-lg"><strong className="text-primary">عدد الوحدات المباعة في المشروع: </strong> {project.sold_units}</p>
             <p className="md:text-lg">
               <strong className="text-primary">{isRTL ? "الحالة:" : "Status:"}</strong>{" "}
               <span className={`px-2 py-0.5 rounded-full text-base font-semibold ${project.status === "available" ? "bg-green-100 text-green-700" : "bg-red-100 text-red-600"}`}>
-                {project.status === "available" ? (isRTL ? "متاح" : "Available") : (isRTL ? "مباع" : "Sold")}
+                {project.status === "available" ? (isRTL ? "متاح الحجز " : "Available") : (isRTL ? "مباع" : "Sold")}
               </span>
             </p>
           </div>
@@ -120,7 +123,9 @@ const ProjectsDetails = () => {
               <span className="font-semibold text-gray-700">{formattedDate}</span>
             </span>
           </div>
+
         </div>
+
 
         {/* ===== Description ===== */}
         <div className="bg-white p-6 rounded-xl shadow">
@@ -131,6 +136,7 @@ const ProjectsDetails = () => {
             {isRTL ? project.description_ar : project.description_en}
           </p>
         </div>
+
 
         {/* ===== Unit Details ===== */}
         {(project.area || unitFeaturesList.length > 0) && (
@@ -161,6 +167,7 @@ const ProjectsDetails = () => {
           </div>
         )}
 
+
         {/* ===== Features ===== */}
         {featuresList.length > 0 && (
           <div className="bg-white p-6 rounded-xl shadow">
@@ -172,6 +179,33 @@ const ProjectsDetails = () => {
                 <div key={i} className="flex items-center gap-2 bg-gray-100 p-3 rounded-lg">
                   <FaCheckCircle className="text-primary shrink-0" />
                   <span className="text-sm md:text-base font-medium">{f}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+
+        {/* ===== Nearby Places ===== */}
+        {nearbyPlacesList.length > 0 && (
+          <div className="bg-white p-6 rounded-2xl shadow-md">
+            <h2 className="text-2xl font-bold mb-6">
+              اشهر المعالم القريبة من المشروع
+            </h2>
+
+            <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+              {nearbyPlacesList.map((place, i) => (
+                <div
+                  key={i}
+                  className="group flex items-center gap-3 px-4 py-2 rounded-xl border hover:shadow-lg transition"
+                >
+                  <div className="bg-primary/10 text-primary p-3 rounded-full group-hover:scale-110 transition">
+                    <FaMapMarkerAlt />
+                  </div>
+
+                  <p className="text-sm md:text-base font-medium text-gray-700">
+                    {place}
+                  </p>
                 </div>
               ))}
             </div>
@@ -260,6 +294,7 @@ const ProjectsDetails = () => {
           </button>
         </div>
       )}
+
     </div>
   );
 };

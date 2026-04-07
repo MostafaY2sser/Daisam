@@ -51,6 +51,8 @@ const AdminProjectDetails = () => {
   const unitFeaturesEn = safeArray(project.unit_features_en);
   const featuresAr    = safeArray(project.features_ar);
   const featuresEn    = safeArray(project.features_en);
+  const nearby_places_Ar  = safeArray(project.nearby_places_ar);
+  const nearby_places_En  = safeArray(project.nearby_places_en);
   const guarantees    = safeArray(project.guarantees);
 
   // ── Date ─────────────────────────────────────────────────────────────────
@@ -65,7 +67,7 @@ const AdminProjectDetails = () => {
     : "bg-red-100 text-red-600";
 
   const statusLabel = project.status === "available"
-    ? (isRTL ? "متاح" : "Available")
+    ? (isRTL ? "متاح للحجز" : "Available")
     : (isRTL ? "مباع" : "Sold");
 
   // ── Actions ───────────────────────────────────────────────────────────────
@@ -125,10 +127,10 @@ const AdminProjectDetails = () => {
         {/* ===== Admin Action Bar ===== */}
         <div className="flex sm:items-center justify-between flex-col sm:flex-row gap-4 sm:gap-0 bg-white p-4 rounded-xl shadow">
           <div>
-            <p className="text-xs text-gray-400 uppercase tracking-widest mb-0.5">
+            <p className=" text-gray-400 uppercase tracking-widest mb-0.5">
               {isRTL ? "لوحة التحكم" : "Admin Panel"}
             </p>
-            <h2 className="text-lg font-bold text-gray-800">
+            <h2 className="text-lg md:text-xl font-bold text-gray-800">
               {isRTL ? project.name_ar : project.name_en}
             </h2>
           </div>
@@ -159,26 +161,29 @@ const AdminProjectDetails = () => {
 
         {/* ===== Basic Info ===== */}
         <div className="bg-white p-6 rounded-xl shadow">
-          <h2 className="text-xl font-bold mb-4">
+          <h2 className="text-xl md:text-2xl font-bold mb-4">
             {isRTL ? "معلومات المشروع" : "Project Info"}
           </h2>
 
           <div className="grid md:grid-cols-2 gap-4 text-sm">
-            <p><strong className="text-primary">{isRTL ? "الاسم:" : "Name:"}</strong> {isRTL ? project.name_ar : project.name_en}</p>
-            <p><strong className="text-primary">{isRTL ? "العنوان:" : "Title:"}</strong> {isRTL ? project.title_ar : project.title_en}</p>
-            <p><strong className="text-primary">{isRTL ? "الموقع:" : "Location:"}</strong> {isRTL ? project.location_ar : project.location_en}</p>
-            <p><strong className="text-primary">{isRTL ? "المدينة:" : "City:"}</strong> {isRTL ? project.city_ar : project.city_en}</p>
-            <p><strong className="text-primary">{isRTL ? "الحي:" : "District:"}</strong> {isRTL ? project.district_ar : project.district_en}</p>
-            <p><strong className="text-primary">{isRTL ? "نوع المشروع:" : "Type:"}</strong> {isRTL ? project.type_ar : project.type_en}</p>
-            <p><strong className="text-primary">{isRTL ? "نوع البناء:" : "Building Type:"}</strong> {isRTL ? project.building_type_ar : project.building_type_en}</p>
-            <p><strong className="text-primary">{isRTL ? "عدد الوحدات:" : "Units:"}</strong> {project.units_count}</p>
-            <p>
+            <p className="md:text-lg"><strong className="text-primary">{isRTL ? "الاسم:" : "Name:"}</strong> {isRTL ? project.name_ar : project.name_en}</p>
+            <p className="md:text-lg"><strong className="text-primary">{isRTL ? "العنوان:" : "Title:"}</strong> {isRTL ? project.title_ar : project.title_en}</p>
+            <p className="md:text-lg"><strong className="text-primary">{isRTL ? "الموقع:" : "Location:"}</strong> {isRTL ? project.location_ar : project.location_en}</p>
+            <p className="md:text-lg"><strong className="text-primary">{isRTL ? "المدينة:" : "City:"}</strong> {isRTL ? project.city_ar : project.city_en}</p>
+            <p className="md:text-lg"><strong className="text-primary">{isRTL ? "الحي:" : "District:"}</strong> {isRTL ? project.district_ar : project.district_en}</p>
+            <p className="md:text-lg"><strong className="text-primary">{isRTL ? "نوع المشروع:" : "Type:"}</strong> {isRTL ? project.type_ar : project.type_en}</p>
+            <p className="md:text-lg"><strong className="text-primary">{isRTL ? "نوع البناء:" : "Building Type:"}</strong> {isRTL ? project.building_type_ar : project.building_type_en}</p>
+            <p className="md:text-lg"><strong className="text-primary">اسعار الوحدات:</strong> {project.price}</p>
+            <p className="md:text-lg"><strong className="text-primary">{isRTL ? "عدد الوحدات:" : "Units:"}</strong> {project.units_count}</p>
+            <p className="md:text-lg"><strong className="text-primary">عدد الوحدات  المتاحة في المشروع:</strong> {project.available_units}</p>
+            <p className="md:text-lg"><strong className="text-primary">عدد الوحدات المباعة في المشروع: </strong> {project.sold_units}</p>
+            <p className="md:text-lg">
               <strong className="text-primary">{isRTL ? "الحالة:" : "Status:"}</strong>{" "}
-              <span className={`px-2 py-0.5 rounded-full text-xs font-semibold ${statusColor}`}>
+              <span className={`px-2 py-0.5 rounded-full text-base font-semibold ${statusColor}`}>
                 {statusLabel}
               </span>
             </p>
-            <p><strong className="text-primary">{isRTL ? "المعرّف:" : "ID:"}</strong> #{project.id}</p>
+            <p className="md:text-lg"><strong className="text-primary">{isRTL ? "المعرّف:" : "ID:"}</strong> #{project.id}</p>
           </div>
 
           {/* Date */}
@@ -193,8 +198,8 @@ const AdminProjectDetails = () => {
 
         {/* ===== Description ===== */}
         <div className="bg-white p-6 rounded-xl shadow">
-          <h2 className="text-xl font-bold mb-4">
-            {isRTL ? "نبذة عن المشروع" : "About Project"}
+          <h2 className="text-xl md:text-2xl font-bold mb-4">
+              نبذة عن المشروع
           </h2>
           <div className="grid md:grid-cols-2 gap-6">
             <div>
@@ -241,7 +246,7 @@ const AdminProjectDetails = () => {
         {/* ===== Features ===== */}
         {featuresAr.length > 0 && (
           <div className="bg-white p-6 rounded-xl shadow">
-            <h2 className="text-xl font-bold mb-4">
+            <h2 className="text-xl md:text-2xl font-bold mb-4">
               {isRTL ? "مميزات المشروع" : "Features"}
             </h2>
             <div className="grid md:grid-cols-2 gap-3">
@@ -255,10 +260,30 @@ const AdminProjectDetails = () => {
           </div>
         )}
 
+
+        {/* ===== Nearby Places ===== */}
+        {nearby_places_Ar.length > 0 && (
+          <div className="bg-white p-6 rounded-xl shadow">
+            <h2 className="text-xl md:text-2xl font-bold mb-4">
+               اشهر المعالم القريبة من المشروع
+            </h2>
+            <div className="grid md:grid-cols-2 gap-3">
+              {nearby_places_Ar.map((f, i) => (
+                <div key={i} className="flex items-center justify-between bg-gray-100 p-3 rounded-lg text-sm">
+                  <span dir="rtl" className="font-medium">{f}</span>
+                  <span className="text-gray-500">{nearby_places_En[i]}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        
+
         {/* ===== Guarantees ===== */}
         {guarantees.length > 0 && (
           <div className="bg-white p-6 rounded-xl shadow">
-            <h2 className="text-xl font-bold mb-4">
+            <h2 className="text-xl md:text-2xl font-bold mb-4">
               {isRTL ? "ضمانات المشروع" : "Guarantees"}
             </h2>
             <div className="grid md:grid-cols-3 gap-4">
@@ -276,7 +301,7 @@ const AdminProjectDetails = () => {
         {/* ===== Gallery ===== */}
         {galleryImages.length > 0 && (
           <div className="bg-white p-6 rounded-xl shadow">
-            <h2 className="text-xl font-bold mb-4">
+            <h2 className="text-xl md:text-2xl font-bold mb-4">
               {isRTL ? "صور المشروع" : "Gallery"}
             </h2>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
