@@ -5,6 +5,9 @@ import { FaXTwitter } from "react-icons/fa6";
 import { useTranslation } from "react-i18next";
 import MobileDropdown from "../common/MobileDropdown";
 import { FiLogIn } from "react-icons/fi";
+import { FaLinkedinIn } from "react-icons/fa6";
+
+
 
 
 const Navbar = () => {
@@ -35,8 +38,9 @@ const Navbar = () => {
   const socialLinks = [
     { href: "https://x.com/daisamrealestat", icon: <FaXTwitter   /> },
     { href: "https://www.tiktok.com/@daisamrealestate", icon: <FaTiktok /> },
-    { href: "https://www.instagram.com/daisamrealestate/", icon: <FaInstagram /> },
+    { href: "https://www.instagram.com/daisam_realestate?igsh=MTRpb3FyMHFiNTMwMg==", icon: <FaInstagram /> },
     { href: "https://www.snapchat.com/@daisamrealestat?share_id=yaKvZQlbmX0&locale=en-US", icon: <FaSnapchat /> },
+    { href: "", icon: <FaLinkedinIn /> },
   ];
 
   const toggleMenu = () => setIsOpen(!isOpen);
@@ -78,7 +82,7 @@ const Navbar = () => {
 
           {/* Desktop Menu */}
             <ul
-              className={`hidden md:flex gap-6 font-normal text-base transition-colors duration-200 py-2 ${
+              className={`hidden md:flex ${isRTL? 'gap-6' : 'gap-4'} font-normal text-base transition-colors duration-200 py-2 ${
                 scrolled ? "text-gray-700" : "text-text"
               }`}
             >

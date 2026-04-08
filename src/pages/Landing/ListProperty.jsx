@@ -82,7 +82,7 @@ const ListProperty = () => {
             data-aos="fade-up"
           >
             <h3 className="text-xl font-bold mb-6 text-text text-center">
-              املأ النموذج التالي لبدء عرض عقارك
+              فضلاً تعبئة النموذج التالي لبدء عرض عقارك 
             </h3>
 
             <form className="space-y-5" onSubmit={handleSubmit}>

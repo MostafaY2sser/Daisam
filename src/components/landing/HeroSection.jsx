@@ -40,7 +40,7 @@ const HeroSection = () => {
               data-aos="fade-up"
               className="text-gray-100 text-3xl md:text-5xl lg:text-6xl font-bold leading-tight text-center"
             >
-              نحو مستقبل عقاري أكثر تطورًا
+              {t("hero_title")}
             </h1>
 
             {/* Description */}
@@ -49,8 +49,7 @@ const HeroSection = () => {
               data-aos-delay="150"
               className="text-secondary  mt-8 text-lg md:text-xl max-w-2xl"
             >
-              في ديسم، نعمل على تطوير مشاريع عقارية متكاملة تجمع بين الجودة العالية والتصميم العصري،
-              مع تقديم حلول تمويلية مرنة لتلبية مختلف الاحتياجات.
+              {t("hero_subtitle")}
             </p>
 
             {/* Buttons */}
@@ -63,13 +62,13 @@ const HeroSection = () => {
                 href="#projects"
                 className="bg-primary flex items-center justify-center text-text font-normal text-sm md:text-lg py-2 px-3 md:px-6 rounded-lg transition-all duration-300"
               >
-                  استكشف المشاريع   
+                  {t("explore_projects_btn")}
               </a>
               <a
                 href={"contact"}
                 className="inline-block text-sm md:text-lg py-2 px-3 md:px-6 font-normal rounded-lg transition-all duration-300 border border-white/20 backdrop-blur-lg bg-white/40 text-text  shadow-lg"
               >
-                تواصل معنا
+                {t("contact_us")}
               </a>
             </div>
 

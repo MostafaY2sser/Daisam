@@ -1,7 +1,7 @@
 
 
 import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope , FaInstagram, FaSnapchat, FaTiktok } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
+import { FaLinkedinIn, FaXTwitter } from "react-icons/fa6";
 import { IoMdArrowDropleft } from "react-icons/io";
 import { useTranslation } from "react-i18next";
 
@@ -12,8 +12,9 @@ const Footer = () => {
   const socialLinks = [
     { href: "https://x.com/daisamrealestat", icon: <FaXTwitter   /> },
     { href: "https://www.tiktok.com/@daisamrealestate", icon: <FaTiktok /> },
-    { href: "https://www.instagram.com/daisamrealestate/", icon: <FaInstagram /> },
+    { href: "https://www.instagram.com/daisam_realestate?igsh=MTRpb3FyMHFiNTMwMg==", icon: <FaInstagram /> },
     { href: "https://www.snapchat.com/@daisamrealestat?share_id=yaKvZQlbmX0&locale=en-US", icon: <FaSnapchat /> },
+    { href: "", icon: <FaLinkedinIn /> },
   ];
 
 
@@ -33,12 +34,12 @@ const Footer = () => {
           </p>
 
           {/* Social Media */}
-          <div className="flex justify-center md:justify-start gap-4">
+          <div className="flex justify-center md:justify-start gap-3 ">
             {socialLinks.map((link, index) => (
               <a
                 key={index}
                 href={link.href}
-                className="bg-primary p-3 rounded-full text-white hover:bg-primary-dark transition"
+                className="bg-primary p-3 rounded-full text-white hover:bg-primary-dark transition hover:shadow-2xl"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -52,10 +53,10 @@ const Footer = () => {
         <div className={`md:col-span-3 space-y-4 ${isRTL ? 'text-right' : 'text-left'}`}>
           <h3 className="text-xl font-semibold text-primary mb-2 text-center sm:text-start">{t("quick_links")}</h3>
           <ul className="text-text space-y-2 text-center sm:text-start ">
-            <li className="flex items-center gap-1 justify-center sm:justify-start "><IoMdArrowDropleft className="text-primary w-8 h-8" /> <a href="/about" className="hover:text-primary transition">{t("نبذة عنا")}</a></li>
-            <li className="flex items-center gap-1 justify-center sm:justify-start "><IoMdArrowDropleft className="text-primary w-8 h-8" /> <a href="#projects" className="hover:text-primary transition">{t("مشاريعنا")}</a></li>
-            <li className="flex items-center gap-1 justify-center sm:justify-start "><IoMdArrowDropleft className="text-primary w-8 h-8" /> <a href="/financing" className="hover:text-primary transition">{t("حلول تميلية")}</a></li>
-            <li className="flex items-center gap-1 justify-center sm:justify-start "><IoMdArrowDropleft className="text-primary w-8 h-8" /> <a href="/list-your-property" className="hover:text-primary transition">{t("عرض عقارك")}</a></li>
+            <li className="flex items-center gap-1 justify-center sm:justify-start "><IoMdArrowDropleft className="text-primary w-8 h-8" /> <a href="/about" className="hover:text-primary transition">{t('about_us')}</a></li>
+            <li className="flex items-center gap-1 justify-center sm:justify-start "><IoMdArrowDropleft className="text-primary w-8 h-8" /> <a href="#projects" className="hover:text-primary transition">{t("projects")}</a></li>
+            <li className="flex items-center gap-1 justify-center sm:justify-start "><IoMdArrowDropleft className="text-primary w-8 h-8" /> <a href="/financing" className="hover:text-primary transition">{t("financing")}</a></li>
+            <li className="flex items-center gap-1 justify-center sm:justify-start "><IoMdArrowDropleft className="text-primary w-8 h-8" /> <a href="/list-your-property" className="hover:text-primary transition">{t("list_your_property")}</a></li>
             {/* <li className="flex items-center gap-1 justify-center sm:justify-start "><IoMdArrowDropleft className="text-primary w-8 h-8" /> <a href="/contact" className="hover:text-primary transition">{t("contact_us")}</a></li> */}
           </ul>
         </div>
@@ -66,7 +67,7 @@ const Footer = () => {
             {t("contact_us")}
           </h3>
           <p>
-            <a href={"#"} target="_blank" className="flex justify-center md:justify-start gap-2 text-text">
+            <a href={"https://maps.app.goo.gl/C3KL1FKRRbBJUZyN7?g_st=ic"} target="_blank" className="flex justify-center md:justify-start gap-2 text-text">
               <FaMapMarkerAlt className="text-primary w-4 h-6" /> <span className="text-start">{t("الرياض - الملقا")}</span>
             </a>
           </p>

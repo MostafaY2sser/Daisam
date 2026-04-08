@@ -2,8 +2,10 @@
 import React, { useEffect, useState } from "react";
 import ProjectCard from "../../components/landing/ProjectCard";
 import { supabase } from "../../lib/supabase"; 
+import { useTranslation } from "react-i18next"; 
 
 const ProjectsSection = () => {
+  const { t } = useTranslation();
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -30,7 +32,7 @@ const ProjectsSection = () => {
     fetchProjects();
   }, []);
 
-  if (loading) return <p className="text-center py-10">جاري تحميل المشاريع...</p>;
+  if (loading) return <p className="text-center py-10">{t("loading_projects")}</p>;
 
   return (
     <section id="projects" className="py-12 md:py-20 bg-secondary">
@@ -43,14 +45,14 @@ const ProjectsSection = () => {
             data-aos="fade-up"
             data-aos-delay="100"
           >
-            أحدث مشاريعنا
+            {t("latest_projects")}
           </h2>
           <p
             className="text-gray-600 max-w-2xl mx-auto text-sm md:text-base"
             data-aos="fade-up"
             data-aos-delay="150"
           >
-            وحدات سكنية مميزة توفر لك الراحة والخصوصية التي تبحث عنها.
+            {t("latest_projects_desc")}
           </p>
         </div>
 

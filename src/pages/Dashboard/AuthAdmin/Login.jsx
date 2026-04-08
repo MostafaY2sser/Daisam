@@ -40,7 +40,6 @@ export default function Login() {
           {/* Top accent bar */}
           <div className="h-1.5 w-full bg-primary" />
 
-          {/* <div className="p-8 md:p-10" dir={i18n.language === "ar" ? "rtl" : "ltr"}> */}
           <div className={`p-8 md:p-10" ${isRTL ? "rtl" : "ltr"}`}>
 
             {/* Header */}

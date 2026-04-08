@@ -44,7 +44,7 @@ const AvailableProjects = () => {
         />
 
         {/* ===== Projects Section ===== */}
-        <section className="py-12 md:py-20 bg-secondary">
+        <section className="py-12 md:py-20 bg-white">
             <div className="max-w-7xl mx-auto px-4">
 
             {/* Section Title */}

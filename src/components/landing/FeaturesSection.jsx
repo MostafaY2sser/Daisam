@@ -1,6 +1,8 @@
 import { FaMapMarkerAlt, FaPencilRuler, FaShieldAlt } from "react-icons/fa";
+import { useTranslation } from "react-i18next";
 
 const FeaturesSection = () => {
+  const { t } = useTranslation();
   return (
     <section className="py-10 bg-white">
       <div className="max-w-7xl mx-auto px-4">
@@ -11,14 +13,13 @@ const FeaturesSection = () => {
             data-aos="fade-up"
             data-aos-delay="100"
           >
-            لماذا تختار ديسم؟
+            {t("why_choose_daisam")}
           </h2>
           <p className="text-gray-500 max-w-2xl mx-auto text-sm md:text-base"
             data-aos="fade-up"
             data-aos-delay="150"
           >
-            نعمل على تقديم مشاريع عقارية متكاملة تجمع بين الجودة، الابتكار، 
-            والمواقع المميزة لتوفير أفضل تجربة سكنية واستثمارية.
+            {t("why_choose_daisam_desc")}
           </p>
         </div>
 
@@ -30,10 +31,9 @@ const FeaturesSection = () => {
             <div className="w-12 h-12 flex items-center justify-center bg-white text-primary rounded-full mb-4">
               <FaMapMarkerAlt />
             </div>
-            <h3 className="font-bold text-lg mb-3 text-secondary">مواقع استراتيجية</h3>
+            <h3 className="font-bold text-lg mb-3 text-secondary">{t("feature_locations_title")}</h3>
             <p className="text-text text-sm leading-relaxed">
-              تقدم "ديسم" فرصًا استثمارية فريدة بمواقعها الاستراتيجية المثالية، 
-              حيث تناسب هذه المواقع الأفراد الباحثين عن سكن مريح وحياة متكاملة.
+              {t("feature_locations_desc")}
             </p>
           </div>
 
@@ -42,10 +42,9 @@ const FeaturesSection = () => {
             <div className="w-12 h-12 flex items-center justify-center bg-white text-primary rounded-full mb-4">
               <FaPencilRuler />
             </div>
-            <h3 className="font-bold text-lg mb-3 text-secondary">تصاميم عصرية</h3>
+            <h3 className="font-bold text-lg mb-3 text-secondary">{t("feature_designs_title")}</h3>
             <p className="text-text text-sm leading-relaxed">
-              تستند "ديسم" إلى خبرة تمتد لأكثر من خمسة أعوام لتقديم تصاميم عصرية مبتكرة 
-              تتماشى مع التوجهات الحديثة، مع تحقيق التوازن بين الجمالية والوظيفية.
+              {t("feature_designs_desc")}
             </p>
           </div>
 
@@ -54,10 +53,9 @@ const FeaturesSection = () => {
             <div className="w-12 h-12 flex items-center justify-center bg-white text-primary rounded-full mb-4">
               <FaShieldAlt />
             </div>
-            <h3 className="font-bold text-lg mb-3 text-white">أمان واستدامة</h3>
+            <h3 className="font-bold text-lg mb-3 text-white">{t("feature_sustainability_title")}</h3>
             <p className="text-text text-sm leading-relaxed">
-              تسعى "ديسم" لتحقيق أعلى معايير الأمان والاستدامة في مشاريعها، 
-              باستخدام تقنيات حديثة لضمان بيئات آمنة ومستدامة تعزز جودة الحياة.
+              {t("feature_sustainability_desc")}
             </p>
           </div>
 

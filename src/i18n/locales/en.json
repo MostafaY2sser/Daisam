@@ -12,96 +12,45 @@
   "social_facebook": "Facebook",
   "social_twitter": "Twitter",
   "social_instagram": "Instagram",
-
-
-
-
-  
   "notfound_title": "Page Not Found",
   "notfound_message": "Sorry, the page you are looking for does not exist or has been moved.",
   "notfound_home": "Go Back Home",
-
-
-
-
-
   "total_projects": "Total Projects",
   "total_neighborhoods": "Total Neighborhoods",
   "available_units": "Available Units",
   "sold_units": "Sold Units",
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
   "testimonials_tagline": "Customer Reviews",
   "testimonials_title": "Our Clients' Trust is Our Success Secret",
-
   "testimonial1_name": "Ahmed Mohamed",
   "testimonial1_role": "Buyer",
   "testimonial1_comment": "I purchased a residential unit from the project and it was a very smooth experience. The team guided us through every step from booking to handover.",
-
   "testimonial2_name": "Khaled Abdullah",
   "testimonial2_role": "Investor",
   "testimonial2_comment": "The location is excellent and the designs are modern. It was a very successful investment and I am satisfied with the services provided.",
-
   "testimonial3_name": "Mahmoud Ali",
   "testimonial3_role": "Buyer",
   "testimonial3_comment": "The financing options were very flexible and made it easy for me to own a unit comfortably and conveniently.",
-
   "testimonial4_name": "Saeed Salem",
   "testimonial4_role": "Investor",
   "testimonial4_comment": "The projects are well-organized and strategically located. I felt my investment is safe and highly reliable.",
-
   "testimonial5_name": "Tarek Ahmed",
   "testimonial5_role": "Buyer",
   "testimonial5_comment": "Customer service was excellent, and I received clear information about the project and my unit before purchasing.",
-
   "testimonial6_name": "Omar Abdullah",
   "testimonial6_role": "Investor",
   "testimonial6_comment": "The support team is always ready to answer any inquiries. A very smooth and comfortable buying and investment experience.",
-
-
-
-
-
-
-
-
   "faq_tagline": "Frequently Asked Questions",
   "faq_title": "Answers to the Most Common Questions",
-
   "faq1_question": "What are the sales office hours?",
-  "faq1_answer": "The sales office is open from Saturday to Thursday, from 9 AM to 6 PM, providing all information about available projects and units.",
-
+  "faq1_answer": "The sales office is open from Sunday to Thursday, from 10 AM to 6 PM, providing all information about available projects and units.",
   "faq2_question": "Do I need to book an appointment to view the units?",
   "faq2_answer": "Yes, it’s recommended to book in advance to ensure the sales team is available to guide you and help choose the best unit.",
-
   "faq3_question": "What financing options are available for purchasing units?",
   "faq3_answer": "We offer multiple financing options in cooperation with banks and finance companies, including salary-free financing and Sharia-compliant options.",
-
   "faq4_question": "Can I sell or rent my unit through the company?",
   "faq4_answer": "Yes, we provide a service to list your property for sale or rent, with full support from photography to negotiation with buyers or tenants.",
-
   "faq5_question": "Does the company provide after-sales services?",
   "faq5_answer": "We offer after-sales support, including unit maintenance assistance and responding to any inquiries to ensure customer satisfaction.",
-
-
-
-
-
-
   "contact_tagline": "Contact Us",
   "contact_title_prefix": "Book",
   "contact_title_highlight": "Your Property",
@@ -116,18 +65,9 @@
   "contact_form_phone": "Phone Number",
   "contact_form_message": "Write your inquiry or specify the type of property you're looking for",
   "contact_form_submit": "Submit Request",
-  "message_sent_successfully":"Message sent successfully",
-  "error_sending_message":"Error sending message",
-  "sending":"Sending...",
-
-
-
-
-
-
-
-
-
+  "message_sent_successfully": "Message sent successfully",
+  "error_sending_message": "Error sending message",
+  "sending": "Sending...",
   "about_hero_title": "About Us",
   "about_hero_description": "We are a specialized center in laser, dermatology, and medical aesthetics, committed to providing the best health and beauty care for every client using the latest medical devices.",
   "about_vision_title": "Our Vision & Mission",
@@ -153,26 +93,12 @@
   "about_values_respect_icon": "🤝",
   "about_values_respect_title": "Respect",
   "about_values_respect_text": "Treating every client with respect and care to ensure a comfortable and exceptional treatment experience.",
-
-
-
-  
-
-
-
-
-
-
-  "footer_description": "A Saudi company specialized in real estate marketing and financing, we work to connect those seeking the ideal property with the best available options in the market, while providing flexible and secure financing solutions that meet their needs and aspirations.",
+  "footer_description": "A Saudi company specialized in real estate marketing and development. We connect property seekers with the best available options in the market, while providing flexible and secure financing solutions that meet their needs and aspirations.",
   "contact_us": "Contact Us",
   "contact_location_link": "https://share.google/wgXwzqDvhuFcmS1To",
   "quick_links": "Quick Links",
   "about_us": "About Us",
   "footer_rights": "All rights reserved for Desim Real Estate.",
-
-
-
-
   "dashboard_welcome": "Welcome to the Dashboard",
   "total_units": "Total Units",
   "top_project": "Top Project",
@@ -314,5 +240,51 @@
   "signing_in": "Signing in...",
   "sign_in_btn": "Sign In",
   "go_to_home": "Go To Home Page",
-  "admin_footer": "Admin Dashboard. All rights reserved."
+  "admin_footer": "Admin Dashboard. All rights reserved.",
+  "hero_title": "Towards a more advanced real estate future",
+  "hero_subtitle": "At Daisam, we develop integrated real estate projects that combine high quality and modern design, while offering flexible financing solutions with our partners to meet various needs.",
+  "explore_projects_btn": "Explore Projects",
+  "about_home_title": "Building a real estate future worthy of your ambitions",
+  "about_home_subtitle": "At Daisam, we develop modern real estate projects that combine construction quality and contemporary design, providing flexible financing solutions to help you own your property with ease and confidence. We believe that real estate investment is a step towards a better future.",
+  "feature1_desc": "High quality residential and commercial projects",
+  "feature2_desc": "Strategic locations in prime cities",
+  "feature3_desc": "Flexible financing plans to suit all clients",
+  "know_more_btn": "Know More",
+  "total_projects": "Total Projects",
+  "total_neighborhoods": "Total Neighborhoods",
+  "sold_units": "Sold Units",
+  "available_units": "Available Units",
+  "why_choose_daisam": "Why Choose Daisam?",
+  "why_choose_daisam_desc": "We work to offer integrated real estate projects combining quality, innovation, and prime locations to provide the best living and investment experience.",
+  "feature_locations_title": "Strategic Locations",
+  "feature_locations_desc": "Daisam offers unique investment opportunities with its ideal strategic locations, perfect for individuals seeking comfortable housing and a well-rounded lifestyle.",
+  "feature_designs_title": "Modern Designs",
+  "feature_designs_desc": "Daisam relies on over five years of experience to deliver innovative modern designs that align with current trends, balancing aesthetics and quality.",
+  "feature_sustainability_title": "Safety & Sustainability",
+  "feature_sustainability_desc": "Daisam strives to achieve the highest standards of safety and sustainability in its projects, using modern technologies to ensure safe and sustainable environments that enhance quality of life.",
+  "licensed_by": "Licensed By",
+  "licensed_by_desc": "At Daisam, we adhere to the highest standards of quality and transparency. We operate under the supervision of official and accredited authorities in the Kingdom of Saudi Arabia, ensuring a safe and reliable investment.",
+  "real_estate_general_authority": "Real Estate General Authority",
+  "saudi_business_center": "Saudi Business Center",
+  "our_services": "Our Services",
+  "our_services_desc": "We offer a comprehensive range of real estate services to meet the needs of individuals and investors with the highest standards of quality and professionalism.",
+  "real_estate_marketing": "Real Estate Marketing",
+  "real_estate_marketing_desc": "We provide integrated solutions to display and market properties through specialized digital platforms, professional designs, and targeted ads to reach interested clients.",
+  "service_marketing_1": "Real Estate Developers",
+  "service_marketing_2": "Residential and Commercial Property Owners",
+  "service_marketing_3": "Those looking to sell or rent their properties",
+  "real_estate_finance": "Real Estate Financing Solutions",
+  "real_estate_finance_desc": "We help you obtain suitable real estate financing in cooperation with our accredited partners.",
+  "service_finance_1": "Financing without salary transfer",
+  "service_finance_2": "Sharia-compliant options",
+  "service_finance_3": "Facilities for citizens and residents",
+  "service_finance_4": "Full support until contract signing",
+  "list_your_property": "List Your Property",
+  "list_your_property_desc": "Whether you are an individual or a developer, you can easily market your property with us. Just send the property info, and we will handle the rest.",
+  "list_your_property_btn": "List Your Property Now",
+  "success_partners": "Success Partners",
+  "success_partners_desc": "We are proud to collaborate with trusted partners to support our projects and provide the best solutions to our clients.",
+  "loading_projects": "Loading projects...",
+  "latest_projects": "Our Latest Projects",
+  "latest_projects_desc": "Distinctive residential units that provide you with the comfort and privacy you are looking for."
 }

@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import { FaArrowRight ,FaArrowLeft } from "react-icons/fa";
+import { useTranslation } from "react-i18next";
 
 
 
@@ -14,6 +15,7 @@ const logos = [
 ];
 
 const SuccessPartners = () => {
+  const { t } = useTranslation();
   const sliderRef = useRef();
 
   const scrollLeft = () => {
@@ -33,7 +35,7 @@ const SuccessPartners = () => {
           data-aos="fade-up"
           data-aos-delay="100"
         >
-          شركاء النجاح
+          {t("success_partners")}
         </h2>
 
         {/* Description */}
@@ -41,7 +43,7 @@ const SuccessPartners = () => {
           data-aos="fade-up"
           data-aos-delay="150"
         >
-          نفخر بالتعاون مع شركاء موثوقين لدعم مشاريعنا وتقديم أفضل الحلول لعملائنا.
+          {t("success_partners_desc")}
         </p>
 
         {/* Slider Container */}

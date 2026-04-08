@@ -1,6 +1,8 @@
 import { FaBullhorn, FaHome, FaUsers, FaMoneyCheckAlt, FaFileContract, FaUpload } from "react-icons/fa";
+import { useTranslation } from "react-i18next";
 
 const ServicesSection = () => {
+  const { t } = useTranslation();
   return (
     <section
       className="relative py-12 md:py-20 text-white overflow-hidden bg-cover bg-center"
@@ -21,14 +23,13 @@ const ServicesSection = () => {
             data-aos="fade-up"
             data-aos-delay="100"
           >
-            خدماتنا
+            {t("our_services")}
           </h2>
           <p className="text-gray-100 max-w-2xl mx-auto text-sm md:text-base"
             data-aos="fade-up"
             data-aos-delay="150"
           >
-            نقدم مجموعة متكاملة من الخدمات العقارية لتلبية احتياجات الأفراد والمستثمرين 
-            بأعلى معايير الجودة والاحترافية.
+            {t("our_services_desc")}
           </p>
         </div>
 
@@ -41,17 +42,16 @@ const ServicesSection = () => {
               <FaBullhorn />
             </div>
 
-            <h3 className="font-bold text-lg mb-3">التسويق العقاري</h3>
+            <h3 className="font-bold text-lg mb-3">{t("real_estate_marketing")}</h3>
 
             <p className="text-gray-600 text-sm leading-relaxed mb-4">
-              نُقدّم حلولًا متكاملة لعرض وتسويق العقارات عبر منصات رقمية متخصصة،
-              وتصاميم احترافية، وإعلانات مستهدفة للوصول إلى العملاء المهتمين.
+              {t("real_estate_marketing_desc")}
             </p>
 
             <ul className="space-y-2 text-sm text-gray-600">
-              <li className="flex gap-2"><FaUsers className="text-primary mt-1" /> المطورين العقاريين</li>
-              <li className="flex gap-2"><FaHome className="text-primary mt-1" /> أصحاب العقارات السكنية والتجارية</li>
-              <li className="flex gap-2"><FaUsers className="text-primary mt-1" /> الباحثين عن بيع أو تأجير ممتلكاتهم</li>
+              <li className="flex gap-2"><FaUsers className="text-primary mt-1" /> {t("service_marketing_1")}</li>
+              <li className="flex gap-2"><FaHome className="text-primary mt-1" /> {t("service_marketing_2")}</li>
+              <li className="flex gap-2"><FaUsers className="text-primary mt-1" /> {t("service_marketing_3")}</li>
             </ul>
           </div>
 
@@ -61,17 +61,17 @@ const ServicesSection = () => {
               <FaMoneyCheckAlt />
             </div>
 
-            <h3 className="font-bold text-lg mb-3">حلول التمويل العقاري</h3>
+            <h3 className="font-bold text-lg mb-3">{t("real_estate_finance")}</h3>
 
             <p className="text-gray-600 text-sm leading-relaxed mb-4">
-              نساعدك على الحصول على تمويل عقاري مناسب بالتعاون مع شركائنا المعتمدين.
+              {t("real_estate_finance_desc")}
             </p>
 
             <ul className="space-y-2 text-sm text-gray-600">
-              <li className="flex gap-2"><FaFileContract className="text-primary mt-1" /> تمويل بدون تحويل راتب</li>
-              <li className="flex gap-2"><FaFileContract className="text-primary mt-1" /> خيارات متوافقة مع الشريعة</li>
-              <li className="flex gap-2"><FaFileContract className="text-primary mt-1" /> تسهيلات للمواطنين والمقيمين</li>
-              <li className="flex gap-2"><FaFileContract className="text-primary mt-1" /> دعم كامل حتى توقيع العقد</li>
+              <li className="flex gap-2"><FaFileContract className="text-primary mt-1" /> {t("service_finance_1")}</li>
+              <li className="flex gap-2"><FaFileContract className="text-primary mt-1" /> {t("service_finance_2")}</li>
+              <li className="flex gap-2"><FaFileContract className="text-primary mt-1" /> {t("service_finance_3")}</li>
+              <li className="flex gap-2"><FaFileContract className="text-primary mt-1" /> {t("service_finance_4")}</li>
             </ul>
           </div>
 
@@ -81,15 +81,14 @@ const ServicesSection = () => {
               <FaUpload />
             </div>
 
-            <h3 className="font-bold text-lg mb-3">اعرض عقارك</h3>
+            <h3 className="font-bold text-lg mb-3">{t("list_your_property")}</h3>
 
             <p className="text-gray-600 text-sm leading-relaxed mb-6">
-              سواء كنت فردًا أو مطورًا، يمكنك تسويق عقارك معنا بكل سهولة.
-              فقط أرسل معلومات العقار، ونحن نتولى الباقي.
+              {t("list_your_property_desc")}
             </p>
 
             <button className="bg-primary text-white px-5 py-2 rounded-lg hover:bg-primary-dark transition">
-              اعرض عقارك الآن
+              {t("list_your_property_btn")}
             </button>
           </div>
 

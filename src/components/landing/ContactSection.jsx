@@ -111,7 +111,7 @@ const ContactSection = () => {
               </h3>
               <p>
                 <a 
-                  href="#"
+                  href="https://maps.app.goo.gl/C3KL1FKRRbBJUZyN7?g_st=ic"
                   target="_blank"
                   className="md:text-lg flex text-white text-center sm:text-start sm:gap-2">
                   <FaMapMarkerAlt /> {t("الرياض - الملقا")}

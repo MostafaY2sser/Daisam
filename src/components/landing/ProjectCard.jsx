@@ -35,7 +35,7 @@ const ProjectCard = ({
 
 
     return (
-      <div className="relative rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition transform hover:-translate-y-1" data-aos="zoom-in">
+      <div className="relative flex flex-col justify-between bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition transform hover:-translate-y-1" data-aos="zoom-in">
         {/* Image */}
         <div className="h-64 md:h-72">
           <img src={cover_image} alt={title} className="w-full h-full object-cover" loading="lazy" />

@@ -1,8 +1,11 @@
+import { useTranslation } from "react-i18next";
+
 const LicensedSection = () => {
+  const { t } = useTranslation();
   const logos = [
     { src: "/images/images.png", name: "Fal" },
-    { src: "/images/images-2.png", name: "الهيئة العامة للعقار" },
-    { src: "/images/images-1.png", name: "المركز السعودي للأعمال" },
+    { src: "/images/images-2.png", name: t("real_estate_general_authority") },
+    { src: "/images/images-1.png", name: t("saudi_business_center") },
   ];
 
   return (
@@ -14,7 +17,7 @@ const LicensedSection = () => {
           data-aos="fade-up"
           data-aos-delay="100"
         >
-          مرخصة من
+          {t("licensed_by")}
         </h2>
 
         {/* Description */}
@@ -22,8 +25,7 @@ const LicensedSection = () => {
           data-aos="fade-up"
           data-aos-delay="150"
         >
-          نلتزم في ديسم بأعلى معايير الجودة والشفافية، حيث نعمل تحت إشراف الجهات الرسمية 
-          والمعتمدة في المملكة العربية السعودية، مما يضمن لك استثمارًا آمنًا وموثوقًا.
+          {t("licensed_by_desc")}
         </p>
 
         {/* Logos */}
