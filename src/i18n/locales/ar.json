@@ -331,5 +331,13 @@
   "units_label_short": "وحدات",
   "view_details_btn": "عرض التفاصيل",
   "confirm_sure": "هل أنت متأكد؟",
-  "logout_btn": "تسجيل خروج"
+  "logout_btn": "تسجيل خروج",
+  "login_welcome": "مرحباً بك",
+  "login_subtitle": "سجل دخولك لإدارة مشاريعك",
+  "email_label": "البريد الإلكتروني",
+  "password_label": "كلمة المرور",
+  "signing_in": "جاري تسجيل الدخول...",
+  "sign_in_btn": "تسجيل الدخول",
+  "go_to_home": "العودة للصفحة الرئيسية",
+  "admin_footer": "لوحة تحكم المشرف. جميع الحقوق محفوظة."
 }

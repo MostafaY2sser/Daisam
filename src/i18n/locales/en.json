@@ -306,5 +306,13 @@
   "units_label_short": "Units",
   "view_details_btn": "View Details",
   "confirm_sure": "Are you sure?",
-  "logout_btn": "Logout"
+  "logout_btn": "Logout",
+  "login_welcome": "Welcome Back",
+  "login_subtitle": "Sign in to manage your projects",
+  "email_label": "Email",
+  "password_label": "Password",
+  "signing_in": "Signing in...",
+  "sign_in_btn": "Sign In",
+  "go_to_home": "Go To Home Page",
+  "admin_footer": "Admin Dashboard. All rights reserved."
 }

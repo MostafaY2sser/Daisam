@@ -1,7 +1,12 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next';
 import { FiX } from 'react-icons/fi';
-import { NavLink, Outlet } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
+import { IoHomeOutline, IoThermometerOutline } from "react-icons/io5";
+import { GrProjects } from "react-icons/gr";
+import { IoHome } from "react-icons/io5";
+
+
 
 export const Sidebar = ( { sidebarOpen, setSidebarOpen } ) => {
 
@@ -17,18 +22,20 @@ export const Sidebar = ( { sidebarOpen, setSidebarOpen } ) => {
                         to="/dashboard"
                         end
                         className={({ isActive }) =>
-                            `block p-2 rounded hover:bg-gray-400 hover:text-white ${isActive ? 'bg-primary text-white' : ''}`
+                            `flex items-center gap-2 p-2 rounded  hover:bg-gray-400 hover:text-white ${isActive ? 'bg-primary text-white' : ''}`
                         }
                         >
+                        <IoHome className='w-5 h-5' />
                         {t('home')}
                     </NavLink>
                     <NavLink
                         to="/dashboard/projects-dashboard"
                         end
                         className={({ isActive }) =>
-                            `block p-2 rounded hover:bg-gray-400 hover:text-white ${isActive ? 'bg-primary text-white' : ''}`
+                            `flex items-center gap-2 p-2 rounded hover:bg-gray-400 hover:text-white ${isActive ? 'bg-primary text-white' : ''}`
                         }
                         >
+                        <GrProjects className='w-5 h-5'  />
                         {t('projects')}
                     </NavLink>
 
@@ -54,24 +61,26 @@ export const Sidebar = ( { sidebarOpen, setSidebarOpen } ) => {
             </div>
             <nav className="p-4 space-y-2">
                 <NavLink
-                to="/dashboard"
-                end
-                onClick={() => setSidebarOpen(false)}
-                className={({ isActive }) =>
-                    `block p-2 rounded hover:bg-gray-200 ${isActive ? 'bg-primary text-text' : ''}`
-                }
-                >
-                {t('home')}
+                    to="/dashboard"
+                    end
+                    onClick={() => setSidebarOpen(false)}
+                    className={({ isActive }) =>
+                        `flex items-center gap-2 p-2 rounded hover:bg-gray-200 ${isActive ? 'bg-primary text-white' : ''}`
+                    }
+                    >
+                    <IoHome className='w-5 h-5'  />
+                    {t('home')}
                 </NavLink>
 
                 <NavLink
-                to="/dashboard/projects-dashboard"
-                onClick={() => setSidebarOpen(false)}
-                className={({ isActive }) =>
-                    `block p-2 rounded hover:bg-gray-300 hover:text-primary ${isActive ? 'bg-primary text-text' : ''}`
+                    to="/dashboard/projects-dashboard"
+                    onClick={() => setSidebarOpen(false)}
+                    className={({ isActive }) =>
+                        `flex items-center gap-2 p-2 rounded hover:bg-gray-300 hover:text-primary ${isActive ? 'bg-primary text-white1' : ''}`
                 }
                 >
-                {t('projects')}
+                    <GrProjects className='w-5 h-5' />
+                    {t('projects')} 
                 </NavLink>
 
             </nav>

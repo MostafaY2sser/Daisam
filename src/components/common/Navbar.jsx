@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
-import { NavLink  } from "react-router-dom";
+import { Link, NavLink  } from "react-router-dom";
 import { FaBars, FaInstagram,FaChevronDown, FaSnapchat, FaTiktok, FaTimes } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { useTranslation } from "react-i18next";
 import MobileDropdown from "../common/MobileDropdown";
+import { FiLogIn } from "react-icons/fi";
 
 
 const Navbar = () => {
@@ -12,6 +13,8 @@ const Navbar = () => {
   const [langOpen, setLangOpen] = useState(false);
   const { i18n, t } = useTranslation();
   const isRTL = i18n.language === "ar";
+  const isAdmin = localStorage.getItem("sb-wkhwccvtlfbjqafqueqh-auth-token");
+
 
 
   const menuLinks = [
@@ -124,8 +127,8 @@ const Navbar = () => {
             </ul>
           </div>
 
-        <div className="flex gap-5 items-center">
-          
+        <div className="flex gap-2 items-center">
+            
           {/* Toggle Lang */}
           <div className={`relative group ${isRTL ? 'ml-14 md:ml-0' : 'mr-14 md:mr-0'}`}>
             {/* Button */}
@@ -185,7 +188,13 @@ const Navbar = () => {
               </a>
             ))}
           </div>
-          
+
+            {isAdmin && (
+              <Link to="/dashboard" className="bg-primary text-white block p-2 rounded-lg">
+                <FiLogIn className="w-4 h-4 md:w-6 md:h-6" />
+              </Link>
+            )}
+            
         </div>
 
         {/* Mobile Menu Button */}

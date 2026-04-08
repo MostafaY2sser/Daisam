@@ -1,9 +1,14 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { login } from "../../../api/auth";
 import { FiMail, FiLock, FiEye, FiEyeOff, FiLogIn } from "react-icons/fi";
+import { IoHomeOutline } from "react-icons/io5";
+import { useTranslation } from "react-i18next";
+
 
 export default function Login() {
+  const { t, i18n } = useTranslation();
+  const isRTL = i18n.language === "ar";
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -35,15 +40,16 @@ export default function Login() {
           {/* Top accent bar */}
           <div className="h-1.5 w-full bg-primary" />
 
-          <div className="p-8 md:p-10">
+          {/* <div className="p-8 md:p-10" dir={i18n.language === "ar" ? "rtl" : "ltr"}> */}
+          <div className={`p-8 md:p-10" ${isRTL ? "rtl" : "ltr"}`}>
 
             {/* Header */}
             <div className="mb-8">
               <p className="text-xs font-semibold tracking-[0.2em] uppercase text-primary mb-2">
-                Admin Panel
+                {t("admin_panel")}
               </p>
-              <h1 className="text-3xl font-bold text-gray-800">Welcome Back</h1>
-              <p className="text-gray-400 text-sm mt-1">Sign in to manage your projects</p>
+              <h1 className="text-3xl font-bold text-gray-800">{t("login_welcome")}</h1>
+              <p className="text-gray-400 text-sm mt-1">{t("login_subtitle")}</p>
             </div>
 
             {/* Error */}
@@ -59,17 +65,17 @@ export default function Login() {
               {/* Email */}
               <div>
                 <label className="block text-xs font-semibold uppercase tracking-widest text-gray-400 mb-2">
-                  Email
+                  {t("email_label")}
                 </label>
                 <div className="relative">
-                  <FiMail className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-300 text-base" />
+                  <FiMail className={`absolute top-1/2 -translate-y-1/2 text-gray-300 text-base ${i18n.language === "ar" ? "right-4" : "left-4"}`} />
                   <input
                     type="email"
                     placeholder="admin@example.com"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
-                    className="w-full pl-11 pr-4 py-3 rounded-xl border border-gray-200 bg-gray-50 text-gray-800 text-sm placeholder-gray-300 outline-none focus:border-primary focus:bg-white focus:ring-2 focus:ring-primary/10 transition"
+                    className={`w-full py-3 rounded-xl border border-gray-200 bg-gray-50 text-gray-800 text-sm placeholder-gray-300 outline-none focus:border-primary focus:bg-white focus:ring-2 focus:ring-primary/10 transition ${i18n.language === "ar" ? "pr-11 pl-4" : "pl-11 pr-4"}`}
                   />
                 </div>
               </div>
@@ -77,22 +83,22 @@ export default function Login() {
               {/* Password */}
               <div>
                 <label className="block text-xs font-semibold uppercase tracking-widest text-gray-400 mb-2">
-                  Password
+                  {t("password_label")}
                 </label>
                 <div className="relative">
-                  <FiLock className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-300 text-base" />
+                  <FiLock className={`absolute top-1/2 -translate-y-1/2 text-gray-300 text-base ${i18n.language === "ar" ? "right-4" : "left-4"}`} />
                   <input
                     type={showPassword ? "text" : "password"}
                     placeholder="••••••••"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     required
-                    className="w-full pl-11 pr-12 py-3 rounded-xl border border-gray-200 bg-gray-50 text-gray-800 text-sm placeholder-gray-300 outline-none focus:border-primary focus:bg-white focus:ring-2 focus:ring-primary/10 transition"
+                    className={`w-full py-3 rounded-xl border border-gray-200 bg-gray-50 text-gray-800 text-sm placeholder-gray-300 outline-none focus:border-primary focus:bg-white focus:ring-2 focus:ring-primary/10 transition ${i18n.language === "ar" ? "pr-11 pl-12" : "pl-11 pr-12"}`}
                   />
                   <button
                     type="button"
                     onClick={() => setShowPassword((v) => !v)}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-300 hover:text-primary transition"
+                    className={`absolute top-1/2 -translate-y-1/2 text-gray-300 hover:text-primary transition ${i18n.language === "ar" ? "left-4" : "right-4"}`}
                   >
                     {showPassword ? <FiEyeOff /> : <FiEye />}
                   </button>
@@ -111,23 +117,34 @@ export default function Login() {
                       <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
                       <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z" />
                     </svg>
-                    Signing in...
+                    {t("signing_in")}
                   </>
                 ) : (
                   <>
-                    <FiLogIn className="text-base" />
-                    Sign In
+                    <FiLogIn className={`text-base ${i18n.language === "ar" ? "rotate-180" : ""}`} />
+                    {t("sign_in_btn")}
                   </>
                 )}
               </button>
 
+              <Link
+                to="/"
+                className="w-full flex items-center justify-center gap-2 bg-white text-primary border border-primary hover:opacity-90 active:scale-[.98] font-semibold py-3 rounded-xl transition-all disabled:opacity-60 disabled:cursor-not-allowed mt-2"
+              >
+                  <IoHomeOutline />
+                  {t("go_to_home")}
+              </Link>
+
             </form>
           </div>
+
+          
+
         </div>
 
         {/* Footer */}
-        <p className="text-center text-xs text-gray-400 mt-6">
-          &copy; {new Date().getFullYear()} Admin Dashboard. All rights reserved.
+        <p className="text-center text-xs text-gray-400 mt-6" dir={i18n.language === "ar" ? "rtl" : "ltr"}>
+          &copy; {new Date().getFullYear()} {t("admin_footer")}
         </p>
       </div>
     </div>
