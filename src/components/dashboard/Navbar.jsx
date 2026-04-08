@@ -4,9 +4,11 @@ import { FiMenu } from 'react-icons/fi';
 import { Link, useNavigate } from 'react-router-dom';
 import { logout } from '../../api/auth';
 import { FaChevronDown } from 'react-icons/fa';
+import { FiLogOut } from "react-icons/fi";
+
 
 const Navbar = ({ sidebarOpen , setSidebarOpen }) => {
-    const { i18n } = useTranslation();
+    const { t, i18n } = useTranslation();
     const isRTL = i18n.language === "ar";
     const navigate = useNavigate();
 
@@ -31,7 +33,7 @@ const Navbar = ({ sidebarOpen , setSidebarOpen }) => {
             </Link>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1 md:gap-2">
             {/* Toggle Lang */}
             <div className={`relative group`}>
                 {/* Button */}
@@ -78,9 +80,10 @@ const Navbar = ({ sidebarOpen , setSidebarOpen }) => {
             {/* Logout Button */}
           <button
             onClick={handleLogout}
-            className="text-red-600 font-semibold border-2 border-red-600 p-1 sm:p-2 rounded-xl hover:bg-red-600 hover:text-white transition"
+            className="text-red-600 font-semibold flex items-center gap-2 md:border-2 border-red-600 p-1 sm:p-2 rounded-xl hover:bg-red-600 hover:text-white transition"
           >
-            Logout
+            <FiLogOut className='w-6 h-6 md:w-4 md:h-4' />
+            <span className='hidden md:block'>{t("logout_btn")}</span>
           </button>
 
               {/* Toggle Sidebar button for small screens */}

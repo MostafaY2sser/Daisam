@@ -2,9 +2,11 @@
 import React, { useState } from "react";
 import { supabase } from "../../lib/supabase";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next"; // <-- ADD THIS
 
 const AddProject = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation(); // <-- ADD THIS
   const [loading, setLoading] = useState(false);
 
   const [form, setForm] = useState({
@@ -29,16 +31,16 @@ const AddProject = () => {
     nearby_places_en: [],
   });
 
- 
+
   const [inputFeatureAr, setInputFeatureAr] = useState("");
   const [inputFeatureEn, setInputFeatureEn] = useState("");
-  const [unitAr, setUnitAr]                 = useState("");
-  const [unitEn, setUnitEn]                 = useState("");
-  const [gTitleAr, setGTitleAr]             = useState("");
-  const [gTitleEn, setGTitleEn]             = useState("");
-  const [gValue, setGValue]                 = useState("");
-  const [nearAr, setNearAr]                 = useState("");
-  const [nearEn, setNearEn]                 = useState("");
+  const [unitAr, setUnitAr] = useState("");
+  const [unitEn, setUnitEn] = useState("");
+  const [gTitleAr, setGTitleAr] = useState("");
+  const [gTitleEn, setGTitleEn] = useState("");
+  const [gValue, setGValue] = useState("");
+  const [nearAr, setNearAr] = useState("");
+  const [nearEn, setNearEn] = useState("");
 
 
   // Function Handle Change Inputs :---------
@@ -177,11 +179,11 @@ const AddProject = () => {
 
       const { error } = await supabase.from("projects").insert([payload]);
       if (error) throw error;
-      alert("✅ Project Added Successfully!");
+      alert(t("project_added_success"));
       navigate("/dashboard/projects-dashboard");
     } catch (err) {
       console.error(err);
-      alert("❌ Error: " + err.message);
+      alert(t("project_add_error") + err.message);
     } finally {
       setLoading(false);
     }
@@ -190,146 +192,146 @@ const AddProject = () => {
 
   return (
     <div className="max-w-6xl mx-auto p-4 md:p-8">
-      <h2 className="text-2xl font-bold mb-6">Add Project</h2>
+      <h2 className="text-2xl font-bold mb-6">{t("add_project_title")}</h2>
 
       <form onSubmit={handleSubmit} className="space-y-6">
 
         {/* ── Basic Info ── */}
         <div className="bg-white p-6 rounded-xl shadow">
-          <h3 className="font-semibold text-lg mb-5 text-primary">Basic Info</h3>
+          <h3 className="font-semibold text-lg mb-5 text-primary">{t("basic_info")}</h3>
           <div className="grid md:grid-cols-2 gap-5">
-            <Field label="Project Name (AR)">
-              <input name="name_ar" value={form.name_ar} placeholder="مثال: مشروع أدوار ديسم" onChange={handleChange} className="input" dir="rtl" required />
+            <Field label={t("project_name_ar")}>
+              <input name="name_ar" value={form.name_ar} placeholder={t("ph_project_name_ar")} onChange={handleChange} className="input" dir="rtl" required />
             </Field>
-            <Field label="Project Name (EN)">
-              <input name="name_en" value={form.name_en} placeholder="e.g. Adwar Deism" onChange={handleChange} className="input" required />
-            </Field>
-
-            <Field label="Title (AR)">
-              <input name="title_ar" value={form.title_ar} placeholder="مثال: مشروع سكني عصري" onChange={handleChange} className="input" dir="rtl" />
-            </Field>
-            <Field label="Title (EN)">
-              <input name="title_en" value={form.title_en} placeholder="e.g. Modern Residential Project" onChange={handleChange} className="input" />
+            <Field label={t("project_name_en")}>
+              <input name="name_en" value={form.name_en} placeholder={t("ph_project_name_en")} onChange={handleChange} className="input" required />
             </Field>
 
-            <Field label="City (AR)">
-              <input name="city_ar" value={form.city_ar} placeholder="مثال: الرياض" onChange={handleChange} className="input" dir="rtl" />
+            <Field label={t("project_title_ar")}>
+              <input name="title_ar" value={form.title_ar} placeholder={t("ph_title_ar")} onChange={handleChange} className="input" dir="rtl" />
             </Field>
-            <Field label="City (EN)">
-              <input name="city_en" value={form.city_en} placeholder="e.g. Riyadh" onChange={handleChange} className="input" />
-            </Field>
-
-            <Field label="Type (AR)">
-              <input name="type_ar" value={form.type_ar} placeholder="مثال: سكني" onChange={handleChange} className="input" dir="rtl" />
-            </Field>
-            <Field label="Type (EN)">
-              <input name="type_en" value={form.type_en} placeholder="e.g. Residential" onChange={handleChange} className="input" />
+            <Field label={t("project_title_en")}>
+              <input name="title_en" value={form.title_en} placeholder={t("ph_title_en")} onChange={handleChange} className="input" />
             </Field>
 
-            <Field label="Building Type (AR)">
-              <input name="building_type_ar" value={form.building_type_ar} placeholder="مثال: شقق" onChange={handleChange} className="input" dir="rtl" />
+            <Field label={t("city_ar_label")}>
+              <input name="city_ar" value={form.city_ar} placeholder={t("ph_city_ar")} onChange={handleChange} className="input" dir="rtl" />
             </Field>
-            <Field label="Building Type (EN)">
-              <input name="building_type_en" value={form.building_type_en} placeholder="e.g. Apartments" onChange={handleChange} className="input" />
-            </Field>
-
-            <Field label="District (AR)">
-              <input name="district_ar" value={form.district_ar} placeholder="مثال: حي الحزم" onChange={handleChange} className="input" dir="rtl" />
-            </Field>
-            <Field label="District (EN)">
-              <input name="district_en" value={form.district_en} placeholder="e.g. Al Hazm District" onChange={handleChange} className="input" />
+            <Field label={t("city_en_label")}>
+              <input name="city_en" value={form.city_en} placeholder={t("ph_city_en")} onChange={handleChange} className="input" />
             </Field>
 
-            <Field label="Location (AR)">
-              <input name="location_ar" value={form.location_ar} placeholder="مثال: شارع الأمير محمد" onChange={handleChange} className="input" dir="rtl" />
+            <Field label={t("type_ar_label")}>
+              <input name="type_ar" value={form.type_ar} placeholder={t("ph_type_ar")} onChange={handleChange} className="input" dir="rtl" />
             </Field>
-            <Field label="Location (EN)">
-              <input name="location_en" value={form.location_en} placeholder="e.g. Prince Mohammed Street" onChange={handleChange} className="input" />
+            <Field label={t("type_en_label")}>
+              <input name="type_en" value={form.type_en} placeholder={t("ph_type_en")} onChange={handleChange} className="input" />
             </Field>
 
-            <Field label="Area (m²)">
-              <input name="area" value={form.area} placeholder="e.g. 15000" onChange={handleChange} className="input" />
+            <Field label={t("building_type_ar_label")}>
+              <input name="building_type_ar" value={form.building_type_ar} placeholder={t("ph_building_type_ar")} onChange={handleChange} className="input" dir="rtl" />
             </Field>
-            <Field label="Units Count">
-              <input name="units_count" value={form.units_count} placeholder="e.g. 120" onChange={handleChange} className="input" type="number" />
+            <Field label={t("building_type_en_label")}>
+              <input name="building_type_en" value={form.building_type_en} placeholder={t("ph_building_type_en")} onChange={handleChange} className="input" />
             </Field>
-          </div>
 
+            <Field label={t("district_ar_label")}>
+              <input name="district_ar" value={form.district_ar} placeholder={t("ph_district_ar")} onChange={handleChange} className="input" dir="rtl" />
+            </Field>
+            <Field label={t("district_en_label")}>
+              <input name="district_en" value={form.district_en} placeholder={t("ph_district_en")} onChange={handleChange} className="input" />
+            </Field>
 
-          {/*  */}
-          <div className="bg-white p-6 rounded-xl shadow mt-4">
-            <h3 className="font-semibold text-lg mb-5 text-primary">Price & Units</h3>
+            <Field label={t("location_ar_label")}>
+              <input name="location_ar" value={form.location_ar} placeholder={t("ph_location_ar")} onChange={handleChange} className="input" dir="rtl" />
+            </Field>
+            <Field label={t("location_en_label")}>
+              <input name="location_en" value={form.location_en} placeholder={t("ph_location_en")} onChange={handleChange} className="input" />
+            </Field>
 
-            <div className="grid md:grid-cols-3 gap-5">
-              <Field label="Price">
-                <input
-                  name="price"
-                  value={form.price}
-                  onChange={handleChange}
-                  placeholder="مثال: من 550,000 إلى 620,000 ريال"
-                  className="input"
-                  dir="rtl"
-                />
-              </Field>
+            <Field label={t("area_label")}>
+              <input name="area" value={form.area} placeholder={t("ph_area")} onChange={handleChange} className="input" />
+            </Field>
 
-              <Field label="Sold Units">
-                <input
-                  name="sold_units"
-                  value={form.sold_units}
-                  onChange={handleChange}
-                  type="number"
-                  className="input"
-                />
-              </Field>
-
-              <Field label="Available Units">
-                <input
-                  name="available_units"
-                  value={form.available_units}
-                  onChange={handleChange}
-                  type="number"
-                  className="input"
-                />
-              </Field>
-            </div>
-          </div>
-
-
-          <div className="mt-5">
-            <Field label="Status">
+            <Field label={t("status_label")}>
               <select name="status" value={form.status} onChange={handleChange} className="input">
-                <option value="available">Available</option>
-                <option value="sold">Sold</option>
+                <option value="available">{t("status_available")}</option>
+                <option value="sold">{t("status_sold")}</option>
               </select>
+            </Field>
+
+          </div>
+
+        </div>
+
+        {/* Price & Units */}
+        <div className="bg-white p-6 rounded-xl shadow mt-4">
+          <h3 className="font-semibold text-lg mb-5 text-primary">{t("price_and_units")}</h3>
+
+          <div className="grid  md:grid-cols-2 gap-5">
+            <Field label={t("units_count_label_input")}>
+              <input name="units_count" value={form.units_count} placeholder={t("ph_units_count")} onChange={handleChange} className="input" type="number" />
+            </Field>
+
+            <Field label={t("price_label")}>
+              <input
+                name="price"
+                value={form.price}
+                onChange={handleChange}
+                placeholder={t("ph_price")}
+                className="input"
+                dir="rtl"
+              />
+            </Field>
+
+            <Field label={t("sold_units_input")}>
+              <input
+                name="sold_units"
+                value={form.sold_units}
+                onChange={handleChange}
+                type="number"
+                className="input"
+              />
+            </Field>
+
+            <Field label={t("available_units_input")}>
+              <input
+                name="available_units"
+                value={form.available_units}
+                onChange={handleChange}
+                type="number"
+                className="input"
+              />
             </Field>
           </div>
         </div>
 
+
         {/* ── Description ── */}
         <div className="bg-white p-6 rounded-xl shadow">
-          <h3 className="font-semibold text-lg mb-5 text-primary">Description</h3>
+          <h3 className="font-semibold text-lg mb-5 text-primary">{t("description_title")}</h3>
           <div className="grid md:grid-cols-2 gap-5">
-            <Field label="Description (AR)">
-              <textarea name="description_ar" value={form.description_ar} placeholder="أدخل وصف المشروع بالعربية..." onChange={handleChange} className="input h-28" dir="rtl" />
+            <Field label={t("description_ar_label")}>
+              <textarea name="description_ar" value={form.description_ar} placeholder={t("ph_desc_ar")} onChange={handleChange} className="input h-28" dir="rtl" />
             </Field>
-            <Field label="Description (EN)">
-              <textarea name="description_en" value={form.description_en} placeholder="Enter project description in English..." onChange={handleChange} className="input h-28" />
+            <Field label={t("description_en_label")}>
+              <textarea name="description_en" value={form.description_en} placeholder={t("ph_desc_en")} onChange={handleChange} className="input h-28" />
             </Field>
           </div>
         </div>
 
         {/* ── Unit Features ── */}
         <div className="bg-white p-6 rounded-xl shadow">
-          <h3 className="font-semibold text-lg mb-5 text-primary">Unit Features</h3>
+          <h3 className="font-semibold text-lg mb-5 text-primary">{t("unit_features_title")}</h3>
           <div className="flex gap-2 mb-3">
-            <Field label="Unit Feature (AR)">
-              <input value={unitAr} onChange={(e) => setUnitAr(e.target.value)} placeholder="مثال: 5 غرف نوم" className="input" dir="rtl" />
+            <Field label={t("unit_feature_ar_label")}>
+              <input value={unitAr} onChange={(e) => setUnitAr(e.target.value)} placeholder={t("ph_unit_feature_ar")} className="input" dir="rtl" />
             </Field>
-            <Field label="Unit Feature (EN)">
-              <input value={unitEn} onChange={(e) => setUnitEn(e.target.value)} placeholder="e.g. 5 Bedrooms" className="input" />
+            <Field label={t("unit_feature_en_label")}>
+              <input value={unitEn} onChange={(e) => setUnitEn(e.target.value)} placeholder={t("ph_unit_feature_en")} className="input" />
             </Field>
             <div className="flex items-end">
-              <button type="button" onClick={addUnitFeature} className="bg-primary text-white px-5 py-2.5 rounded-lg whitespace-nowrap">Add</button>
+              <button type="button" onClick={addUnitFeature} className="bg-primary text-white px-5 py-2.5 rounded-lg whitespace-nowrap">{t("add_btn")}</button>
             </div>
           </div>
           <ul className="space-y-2">
@@ -346,16 +348,16 @@ const AddProject = () => {
 
         {/* ── Features ── */}
         <div className="bg-white p-6 rounded-xl shadow">
-          <h3 className="font-semibold text-lg mb-5 text-primary">Features</h3>
+          <h3 className="font-semibold text-lg mb-5 text-primary">{t("features_title")}</h3>
           <div className="flex gap-2 mb-3">
-            <Field label="Feature (AR)">
-              <input value={inputFeatureAr} onChange={(e) => setInputFeatureAr(e.target.value)} placeholder="مثال: مسبح" className="input" dir="rtl" />
+            <Field label={t("feature_ar_label")}>
+              <input value={inputFeatureAr} onChange={(e) => setInputFeatureAr(e.target.value)} placeholder={t("ph_feature_ar")} className="input" dir="rtl" />
             </Field>
-            <Field label="Feature (EN)">
-              <input value={inputFeatureEn} onChange={(e) => setInputFeatureEn(e.target.value)} placeholder="e.g. Swimming Pool" className="input" />
+            <Field label={t("feature_en_label")}>
+              <input value={inputFeatureEn} onChange={(e) => setInputFeatureEn(e.target.value)} placeholder={t("ph_feature_en")} className="input" />
             </Field>
             <div className="flex items-end">
-              <button type="button" onClick={addFeature} className="bg-primary text-white px-5 py-2.5 rounded-lg whitespace-nowrap">Add</button>
+              <button type="button" onClick={addFeature} className="bg-primary text-white px-5 py-2.5 rounded-lg whitespace-nowrap">{t("add_btn")}</button>
             </div>
           </div>
           <ul className="space-y-2">
@@ -374,25 +376,25 @@ const AddProject = () => {
         {/*  Nearby Places  */}
         <div className="bg-white p-6 rounded-xl shadow">
           <h3 className="font-semibold text-lg mb-5 text-primary">
-            Nearby Places
+            {t("nearby_places_title")}
           </h3>
 
           <div className="flex gap-2 mb-3">
-            <Field label="Nearby Place (AR)">
+            <Field label={t("nearby_place_ar_label")}>
               <input
                 value={nearAr}
                 onChange={(e) => setNearAr(e.target.value)}
-                placeholder="مثال: 5 دقائق من المول"
+                placeholder={t("ph_nearby_ar")}
                 className="input"
                 dir="rtl"
               />
             </Field>
 
-            <Field label="Nearby Place (EN)">
+            <Field label={t("nearby_place_en_label")}>
               <input
                 value={nearEn}
                 onChange={(e) => setNearEn(e.target.value)}
-                placeholder="e.g. 5 minutes from mall"
+                placeholder={t("ph_nearby_en")}
                 className="input"
               />
             </Field>
@@ -403,7 +405,7 @@ const AddProject = () => {
                 onClick={addNearbyPlace}
                 className="bg-primary text-white px-5 py-2.5 rounded-lg"
               >
-                Add
+                {t("add_btn")}
               </button>
             </div>
           </div>
@@ -433,20 +435,20 @@ const AddProject = () => {
 
         {/* ── Guarantees ── */}
         <div className="bg-white p-6 rounded-xl shadow">
-          <h3 className="font-semibold text-lg mb-5 text-primary">Guarantees</h3>
+          <h3 className="font-semibold text-lg mb-5 text-primary">{t("guarantees_title")}</h3>
           <div className="grid md:grid-cols-3 gap-4 mb-3">
-            <Field label="Guarantee Title (AR)">
-              <input value={gTitleAr} onChange={(e) => setGTitleAr(e.target.value)} placeholder="مثال: الهيكل الإنشائي" className="input" dir="rtl" />
+            <Field label={t("guarantee_title_ar_label")}>
+              <input value={gTitleAr} onChange={(e) => setGTitleAr(e.target.value)} placeholder={t("ph_guarantee_ar")} className="input" dir="rtl" />
             </Field>
-            <Field label="Guarantee Title (EN)">
-              <input value={gTitleEn} onChange={(e) => setGTitleEn(e.target.value)} placeholder="e.g. Structural" className="input" />
+            <Field label={t("guarantee_title_en_label")}>
+              <input value={gTitleEn} onChange={(e) => setGTitleEn(e.target.value)} placeholder={t("ph_guarantee_en")} className="input" />
             </Field>
-            <Field label="Value">
-              <input value={gValue} onChange={(e) => setGValue(e.target.value)} placeholder="e.g. 10 سنوات" className="input" />
+            <Field label={t("value_label")}>
+              <input value={gValue} onChange={(e) => setGValue(e.target.value)} placeholder={t("ph_g_value")} className="input" />
             </Field>
           </div>
           <button type="button" onClick={addGuarantee} className="bg-primary text-white px-4 py-2 rounded-lg mb-3">
-            Add Guarantee
+            {t("add_guarantee_btn")}
           </button>
           <ul className="space-y-2">
             {form.guarantees.map((g, i) => (
@@ -464,8 +466,8 @@ const AddProject = () => {
 
         {/* ── Cover Image ── */}
         <div className="bg-white p-6 rounded-xl shadow">
-          <h3 className="font-semibold text-lg mb-5 text-primary">Cover Image</h3>
-          <Field label="Upload Cover Image">
+          <h3 className="font-semibold text-lg mb-5 text-primary">{t("cover_image_title")}</h3>
+          <Field label={t("upload_cover_image")}>
             <input
               type="file"
               accept="image/*"
@@ -491,8 +493,8 @@ const AddProject = () => {
 
         {/* ── Gallery ── */}
         <div className="bg-white p-6 rounded-xl shadow">
-          <h3 className="font-semibold text-lg mb-5 text-primary">Gallery Images</h3>
-          <Field label="Upload Gallery Images (multiple)">
+          <h3 className="font-semibold text-lg mb-5 text-primary">{t("gallery_images_title")}</h3>
+          <Field label={t("upload_gallery_images")}>
             <input
               type="file"
               accept="image/*"
@@ -531,9 +533,9 @@ const AddProject = () => {
                 <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
                 <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z" />
               </svg>
-              Uploading...
+              {t("uploading_btn")}
             </>
-          ) : "Add Project"}
+          ) : t("add_project_btn")}
         </button>
 
       </form>
@@ -547,9 +549,9 @@ export default AddProject;
 
 
 // ── Reusable label+input wrapper ──────────────────────────────────────────
-  const Field = ({ label, children }) => (
-    <div className="flex flex-col gap-1">
-      <label className="text-xs font-semibold uppercase tracking-widest text-gray-400">{label}</label>
-      {children}
-    </div>
-  );
+const Field = ({ label, children }) => (
+  <div className="flex flex-col gap-1">
+    <label className="text-base font-medium  tracking-widest text-gray-700">{label}</label>
+    {children}
+  </div>
+);

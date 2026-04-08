@@ -9,7 +9,7 @@ import { supabase } from "../../lib/supabase";
 import Loader from "../../components/common/Loader";
 
 const AdminProjectDetails = () => {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
   const isRTL = i18n.language === "ar";
   const [lightboxIndex, setLightboxIndex] = useState(null);
   const [project, setProject] = useState(null);
@@ -42,7 +42,7 @@ const AdminProjectDetails = () => {
   }, [id]);
 
   if (loading) return <Loader />;
-  if (!project) return <div className="text-center py-20">Project Not Found</div>;
+  if (!project) return <div className="text-center py-20">{t("project_not_found")}</div>;
 
   // ── Safe arrays ───────────────────────────────────────────────────────────
   const safeArray     = (val) => (Array.isArray(val) ? val : []);
@@ -67,18 +67,14 @@ const AdminProjectDetails = () => {
     : "bg-red-100 text-red-600";
 
   const statusLabel = project.status === "available"
-    ? (isRTL ? "متاح للحجز" : "Available")
-    : (isRTL ? "مباع" : "Sold");
+    ? t("status_available")
+    : t("status_sold");
 
   // ── Actions ───────────────────────────────────────────────────────────────
   const handleEdit = () => navigate(`/dashboard/edit-project/${project.id}`);
 
   const handleDelete = async () => {
-    const confirmed = window.confirm(
-      isRTL
-        ? "هل أنت متأكد من حذف هذا المشروع؟"
-        : "Are you sure you want to delete this project?"
-    );
+    const confirmed = window.confirm(t("confirm_delete"));
     if (!confirmed) return;
 
     setDeleteLoading(true);
@@ -128,7 +124,7 @@ const AdminProjectDetails = () => {
         <div className="flex sm:items-center justify-between flex-col sm:flex-row gap-4 sm:gap-0 bg-white p-4 rounded-xl shadow">
           <div>
             <p className=" text-gray-400 uppercase tracking-widest mb-0.5">
-              {isRTL ? "لوحة التحكم" : "Admin Panel"}
+              {t("admin_panel")}
             </p>
             <h2 className="text-lg md:text-xl font-bold text-gray-800">
               {isRTL ? project.name_ar : project.name_en}
@@ -141,7 +137,7 @@ const AdminProjectDetails = () => {
               className="flex items-center gap-2 bg-primary text-white px-5 py-2 rounded-lg hover:opacity-90 transition"
             >
               <FaEdit />
-              {isRTL ? "تعديل" : "Edit"}
+              {t("edit_admin_btn")}
             </button>
             <button
               onClick={handleDelete}
@@ -154,7 +150,7 @@ const AdminProjectDetails = () => {
                   <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z" />
                 </svg>
               ) : <FaTrash />}
-              {isRTL ? "حذف" : "Delete"}
+              {t("delete_admin_btn")}
             </button>
           </div>
         </div>
@@ -162,35 +158,35 @@ const AdminProjectDetails = () => {
         {/* ===== Basic Info ===== */}
         <div className="bg-white p-6 rounded-xl shadow">
           <h2 className="text-xl md:text-2xl font-bold mb-4">
-            {isRTL ? "معلومات المشروع" : "Project Info"}
+            {t("project_info_title")}
           </h2>
 
           <div className="grid md:grid-cols-2 gap-4 text-sm">
-            <p className="md:text-lg"><strong className="text-primary">{isRTL ? "الاسم:" : "Name:"}</strong> {isRTL ? project.name_ar : project.name_en}</p>
-            <p className="md:text-lg"><strong className="text-primary">{isRTL ? "العنوان:" : "Title:"}</strong> {isRTL ? project.title_ar : project.title_en}</p>
-            <p className="md:text-lg"><strong className="text-primary">{isRTL ? "الموقع:" : "Location:"}</strong> {isRTL ? project.location_ar : project.location_en}</p>
-            <p className="md:text-lg"><strong className="text-primary">{isRTL ? "المدينة:" : "City:"}</strong> {isRTL ? project.city_ar : project.city_en}</p>
-            <p className="md:text-lg"><strong className="text-primary">{isRTL ? "الحي:" : "District:"}</strong> {isRTL ? project.district_ar : project.district_en}</p>
-            <p className="md:text-lg"><strong className="text-primary">{isRTL ? "نوع المشروع:" : "Type:"}</strong> {isRTL ? project.type_ar : project.type_en}</p>
-            <p className="md:text-lg"><strong className="text-primary">{isRTL ? "نوع البناء:" : "Building Type:"}</strong> {isRTL ? project.building_type_ar : project.building_type_en}</p>
-            <p className="md:text-lg"><strong className="text-primary">اسعار الوحدات:</strong> {project.price}</p>
-            <p className="md:text-lg"><strong className="text-primary">{isRTL ? "عدد الوحدات:" : "Units:"}</strong> {project.units_count}</p>
-            <p className="md:text-lg"><strong className="text-primary">عدد الوحدات  المتاحة في المشروع:</strong> {project.available_units}</p>
-            <p className="md:text-lg"><strong className="text-primary">عدد الوحدات المباعة في المشروع: </strong> {project.sold_units}</p>
+            <p className="md:text-lg"><strong className="text-primary">{t("name_colon")}</strong> {isRTL ? project.name_ar : project.name_en}</p>
+            <p className="md:text-lg"><strong className="text-primary">{t("title_colon")}</strong> {isRTL ? project.title_ar : project.title_en}</p>
+            <p className="md:text-lg"><strong className="text-primary">{t("location_colon")}</strong> {isRTL ? project.location_ar : project.location_en}</p>
+            <p className="md:text-lg"><strong className="text-primary">{t("city_colon")}</strong> {isRTL ? project.city_ar : project.city_en}</p>
+            <p className="md:text-lg"><strong className="text-primary">{t("district_colon")}</strong> {isRTL ? project.district_ar : project.district_en}</p>
+            <p className="md:text-lg"><strong className="text-primary">{t("type_colon")}</strong> {isRTL ? project.type_ar : project.type_en}</p>
+            <p className="md:text-lg"><strong className="text-primary">{t("building_type_colon")}</strong> {isRTL ? project.building_type_ar : project.building_type_en}</p>
+            <p className="md:text-lg"><strong className="text-primary">{t("price_units_colon")}</strong> {project.price}</p>
+            <p className="md:text-lg"><strong className="text-primary">{t("units_count_colon")}</strong> {project.units_count}</p>
+            <p className="md:text-lg"><strong className="text-primary">{t("available_units_colon")}</strong> {project.available_units}</p>
+            <p className="md:text-lg"><strong className="text-primary">{t("sold_units_colon")}</strong> {project.sold_units}</p>
             <p className="md:text-lg">
-              <strong className="text-primary">{isRTL ? "الحالة:" : "Status:"}</strong>{" "}
+              <strong className="text-primary">{t("status_colon")}</strong>{" "}
               <span className={`px-2 py-0.5 rounded-full text-base font-semibold ${statusColor}`}>
                 {statusLabel}
               </span>
             </p>
-            <p className="md:text-lg"><strong className="text-primary">{isRTL ? "المعرّف:" : "ID:"}</strong> #{project.id}</p>
+            <p className="md:text-lg"><strong className="text-primary">{t("id_colon")}</strong> #{project.id}</p>
           </div>
 
           {/* Date */}
           <div className={`flex items-center gap-2 mt-5 pt-5 border-t text-sm text-gray-500 ${isRTL ? "flex-row-reverse" : ""}`}>
             <FiCalendar className="text-primary text-base shrink-0" />
             <span>
-              {isRTL ? "تاريخ الإضافة:" : "Added on:"}{" "}
+              {t("added_on_label")}{" "}
               <span className="font-semibold text-gray-700">{formattedDate}</span>
             </span>
           </div>
@@ -199,7 +195,7 @@ const AdminProjectDetails = () => {
         {/* ===== Description ===== */}
         <div className="bg-white p-6 rounded-xl shadow">
           <h2 className="text-xl md:text-2xl font-bold mb-4">
-              نبذة عن المشروع
+              {t("about_project_title")}
           </h2>
           <div className="grid md:grid-cols-2 gap-6">
             <div>
@@ -217,14 +213,14 @@ const AdminProjectDetails = () => {
         {(project.area || unitFeaturesAr.length > 0) && (
           <div className="bg-white p-6 rounded-2xl shadow-lg">
             <h2 className="text-xl md:text-2xl font-bold mb-6">
-              {isRTL ? "تفاصيل الوحدة" : "Unit Details"}
+              {t("unit_details_title")}
             </h2>
 
             {project.area && (
               <div className="flex items-center gap-3 bg-primary text-white p-4 rounded-xl mb-6 w-fit">
                 <FaRulerCombined className="text-lg" />
                 <span className="font-semibold">
-                  {isRTL ? "المساحة:" : "Area:"} {Number(project.area).toLocaleString()} m²
+                  {t("area_colon")} {Number(project.area).toLocaleString()} m²
                 </span>
               </div>
             )}
@@ -247,7 +243,7 @@ const AdminProjectDetails = () => {
         {featuresAr.length > 0 && (
           <div className="bg-white p-6 rounded-xl shadow">
             <h2 className="text-xl md:text-2xl font-bold mb-4">
-              {isRTL ? "مميزات المشروع" : "Features"}
+              {t("project_features_title")}
             </h2>
             <div className="grid md:grid-cols-2 gap-3">
               {featuresAr.map((f, i) => (
@@ -265,7 +261,7 @@ const AdminProjectDetails = () => {
         {nearby_places_Ar.length > 0 && (
           <div className="bg-white p-6 rounded-xl shadow">
             <h2 className="text-xl md:text-2xl font-bold mb-4">
-               اشهر المعالم القريبة من المشروع
+               {t("nearby_landmarks_title")}
             </h2>
             <div className="grid md:grid-cols-2 gap-3">
               {nearby_places_Ar.map((f, i) => (
@@ -284,7 +280,7 @@ const AdminProjectDetails = () => {
         {guarantees.length > 0 && (
           <div className="bg-white p-6 rounded-xl shadow">
             <h2 className="text-xl md:text-2xl font-bold mb-4">
-              {isRTL ? "ضمانات المشروع" : "Guarantees"}
+              {t("project_guarantees_title")}
             </h2>
             <div className="grid md:grid-cols-3 gap-4">
               {guarantees.map((g, i) => (
@@ -302,7 +298,7 @@ const AdminProjectDetails = () => {
         {galleryImages.length > 0 && (
           <div className="bg-white p-6 rounded-xl shadow">
             <h2 className="text-xl md:text-2xl font-bold mb-4">
-              {isRTL ? "صور المشروع" : "Gallery"}
+              {t("project_gallery_title")}
             </h2>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
               {galleryImages.map((img, i) => (
@@ -318,7 +314,7 @@ const AdminProjectDetails = () => {
                     loading="lazy"
                   />
                   <div className="absolute inset-0 flex flex-col items-center justify-center gap-1 opacity-0 group-hover:opacity-100 transition">
-                    <span className="text-white font-bold text-lg">{isRTL ? "عرض" : "View"}</span>
+                    <span className="text-white font-bold text-lg">{t("view_img")}</span>
                     <span className="text-white/70 text-sm">{i + 1} / {galleryImages.length}</span>
                   </div>
                 </div>

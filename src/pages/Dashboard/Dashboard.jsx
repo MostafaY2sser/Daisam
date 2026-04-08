@@ -69,7 +69,7 @@ const Dashboard = () => {
 
       } catch (err) {
         console.log(err);
-        setError("حدث خطأ أثناء تحميل البيانات");
+        setError(t("error_loading_data"));
       } finally {
         setLoading(false);
       }
@@ -103,7 +103,7 @@ const Dashboard = () => {
 
             <div className="bg-white p-5 rounded-xl shadow">
               <p className="text-gray-500 text-lg md:text-xl font-medium">
-                {isAr ? "عدد المشاريع" : "Projects"}
+                {t("total_projects")}
               </p>
               <h2 className="text-2xl font-bold text-primary">
                 {stats.totalProjects}
@@ -112,7 +112,7 @@ const Dashboard = () => {
 
             <div className="bg-white p-5 rounded-xl shadow">
               <p className="text-gray-500 text-lg md:text-xl font-medium">
-                {isAr ? "إجمالي الوحدات" : "Total Units"}
+                {t("total_units")}
               </p>
               <h2 className="text-2xl font-bold">
                 {stats.totalUnits}
@@ -121,7 +121,7 @@ const Dashboard = () => {
 
             <div className="bg-white p-5 rounded-xl shadow">
               <p className="text-gray-500 text-lg md:text-xl font-medium">
-                {isAr ? "الوحدات المتاحة" : "Available Units"}
+                {t("available_units")}
               </p>
               <h2 className="text-2xl font-bold text-green-500">
                 {stats.availableUnits}
@@ -130,7 +130,7 @@ const Dashboard = () => {
 
             <div className="bg-white p-5 rounded-xl shadow">
               <p className="text-gray-500 text-lg md:text-xl font-medium">
-                {isAr ? "الوحدات المباعة" : "Sold Units"}
+                {t("sold_units")}
               </p>
               <h2 className="text-2xl font-bold text-red-500">
                 {stats.soldUnits}
@@ -146,7 +146,7 @@ const Dashboard = () => {
             {topProject && (
               <div className="bg-white p-6 rounded-xl shadow">
                 <h3 className="font-semibold text-lg md:text-xl   mb-4">
-                  {isAr ? "أكبر مشروع" : "Top Project"}
+                  {t("top_project")}
                 </h3>
 
                 <p className="text-lg font-bold text-gray-600">
@@ -158,7 +158,7 @@ const Dashboard = () => {
                 </p>
 
                 <p className="mt-2 text-lg md:text-xl">
-                  {isAr ? "عدد الوحدات:" : "Units:"} {topProject.units_count}
+                  {t("units_count_label")} {topProject.units_count}
                 </p>
               </div>
             )}
@@ -166,7 +166,7 @@ const Dashboard = () => {
              {/* Cities */}
             <div className="bg-white p-6 rounded-xl shadow">
               <h3 className="font-semibold mb-4 text-lg md:text-xl ">
-                {isAr ? "المشاريع حسب المدينة" : "Projects by City"}
+                {t("projects_by_city")}
               </h3>
 
               {Object.entries(cities).map(([city, count]) => (

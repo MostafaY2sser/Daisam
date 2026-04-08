@@ -190,22 +190,23 @@ const Navbar = () => {
 
         {/* Mobile Menu Button */}
         <button
-          className={`absolute md:hidden top-[15%] ${ isRTL ? 'left-2' : 'right-2' }  z-20 text-2xl transition-colors duration-200 
+          className={`absolute md:hidden top-[15%] ${ isRTL ? 'left-2' : 'right-2' }  z-10 text-2xl transition-colors duration-200 
           ${ scrolled ? "text-primary" : "text-white"}
           `}
           onClick={toggleMenu}
           aria-label="Toggle Menu"
         >
-          {isOpen ? <FaTimes className="text-primary hidden" /> : <FaBars className={`w-10 h-10 p-2 ${scrolled ? 'text-primary' : 'text-white bg-primary rounded-md '}`} />}
+          {/* {isOpen ? <FaTimes className="text-primary hidden" /> : <FaBars className={`w-10 h-10 p-2 ${scrolled ? 'text-primary' : 'text-white bg-primary rounded-md '}`} />} */}
+          <FaBars className={`w-10 h-10 p-2 ${scrolled ? 'text-primary' : 'text-white bg-primary rounded-md '}`} />
         </button>
 
         {/* Mobile Menu */}
         <div
-          className={`md:hidden fixed top-0 left-0 w-full h-screen bg-black/40 flex flex-col items-end justify-end text-xl font-semibold text-gray-700 transition-transform duration-200 ${
-            isOpen ? "translate-x-0" : `${isRTL ? '-translate-x-full' : 'translate-x-full'}`
+          className={`md:hidden fixed top-0 left-0 z-20 w-full h-screen bg-black/40 flex flex-col  text-xl font-semibold text-gray-700 transition-transform duration-200 ${
+            isOpen ? "translate-x-0" : `${isRTL ? 'translate-x-full' : '-translate-x-full'}`
           }`}
         >
-          <div className={`relative bg-white w-2/3 h-full pt-32 overflow-hidden ${isRTL ? 'rounded-r-3xl' : 'rounded-l-3xl'} `}>
+          <div className={`relative bg-white w-2/3 h-full pt-32 overflow-hidden ${isRTL ? 'rounded-l-3xl' : ' rounded-r-3xl'} `}>
             <ul className="flex flex-col items-center gap-4">
               {menuLinks.map((link, index) => (
                 <li key={index} className="w-full text-center relative">
@@ -246,7 +247,7 @@ const Navbar = () => {
               {/* Close  Menu Button */}
               <button
                 onClick={closeMenu}
-                className={`absolute top-0 ${isRTL ? 'right-0 rounded-bl-2xl' : 'left-0 rounded-br-2xl'} text-xl bg-primary  text-white p-2  transition-colors duration-200 hover:text-primary`}
+                className={`absolute top-0 ${isRTL ? 'left-0 rounded-br-2xl' : 'right-0 rounded-bl-2xl'} text-xl bg-primary  text-white p-2  transition-colors duration-200 hover:text-primary`}
                 aria-label="Close Menu"
               >
                 <FaTimes />

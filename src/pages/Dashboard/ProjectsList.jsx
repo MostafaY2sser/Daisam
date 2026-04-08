@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 import ProjectCardAdmin from "../../components/dashboard/ProjectCardAdmin";
 import { supabase } from "../../lib/supabase"; 
 import Loader from "../../components/common/Loader";
-
+import { useTranslation } from "react-i18next";
 
 const ProjectsList = () => {
-
+  const { t } = useTranslation();
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState("all"); 
@@ -49,7 +49,7 @@ const ProjectsList = () => {
       // alert("Project deleted successfully!");
     } catch (err) {
       console.log("Error deleting project:", err.message);
-      alert("Failed to delete project!");
+      alert(t("delete_project_error"));
     }
   };
   //  Delete project handler :------
@@ -65,14 +65,14 @@ const ProjectsList = () => {
         <div className="flex md:items-center justify-between flex-col md:flex-row mb-2 md:mb-6 gap-4">
           {/* Section Title */}
           <h2 className="text-2xl md:text-3xl font-extrabold text-text md:text-center">
-            Projects
+            {t("projects_page_title")}
           </h2>
 
           <div className="flex flex-row items-center gap-2 md:gap-6">
               {/* Filter Buttons */}
               <div className="mb-6 flex items-center gap-3">
                 <label className="text-sm font-medium text-gray-600">
-                  Filter:
+                  {t("filter_label")}
                 </label>
 
                 <select
@@ -80,9 +80,9 @@ const ProjectsList = () => {
                   onChange={(e) => setFilter(e.target.value)}
                   className="px-4 py-1 rounded-lg border border-primary border-gray-300 bg-white focus:outline-none focus:ring-2 focus:ring-primary"
                 >
-                  <option value="all">All</option>
-                  <option value="available">Available</option>
-                  <option value="sold">Sold</option>
+                  <option value="all">{t("filter_all")}</option>
+                  <option value="available">{t("status_available")}</option>
+                  <option value="sold">{t("status_sold")}</option>
                 </select>
               </div>
               {/* Filter Buttons */}
@@ -91,7 +91,7 @@ const ProjectsList = () => {
               {/* Add Project Button */}
               <div className="flex justify-end mb-6">
                 <Link to="/dashboard/add-project" className="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-dark transition">
-                  Add New Project
+                  {t("add_new_project_btn")}
                 </Link>
               </div>
               {/* Add Project Button */}
@@ -102,7 +102,7 @@ const ProjectsList = () => {
         {/* Grid Projects */}
         {filteredProjects.length === 0 && (
           <p className="text-center text-gray-500 py-10">
-            لا توجد مشاريع بهذا التصنيف
+            {t("no_projects_found")}
           </p>
         )}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">

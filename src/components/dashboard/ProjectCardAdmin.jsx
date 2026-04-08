@@ -27,7 +27,7 @@ const ProjectCardAdmin = ({
   status,
   onDelete,
 }) => {
-  const { i18n } = useTranslation();
+  const { t , i18n } = useTranslation();
   const isRTL = i18n.language === "ar";
 
   const title = isRTL ? name_ar : name_en;
@@ -81,7 +81,7 @@ const ProjectCardAdmin = ({
 
       <span className="flex items-center gap-1">
         <FaDoorOpen className="text-primary" />
-        {units_count || 0} {isRTL ? "وحدات" : "Units"}
+        {units_count || 0} {t("units_label_short")}
       </span>
     </div>
   </div>
@@ -100,7 +100,7 @@ const ProjectCardAdmin = ({
         to={`/dashboard/project-details/${id}`}
         className="flex-1 bg-primary text-white text-center py-2 rounded-lg hover:bg-primary-dark transition text-sm font-medium"
       >
-        {isRTL ? "عرض التفاصيل" : "View Details"}
+        {t("view_details_btn")}
       </Link>
 
       {/* Edit */}
@@ -114,7 +114,7 @@ const ProjectCardAdmin = ({
       {/* Delete */}
       <button
         onClick={() => {
-          if (confirm("Are you sure?")) onDelete(id);
+          if (confirm(t("confirm_sure"))) onDelete(id);
         }}
         className="w-10 h-10 flex items-center justify-center bg-red-500 hover:bg-red-600 text-white rounded-lg transition"
       >
