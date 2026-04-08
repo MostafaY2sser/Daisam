@@ -1,37 +1,71 @@
+
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { supabase } from "../../lib/supabase";
 import Loader from "../../components/common/Loader";
 
 const Dashboard = () => {
-  const { t } = useTranslation();
+  const { t , i18n } = useTranslation();
+  const isAr = i18n.language === "ar";
 
+  const [projects, setProjects] = useState([]);
   const [stats, setStats] = useState({
-    total: 0,
-    available: 0,
-    sold: 0,
+    totalProjects: 0,
+    totalUnits: 0,
+    availableUnits: 0,
+    soldUnits: 0,
   });
+
+  const [cities, setCities] = useState({});
+  const [types, setTypes] = useState({});
+  const [topProject, setTopProject] = useState(null);
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchStats = async () => {
+    const fetchProjects = async () => {
       setLoading(true);
       setError(null);
 
       try {
         const { data, error } = await supabase
           .from("projects")
-          .select("status");
+          .select("*");
 
         if (error) throw error;
 
-        const total = data.length;
-        const available = data.filter(p => p.status === "available").length;
-        const sold = data.filter(p => p.status === "sold").length;
+        setProjects(data);
 
-        setStats({ total, available, sold });
+        // Stats
+        const totalProjects = data.length;
+        const totalUnits = data.reduce((acc, p) => acc + (p.units_count || 0), 0);
+        const availableUnits = data.reduce((acc, p) => acc + (p.available_units || 0), 0);
+        const soldUnits = data.reduce((acc, p) => acc + (p.sold_units || 0), 0);
+
+        setStats({ totalProjects, totalUnits, availableUnits, soldUnits });
+
+        // Cities
+        const cityMap = {};
+        data.forEach(p => {
+          const city = isAr ? p.city_ar : p.city_en;
+          cityMap[city] = (cityMap[city] || 0) + 1;
+        });
+        setCities(cityMap);
+
+        // Types
+        const typeMap = {};
+        data.forEach(p => {
+          const type = isAr ? p.building_type_ar : p.building_type_en;
+          typeMap[type] = (typeMap[type] || 0) + 1;
+        });
+        setTypes(typeMap);
+
+        // Top Project (most units)
+        const top = data.reduce((prev, current) =>
+          (prev.units_count || 0) > (current.units_count || 0) ? prev : current
+        , {});
+        setTopProject(top);
 
       } catch (err) {
         console.log(err);
@@ -41,47 +75,112 @@ const Dashboard = () => {
       }
     };
 
-    fetchStats();
-  }, []);
+    fetchProjects();
+  }, [isAr]);
 
   if (loading) return <Loader />;
 
+  
+
+
   return (
     <div className="p-4 max-w-7xl mx-auto">
-      <h1 className="text-2xl md:text-3xl font-bold text-primary mb-6">
-        {t("dashboard_welcome")}
+
+      {/* Header */}
+      <h1 className="text-2xl md:text-3xl font-bold text-primary mb-8">
+         {t("dashboard_welcome")}
       </h1>
 
-      {/* Error */}
       {error && (
-        <p className="text-red-500 mb-4 text-center">
-          {error}
-        </p>
+        <p className="text-red-500 text-center mb-4">{error}</p>
       )}
 
-      {/* Stats */}
       {!error && (
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          
-          {/* Total */}
-          <div className="bg-white p-6 rounded-xl shadow text-center">
-            <h3 className="text-gray-500 text-sm mb-2">Total Projects</h3>
-            <p className="text-3xl font-bold text-primary">{stats.total}</p>
+        <>
+
+          {/* Main Stats */}
+          <div className="grid md:grid-cols-4 gap-6 mb-10">
+
+            <div className="bg-white p-5 rounded-xl shadow">
+              <p className="text-gray-500 text-lg md:text-xl font-medium">
+                {isAr ? "عدد المشاريع" : "Projects"}
+              </p>
+              <h2 className="text-2xl font-bold text-primary">
+                {stats.totalProjects}
+              </h2>
+            </div>
+
+            <div className="bg-white p-5 rounded-xl shadow">
+              <p className="text-gray-500 text-lg md:text-xl font-medium">
+                {isAr ? "إجمالي الوحدات" : "Total Units"}
+              </p>
+              <h2 className="text-2xl font-bold">
+                {stats.totalUnits}
+              </h2>
+            </div>
+
+            <div className="bg-white p-5 rounded-xl shadow">
+              <p className="text-gray-500 text-lg md:text-xl font-medium">
+                {isAr ? "الوحدات المتاحة" : "Available Units"}
+              </p>
+              <h2 className="text-2xl font-bold text-green-500">
+                {stats.availableUnits}
+              </h2>
+            </div>
+
+            <div className="bg-white p-5 rounded-xl shadow">
+              <p className="text-gray-500 text-lg md:text-xl font-medium">
+                {isAr ? "الوحدات المباعة" : "Sold Units"}
+              </p>
+              <h2 className="text-2xl font-bold text-red-500">
+                {stats.soldUnits}
+              </h2>
+            </div>
+
           </div>
 
-          {/* Available */}
-          <div className="bg-white p-6 rounded-xl shadow text-center">
-            <h3 className="text-gray-500 text-sm mb-2">Available Projects</h3>
-            <p className="text-3xl font-bold text-green-500">{stats.available}</p>
+          {/* Cities & Types */}
+          <div className="grid md:grid-cols-2 gap-6 mb-10">
+
+            {/* Top Project */}
+            {topProject && (
+              <div className="bg-white p-6 rounded-xl shadow">
+                <h3 className="font-semibold text-lg md:text-xl   mb-4">
+                  {isAr ? "أكبر مشروع" : "Top Project"}
+                </h3>
+
+                <p className="text-lg font-bold text-gray-600">
+                  {isAr ? topProject.name_ar : topProject.name_en}
+                </p>
+
+                <p className="text-base font-medium text-gray-500 mt-1">
+                  {isAr ? topProject.city_ar : topProject.city_en}
+                </p>
+
+                <p className="mt-2 text-lg md:text-xl">
+                  {isAr ? "عدد الوحدات:" : "Units:"} {topProject.units_count}
+                </p>
+              </div>
+            )}
+
+             {/* Cities */}
+            <div className="bg-white p-6 rounded-xl shadow">
+              <h3 className="font-semibold mb-4 text-lg md:text-xl ">
+                {isAr ? "المشاريع حسب المدينة" : "Projects by City"}
+              </h3>
+
+              {Object.entries(cities).map(([city, count]) => (
+                <div key={city} className="flex justify-between mb-2 text-sm">
+                  <span className="text-base font-medium">{city}</span>
+                  <span className="text-base font-medium">{count}</span>
+                </div>
+              ))}
+            </div>
+
           </div>
 
-          {/* Sold */}
-          <div className="bg-white p-6 rounded-xl shadow text-center">
-            <h3 className="text-gray-500 text-sm mb-2">Sold Projects</h3>
-            <p className="text-3xl font-bold text-red-500">{stats.sold}</p>
-          </div>
 
-        </div>
+        </>
       )}
     </div>
   );
