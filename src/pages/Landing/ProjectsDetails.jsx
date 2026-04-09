@@ -10,7 +10,7 @@ import Loader from "../../components/common/Loader";
 import { supabase } from "../../lib/supabase";
 
 const ProjectsDetails = () => {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
   const isRTL = i18n.language === "ar";
   const { id } = useParams();
   const [project, setProject] = useState(null);
@@ -38,7 +38,7 @@ const ProjectsDetails = () => {
   }, [id]);
 
   if (loading) return <Loader />;
-  if (!project) return <div className="text-center py-20">Project Not Found</div>;
+  if (!project) return <div className="text-center py-20">{t("project_not_found")}</div>;
 
 
   // ── Date ──────────────────────────────────────────────────────────────────
@@ -93,24 +93,24 @@ const ProjectsDetails = () => {
         {/* ===== Basic Info ===== */}
         <div className="bg-white p-6 rounded-xl shadow">
           <h2 className="text-lg md:text-2xl font-bold mb-4">
-            {isRTL ? "معلومات المشروع" : "Project Info"}
+            {t("project_info")}
           </h2>
 
           <div className="grid md:grid-cols-2 gap-4 text-sm">
-            <p className="text-lg"><strong className="text-primary">{isRTL ? "الاسم:" : "Name:"}</strong> {isRTL ? project.title_ar : project.title_en}</p>
-            <p className="text-lg"><strong className="text-primary">{isRTL ? "الموقع:" : "Location:"}</strong> {isRTL ? project.location_ar : project.location_en}</p>
-            <p className="text-lg"><strong className="text-primary">{isRTL ? "المدينة:" : "City:"}</strong> {isRTL ? project.city_ar : project.city_en}</p>
-            <p className="text-lg"><strong className="text-primary">{isRTL ? "الحي:" : "District:"}</strong> {isRTL ? project.district_ar : project.district_en}</p>
-            <p className="text-lg"><strong className="text-primary">{isRTL ? "نوع المشروع:" : "Type:"}</strong> {isRTL ? project.type_ar : project.type_en}</p>
-            <p className="text-lg"><strong className="text-primary">{isRTL ? "نوع البناء:" : "Building Type:"}</strong> {isRTL ? project.building_type_ar : project.building_type_en}</p>
-            <p className="text-lg"><strong className="text-primary">اسعار الوحدات:</strong> {project.price}</p>
-            <p className="text-lg"><strong className="text-primary">{isRTL ? "عدد الوحدات:" : "Units:"}</strong> {project.units_count}</p>
-            <p className="text-lg"><strong className="text-primary">عدد الوحدات  المتاحة في المشروع:</strong> {project.available_units}</p>
-            <p className="text-lg"><strong className="text-primary">عدد الوحدات المباعة في المشروع: </strong> {project.sold_units}</p>
+            <p className="text-lg"><strong className="text-primary">{t("project_name_label")}</strong> {isRTL ? project.title_ar : project.title_en}</p>
+            <p className="text-lg"><strong className="text-primary">{t("project_location_label")}</strong> {isRTL ? project.location_ar : project.location_en}</p>
+            <p className="text-lg"><strong className="text-primary">{t("project_city_label")}</strong> {isRTL ? project.city_ar : project.city_en}</p>
+            <p className="text-lg"><strong className="text-primary">{t("project_district_label")}</strong> {isRTL ? project.district_ar : project.district_en}</p>
+            <p className="text-lg"><strong className="text-primary">{t("project_type_label")}</strong> {isRTL ? project.type_ar : project.type_en}</p>
+            <p className="text-lg"><strong className="text-primary">{t("building_type_label")}</strong> {isRTL ? project.building_type_ar : project.building_type_en}</p>
+            <p className="text-lg"><strong className="text-primary">{t("unit_prices_label")}</strong> {project.price}</p>
+            <p className="text-lg"><strong className="text-primary">{t("units_count_label")}</strong> {project.units_count}</p>
+            <p className="text-lg"><strong className="text-primary">{t("available_units_in_project_label")}</strong> {project.available_units}</p>
+            <p className="text-lg"><strong className="text-primary">{t("sold_units_in_project_label")}</strong> {project.sold_units}</p>
             <p className="text-lg">
-              <strong className="text-primary">{isRTL ? "الحالة:" : "Status:"}</strong>{" "}
+              <strong className="text-primary">{t("status_label")}</strong>{" "}
               <span className={`px-2 py-0.5 rounded-full text-base font-semibold ${project.status === "available" ? "bg-green-100 text-green-700" : "bg-red-100 text-red-600"}`}>
-                {project.status === "available" ? (isRTL ? "متاح الحجز " : "Available") : (isRTL ? "مباع" : "Sold")}
+                {project.status === "available" ? t("status_available") : t("status_sold")}
               </span>
             </p>
           </div>
@@ -119,7 +119,7 @@ const ProjectsDetails = () => {
           <div className={`flex items-center gap-2 mt-5 pt-5 border-t text-sm text-gray-500 ${isRTL ? "flex-row-reverse" : ""}`}>
             <FiCalendar className="text-primary text-base shrink-0" />
             <span>
-              {isRTL ? "تاريخ الإضافة:" : "Added on:"}{" "}
+              {t("added_on_label")}{" "}
               <span className="font-semibold text-gray-700">{formattedDate}</span>
             </span>
           </div>
@@ -130,7 +130,7 @@ const ProjectsDetails = () => {
         {/* ===== Description ===== */}
         <div className="bg-white p-6 rounded-xl shadow">
           <h2 className="text-lg md:text-2xl font-bold mb-4">
-            {isRTL ? "نبذة عن المشروع" : "About Project"}
+            {t("about_project")}
           </h2>
           <p className="text-gray-700 leading-relaxed">
             {isRTL ? project.description_ar : project.description_en}
@@ -142,14 +142,14 @@ const ProjectsDetails = () => {
         {(project.area || unitFeaturesList.length > 0) && (
           <div className="bg-white p-6 rounded-2xl shadow-lg">
             <h2 className="text-lg md:text-2xl font-bold mb-6">
-              {isRTL ? "تفاصيل الوحدة" : "Unit Details"}
+              {t("unit_details")}
             </h2>
 
             {project.area && (
               <div className="flex items-center gap-3 bg-primary text-white p-4 rounded-xl mb-6 w-fit">
                 <FaRulerCombined className="text-lg" />
                 <span className="font-semibold">
-                  {isRTL ? "المساحة:" : "Area:"} {(project.area)} m²
+                  {t("area_label")} {(project.area)} m²
                 </span>
               </div>
             )}
@@ -172,7 +172,7 @@ const ProjectsDetails = () => {
         {featuresList.length > 0 && (
           <div className="bg-white p-6 rounded-xl shadow">
             <h2 className="text-lg md:text-2xl font-bold mb-4">
-              {isRTL ? "مميزات المشروع" : "Features"}
+              {t("project_features")}
             </h2>
             <div className="grid md:grid-cols-3 gap-3">
               {featuresList.map((f, i) => (
@@ -190,7 +190,7 @@ const ProjectsDetails = () => {
         {nearbyPlacesList.length > 0 && (
           <div className="bg-white p-6 rounded-2xl shadow-md">
             <h2 className="text-lg md:text-2xl font-bold mb-6">
-              اشهر المعالم القريبة من المشروع
+              {t("nearby_landmarks")}
             </h2>
 
             <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
@@ -216,7 +216,7 @@ const ProjectsDetails = () => {
         {guaranteesList.length > 0 && (
           <div className="bg-white p-6 rounded-xl shadow">
             <h2 className="text-lg md:text-2xl font-bold mb-4">
-              {isRTL ? "ضمانات المشروع" : "Guarantees"}
+              {t("project_guarantees")}
             </h2>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
               {guaranteesList.map((g, i) => (
@@ -224,7 +224,7 @@ const ProjectsDetails = () => {
                   <p className="font-semibold text-sm md:text-base">
                     {isRTL ? g.title_ar : g.title_en}
                   </p>
-                  <p className="text-primary font-bold">{g.value} سنة </p> 
+                  <p className="text-primary font-bold">{g.value} {t("years")} </p> 
                 </div>
               ))}
             </div>
@@ -235,7 +235,7 @@ const ProjectsDetails = () => {
         {galleryImages.length > 0 && (
           <div className="bg-white p-6 rounded-xl shadow">
             <h2 className="text-lg md:text-2xl font-bold mb-4">
-              {isRTL ? "صور المشروع" : "Gallery"}
+              {t("project_gallery")}
             </h2>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
               {galleryImages.map((img, i) => (
@@ -251,7 +251,7 @@ const ProjectsDetails = () => {
                     loading="lazy"
                   />
                   <div className="absolute inset-0 flex flex-col items-center justify-center gap-1 opacity-0 group-hover:opacity-100 transition">
-                    <span className="text-white font-bold text-lg">عرض</span>
+                    <span className="text-white font-bold text-lg">{t("view_image")}</span>
                     <span className="text-white/70 text-sm">{i + 1} / {galleryImages.length}</span>
                   </div>
                 </div>

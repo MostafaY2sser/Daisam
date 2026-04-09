@@ -14,7 +14,7 @@ const Footer = () => {
     { href: "https://www.tiktok.com/@daisamrealestate", icon: <FaTiktok /> },
     { href: "https://www.instagram.com/daisam_realestate?igsh=MTRpb3FyMHFiNTMwMg==", icon: <FaInstagram /> },
     { href: "https://www.snapchat.com/@daisamrealestat?share_id=yaKvZQlbmX0&locale=en-US", icon: <FaSnapchat /> },
-    { href: "", icon: <FaLinkedinIn /> },
+    { href: "https://www.linkedin.com/feed/", icon: <FaLinkedinIn /> },
   ];
 
 
@@ -68,7 +68,7 @@ const Footer = () => {
           </h3>
           <p>
             <a href={"https://maps.app.goo.gl/C3KL1FKRRbBJUZyN7?g_st=ic"} target="_blank" className="flex justify-center md:justify-start gap-2 text-text">
-              <FaMapMarkerAlt className="text-primary w-4 h-6" /> <span className="text-start">{t("الرياض - الملقا")}</span>
+              <FaMapMarkerAlt className="text-primary w-4 h-6" /> <span className="text-start">{t('location_name')}</span>
             </a>
           </p>
           <a href="tel:920020535"  className="flex items-center justify-center md:justify-start gap-2 text-text">

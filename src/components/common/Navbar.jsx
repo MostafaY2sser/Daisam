@@ -40,7 +40,7 @@ const Navbar = () => {
     { href: "https://www.tiktok.com/@daisamrealestate", icon: <FaTiktok /> },
     { href: "https://www.instagram.com/daisam_realestate?igsh=MTRpb3FyMHFiNTMwMg==", icon: <FaInstagram /> },
     { href: "https://www.snapchat.com/@daisamrealestat?share_id=yaKvZQlbmX0&locale=en-US", icon: <FaSnapchat /> },
-    { href: "", icon: <FaLinkedinIn /> },
+    { href: "https://www.linkedin.com/feed/", icon: <FaLinkedinIn /> },
   ];
 
   const toggleMenu = () => setIsOpen(!isOpen);

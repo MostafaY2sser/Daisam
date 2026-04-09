@@ -1,15 +1,17 @@
 import { FaBullseye, FaEye, FaCheckCircle, FaStar } from "react-icons/fa";
 import MainHero from '../../components/common/MainHero'
 import FeaturesSection from "../../components/landing/FeaturesSection";
+import { useTranslation } from "react-i18next";
 
 const AboutContent = () => {
+  const { t } = useTranslation();
   return (
     <div>
 
       {/* ===== Hero Section ===== */}
       <MainHero
-        title="من نحن"
-        description="نقدم حلولًا عقارية متكاملة للبيع، مع خدمات تمويلية مرنة  مع شركائنا من الجهات التمويلية، تناسب جميع العملاء."
+        title={t("about_us")}
+        description={t("about_hero_desc")}
         bgImage="/images/main_bg_hero.png"
       />
 
@@ -21,7 +23,7 @@ const AboutContent = () => {
             className="text-2xl md:text-4xl font-extrabold text-text mb-6"
             data-aos="fade-up"
           >
-            رؤيتنا
+            {t("our_vision")}
           </h2>
 
           <p
@@ -29,10 +31,7 @@ const AboutContent = () => {
             data-aos="fade-up"
             data-aos-delay="100"
           >
-            رؤية ديسم العقارية تقوم على الجمع بين الرؤية المستقبلية والالتزام بالجودة،
-            حيث نؤمن أن العقار ليس مجرد استثمار بل هو أسلوب حياة. نسعى لتقديم مشاريع
-            عقارية مبتكرة تجمع بين الجودة والراحة، مع التركيز على الشفافية والمصداقية
-            لبناء علاقات طويلة الأمد مع عملائنا.
+            {t("our_vision_desc")}
           </p>
 
         </div>
@@ -47,19 +46,19 @@ const AboutContent = () => {
               className="text-2xl md:text-4xl font-extrabold text-text mb-4"
               data-aos="fade-up"
             >
-              أهدافنا
+              {t("our_goals")}
             </h2>
           </div>
 
           <div className="grid md:grid-cols-2 gap-6">
 
             {[
-              "تقديم حلول عقارية متكاملة تلبي احتياجات العملاء",
-              "تعزيز الشفافية والمصداقية في جميع التعاملات",
-              "تمكين الأفراد من امتلاك منازلهم بسهولة",
-              "دعم المطورين العقاريين وزيادة عوائدهم",
-              "المساهمة في تطوير القطاع العقاري",
-              "التركيز على الجودة والابتكار لتحقيق رضا العملاء",
+              t("goal_1"),
+              t("goal_2"),
+              t("goal_3"),
+              t("goal_4"),
+              t("goal_5"),
+              t("goal_6"),
             ].map((item, index) => (
               <div
                 key={index}
@@ -89,11 +88,10 @@ const AboutContent = () => {
               <FaEye />
             </div>
 
-            <h3 className="text-xl font-bold mb-3 text-white">هدفنا</h3>
+            <h3 className="text-xl font-bold mb-3 text-white">{t("our_objective")}</h3>
 
             <p className="text-gray-50 leading-relaxed">
-              أن نكون الخيار الأول للأفراد والمستثمرين الباحثين عن حلول عقارية
-              وتسويقية وتمويلية متكاملة، من خلال تقديم خدمات تعتمد على الثقة والنتائج.
+              {t("our_objective_desc")}
             </p>
           </div>
 
@@ -106,11 +104,10 @@ const AboutContent = () => {
               <FaBullseye />
             </div>
 
-            <h3 className="text-xl font-bold mb-3 text-text">رسالتنا</h3>
+            <h3 className="text-xl font-bold mb-3 text-text">{t("our_mission")}</h3>
 
             <p className="text-gray-600 leading-relaxed">
-              نعمل على ربط العملاء بأفضل الفرص العقارية، وتوفير خيارات تمويل
-              مناسبة لهم بأسلوب احترافي وشفاف يضمن تجربة مميزة.
+              {t("our_mission_desc")}
             </p>
           </div>
 

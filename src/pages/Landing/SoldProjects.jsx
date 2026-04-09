@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import MainHero from '../../components/common/MainHero'
+import { useTranslation } from "react-i18next";
 import ProjectCard from '../../components/landing/ProjectCard'
 import { supabase } from '../../lib/supabase';
 
 
 const SoldProjects = () => {
-
+    const { t } = useTranslation();
     const [projects, setProjects] = useState([]);
     const [loading, setLoading] = useState(true);
         
@@ -37,8 +38,8 @@ const SoldProjects = () => {
    <>
         {/* ===== Hero Section ===== */}
         <MainHero
-            title="المشاريع المباعة لدينا"
-            description="تعرّف على المشاريع التي تم بيعها بالكامل، والتي أثبتت نجاحها بين عملائنا والمستثمرين."
+            title={t("sold_projects_hero_title")}
+            description={t("sold_projects_hero_desc")}
             bgImage="/images/main_bg_hero.png"
         />
 
@@ -53,21 +54,21 @@ const SoldProjects = () => {
                 data-aos="fade-up"
                 data-aos-delay="100"
                 >
-                مشاريعنا المباعة
+                {t("our_sold_projects")}
                 </h2>
                 <p
                 className="text-gray-600 max-w-2xl mx-auto text-sm md:text-base leading-relaxed"
                 data-aos="fade-up"
                 data-aos-delay="150"
                 >
-                جميع المشاريع التالية تم بيعها بالكامل، وهي دليل على جودة مشاريعنا ورضا العملاء.
+                {t("our_sold_projects_desc")}
                 </p>
             </div>
 
             {/* Projects Grid */}
             {projects.length !== 0 && (
                 loading 
-                    ? <p className="text-center py-10 text-xl ">جاري تحميل المشاريع...</p>
+                    ? <p className="text-center py-10 text-xl ">{t("loading_projects")}</p>
                     :(
                         <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                             {projects.map((project, index) => (

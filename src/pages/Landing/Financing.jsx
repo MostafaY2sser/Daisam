@@ -11,7 +11,7 @@ const Financing = () => {
     name: "",
     phone: "",
     employer: "",
-    propertyType: "الوحدات الجاهزة",
+    propertyType: t("property_ready_units"),
     message: "",
   });
 
@@ -19,24 +19,24 @@ const Financing = () => {
 
   const financingOptions = [
     {
-      title: "حلول التمويل العقاري",
-      desc: "نوفر برامج تمويل عقاري متكاملة تتيح لك شراء الوحدات السكنية الجاهزة بسهولة ومرونة بالتعاون مع شركائنا من الجهات التمويلية ",
-      img: "/images/one.jpg",
+      title: t("financing_opt1_title"),
+      desc: t("financing_opt1_desc"),
+      img: "/images/مكان البيت.png",
     },
     {
-      title: "حلول الرهن العقاري",
-      desc: "إذا كنت تمتلك عقارًا، يمكنك الاستفادة من قيمته للحصول على تمويل يساعدك...",
-      img: "/images/two.jpg",
+      title: t("financing_opt2_title"),
+      desc: t("financing_opt2_desc"),
+      img: "/images/السيولة الي تحتاجها.png",
     },
     {
-      title: "تمويل البناء الذاتي ",
-      desc: "نقدم حلول تمويل للافراد عن طريق شركائنا من الجهات التمويلية للعملاء الراغبين بالمنتج",
-      img: "/images/three.jpg",
+      title: t("financing_opt3_title"),
+      desc: t("financing_opt3_desc"),
+      img: "/images/البناء الذاتي الي تحت 2.png",
     },
     {
-      title: "استشارات تمويلية مجانية",
-      desc: "نقدّم لك استشارات تمويلية احترافية مجانًا لمساعدتك في فهم جميع الخيارات...",
-      img: "/images/four.jpg",
+      title: t("financing_opt4_title"),
+      desc: t("financing_opt4_desc"),
+      img: "/images/البناء الذاتي الي تحت.png",
     },
   ];
 
@@ -79,7 +79,7 @@ const Financing = () => {
         name: "",
         phone: "",
         employer: "",
-        propertyType: "الوحدات الجاهزة",
+        propertyType: t("property_ready_units"),
         message: "",
       });
     } catch (error) {
@@ -94,8 +94,8 @@ const Financing = () => {
     <div>
       {/* Hero Section */}
       <MainHero
-        title="التمويل العقاري"
-        description="حلول تمويل عقاري مرنة تساعدك على امتلاك منزلك أو الاستثمار بثقة."
+        title={t("financing_hero_title")}
+        description={t("financing_hero_desc")}
         bgImage="/images/main_bg_hero.png"
       />
 
@@ -103,15 +103,13 @@ const Financing = () => {
       <section className="py-12 md:py-20 bg-secondary">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-2xl md:text-4xl font-extrabold text-text mb-6" data-aos="fade-up">
-            شركة ديسم
+            {t("daisam_company")}
           </h2>
           <h3 className="text-lg md:text-xl font-semibold text-primary mb-4" data-aos="fade-up" data-aos-delay="100">
-            شريكك الموثوق لتحقيق حلم التملك
+            {t("your_trusted_partner")}
           </h3>
           <p className="text-gray-600 leading-relaxed" data-aos="fade-up" data-aos-delay="150">
-            في ديسم العقارية، نمنحك المفاتيح الأولي لحلمك السكني، من خلال حلول تمويل عقاري مصممة لتناسب احتياجاتك.
-            سواء كنت تبحث عن منزل العمر، أو فرصة استثمارية، فإننا نرافقك بخطى واثقه  وخبرة راسخة.
-           و نمنحك الطمأنينة و الدعم في كل خطوة من رحلتك لإتخاذ القرار المناسب 
+            {t("financing_intro_desc")}
           </p>
         </div>
       </section>
@@ -121,7 +119,7 @@ const Financing = () => {
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-2xl md:text-4xl font-extrabold text-text mb-4" data-aos="fade-up">
-              حلول تمويلية متنوعة لجميع احتياجاتك العقارية
+              {t("financing_options_title")}
             </h2>
           </div>
           <div className="grid md:grid-cols-2 gap-6">
@@ -135,7 +133,7 @@ const Financing = () => {
                 <img
                   src={item.img}
                   alt={item.title}
-                  className="w-full h-56 object-cover group-hover:scale-105 transition duration-300"
+                  className="w-full h-64 object-cover group-hover:scale-105 transition duration-300"
                   loading="lazy"
                 />
                 <div className="p-6">
@@ -154,80 +152,80 @@ const Financing = () => {
       <section className="py-12 md:py-20 bg-secondary">
         <div className="max-w-3xl mx-auto px-4">
           <div className="bg-white p-8 rounded-2xl shadow-md" data-aos="fade-up">
-            <h3 className="text-xl font-bold mb-4 text-text text-center">قدم طلبك الآن</h3>
+            <h3 className="text-xl font-bold mb-4 text-text text-center">{t("submit_your_request")}</h3>
             <p className="text-gray-600 text-center mb-6 text-sm">
-              قدّم طلب إستشارة أو إستفسار مجاناً وسيتم التواصل معك في أقرب وقت.
+              {t("submit_request_desc")}
             </p>
 
             <form className="space-y-5" onSubmit={handleSubmit}>
               {/* Name */}
               <div>
-                <label className="block mb-2 text-sm text-gray-600">الاسم رباعي</label>
+                <label className="block mb-2 text-sm text-gray-600">{t("full_name_label")}</label>
                 <input
                   type="text"
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
                   className="w-full border rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary outline-none"
-                  placeholder="اكتب اسمك الكامل"
+                  placeholder={t("full_name_placeholder")}
                   required
                 />
               </div>
 
               {/* Phone */}
               <div>
-                <label className="block mb-2 text-sm text-gray-600">رقم الجوال</label>
+                <label className="block mb-2 text-sm text-gray-600">{t("phone_label")}</label>
                 <input
                   type="tel"
                   name="phone"
                   value={formData.phone}
                   onChange={handleChange}
                   className="w-full border rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary outline-none"
-                  placeholder="05xxxxxxxx"
+                  placeholder={t("phone_placeholder")}
                   required
                 />
               </div>
 
               {/* Employer */}
               <div>
-                <label className="block mb-2 text-sm text-gray-600">جهة العمل</label>
+                <label className="block mb-2 text-sm text-gray-600">{t("employer_label")}</label>
                 <input
                   type="text"
                   name="employer"
                   value={formData.employer}
                   onChange={handleChange}
                   className="w-full border rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary outline-none"
-                  placeholder="اسم جهة العمل"
+                  placeholder={t("employer_placeholder")}
                   required
                 />
               </div>
 
               {/* Product Type */}
               <div>
-                <label className="block mb-2 text-sm text-gray-600">نوع المنتج المهتم به</label>
+                <label className="block mb-2 text-sm text-gray-600">{t("product_type_label")}</label>
                 <select
                   name="propertyType"
                   value={formData.propertyType}
                   onChange={handleChange}
                   className="w-full border rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary outline-none"
                 >
-                  <option>الوحدات الجاهزة</option>
-                  <option>البناء الذاتي</option>
-                  <option>الرهن العقاري</option>
-                  <option>الرهن التجاري للعقارات المؤجرة</option>
+                  <option value={t("property_ready_units")}>{t("property_ready_units")}</option>
+                  <option value={t("property_self_build")}>{t("property_self_build")}</option>
+                  <option value={t("property_mortgage")}>{t("property_mortgage")}</option>
+                  <option value={t("property_commercial_mortgage")}>{t("property_commercial_mortgage")}</option>
                 </select>
               </div>
 
               {/* Message */}
               <div>
-                <label className="block mb-2 text-sm text-gray-600">فضلاً اذكر طلبك</label>
+                <label className="block mb-2 text-sm text-gray-600">{t("message_label")}</label>
                 <textarea
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
                   rows="4"
                   className="w-full border rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary outline-none"
-                  placeholder="اكتب تفاصيل طلبك..."
+                  placeholder={t("message_placeholder")}
                   required
                 />
               </div>

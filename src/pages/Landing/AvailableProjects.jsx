@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import MainHero from '../../components/common/MainHero'
+import { useTranslation } from "react-i18next";
 import ProjectCard from '../../components/landing/ProjectCard'
 import { supabase } from '../../lib/supabase'; 
 
 
 const AvailableProjects = () => {
-
+    const { t } = useTranslation();
     const [projects, setProjects] = useState([]);
     const [loading, setLoading] = useState(true);
 
@@ -38,8 +39,8 @@ const AvailableProjects = () => {
    <>
         {/* ===== Hero Section ===== */}
         <MainHero
-            title="المشاريع المتاحة لدينا"
-            description="اكتشف أحدث المشاريع العقارية التي نقدمها، سواء للسكن أو الاستثمار، مع تفاصيل كاملة لتسهيل اختيارك."
+            title={t("available_projects_hero_title")}
+            description={t("available_projects_hero_desc")}
             bgImage="/images/main_bg_hero.png"
         />
 
@@ -54,23 +55,23 @@ const AvailableProjects = () => {
                 data-aos="fade-up"
                 data-aos-delay="100"
                 >
-                مشاريعنا المميزة
+                {t("featured_projects")}
                 </h2>
                 <p
                 className="text-gray-600 max-w-2xl mx-auto text-sm md:text-base leading-relaxed"
                 data-aos="fade-up"
                 data-aos-delay="150"
                 >
-                نقدم وحدات سكنية وتجارية متكاملة تجمع بين الراحة والفخامة، مع مراعاة الخصوصية والمساحات العملية لتلبية كافة احتياجاتك.
+                {t("featured_projects_desc")}
                 </p>
             </div>
 
             {/* Projects Grid */}
             {loading 
-                ? <p className="text-center py-10">جاري تحميل المشاريع...</p>
+                ? <p className="text-center py-10">{t("loading_projects")}</p>
                 : (
                 projects.length === 0 ? (
-                    <p className="text-center py-10">لا توجد مشاريع متاحة حالياً. يرجى العودة لاحقاً.</p>
+                    <p className="text-center py-10">{t("no_projects_available")}</p>
                 ) : (
                     <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {projects.map((project, index) => (

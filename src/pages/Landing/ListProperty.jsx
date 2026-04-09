@@ -2,8 +2,10 @@
 import { useState } from "react";
 import { FaHome, FaPaperPlane } from "react-icons/fa";
 import MainHero from "../../components/common/MainHero";
+import { useTranslation } from "react-i18next";
 
 const ListProperty = () => {
+  const { t } = useTranslation();
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -53,12 +55,12 @@ const ListProperty = () => {
         throw new Error(JSON.stringify(data));
       }
 
-      alert("تم إرسال طلبك بنجاح ✅");
+      alert(t("request_sent_success"));
       setFormData({ name: "", phone: "", email: "", propertyType: "", otherType: "", message: "" });
 
     } catch (error) {
       console.error("Error:", error);
-      alert("حدث خطأ ❌ " + error.message);
+      alert(t("error_occurred") + error.message);
     } finally {
       setLoading(false);
     }
@@ -69,8 +71,8 @@ const ListProperty = () => {
     <div>
       {/* Hero Section */}
       <MainHero
-        title="اعرض عقارك"
-        description="سجّل عقارك الآن ودع فريق ديسم يساعدك في تسويقه والوصول لأفضل العملاء."
+        title={t("list_your_property")}
+        description={t("list_property_hero_desc")}
         bgImage="/images/bg_list_your_property.png"
       />
 
@@ -82,38 +84,38 @@ const ListProperty = () => {
             data-aos="fade-up"
           >
             <h3 className="text-xl font-bold mb-6 text-text text-center">
-              فضلاً تعبئة النموذج التالي لبدء عرض عقارك 
+              {t("fill_form_to_list")}
             </h3>
 
             <form className="space-y-5" onSubmit={handleSubmit}>
               <div>
-                <label className="block mb-2 text-sm text-gray-600">الاسم بالكامل</label>
+                <label className="block mb-2 text-sm text-gray-600">{t("full_name_label_basic")}</label>
                 <input
                   type="text"
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  placeholder="اكتب اسمك"
+                  placeholder={t("write_your_name")}
                   className="w-full border rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary"
                   required
                 />
               </div>
 
               <div>
-                <label className="block mb-2 text-sm text-gray-600">رقم الهاتف</label>
+                <label className="block mb-2 text-sm text-gray-600">{t("phone_number")}</label>
                 <input
                   type="tel"
                   name="phone"
                   value={formData.phone}
                   onChange={handleChange}
-                  placeholder="05xxxxxxxx"
+                  placeholder={t("phone_placeholder")}
                   className="w-full border rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary"
                   required
                 />
               </div>
 
               <div>
-                <label className="block mb-2 text-sm text-gray-600">البريد الإلكتروني (اختياري)</label>
+                <label className="block mb-2 text-sm text-gray-600">{t("email_optional")}</label>
                 <input
                   type="email"
                   name="email"
@@ -125,7 +127,7 @@ const ListProperty = () => {
               </div>
 
               <div>
-                <label className="block mb-2 text-sm text-gray-600">نوع العقار</label>
+                <label className="block mb-2 text-sm text-gray-600">{t("property_type")}</label>
                 <select
                   name="propertyType"
                   value={formData.propertyType}
@@ -133,23 +135,23 @@ const ListProperty = () => {
                   className="w-full border rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary"
                   required
                 >
-                  <option value="">اختر</option>
-                  <option value="شقة">شقة</option>
-                  <option value="فيلا">فيلا</option>
-                  <option value="عمارة">عمارة</option>
-                  <option value="other">أخرى</option>
+                  <option value="">{t("choose")}</option>
+                  <option value="شقة">{t("apartment")}</option>
+                  <option value="فيلا">{t("villa")}</option>
+                  <option value="عمارة">{t("building")}</option>
+                  <option value="other">{t("other")}</option>
                 </select>
               </div>
 
               {formData.propertyType === "other" && (
                 <div>
-                  <label className="block mb-2 text-sm text-gray-600">اكتب نوع العقار</label>
+                  <label className="block mb-2 text-sm text-gray-600">{t("write_property_type")}</label>
                   <input
                     type="text"
                     name="otherType"
                     value={formData.otherType}
                     onChange={handleChange}
-                    placeholder="اكتب نوع العقار"
+                    placeholder={t("write_property_type")}
                     className="w-full border rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary"
                     required
                   />
@@ -157,13 +159,13 @@ const ListProperty = () => {
               )}
 
               <div>
-                <label className="block mb-2 text-sm text-gray-600">رسالتك</label>
+                <label className="block mb-2 text-sm text-gray-600">{t("your_message")}</label>
                 <textarea
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
                   rows="4"
-                  placeholder="اكتب تفاصيل العقار..."
+                  placeholder={t("write_property_details")}
                   className="w-full border rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary"
                   required
                 />
@@ -175,7 +177,7 @@ const ListProperty = () => {
                 className="w-full bg-primary text-white py-3 rounded-xl flex items-center justify-center gap-2 hover:opacity-90 transition"
               >
                 <FaPaperPlane />
-                {loading ? "جاري الإرسال..." : "ارسال"}
+                {loading ? t("sending...") : t("send")}
               </button>
             </form>
           </div>
