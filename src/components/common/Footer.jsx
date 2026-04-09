@@ -80,6 +80,13 @@ const Footer = () => {
           >
             <FaEnvelope className="text-primary w-4 h-6" /> info@daisam.sa
           </a>
+          <a  
+            href="mailto:sales@daisam.sa"  
+            className="flex items-center justify-center md:justify-start gap-2 text-text"
+          >
+            <FaEnvelope className="text-primary w-4 h-6" /> sales@daisam.sa
+          </a>
+          
         </div>
 
         

@@ -3,6 +3,8 @@ import { useState } from "react";
 import { FaHome, FaPaperPlane } from "react-icons/fa";
 import MainHero from "../../components/common/MainHero";
 import { useTranslation } from "react-i18next";
+import emailjs from '@emailjs/browser';
+
 
 const ListProperty = () => {
   const { t } = useTranslation();
@@ -28,39 +30,34 @@ const ListProperty = () => {
     setLoading(true);
 
     try {
-      const response = await fetch(
-        "https://api.sheety.co/c66fe777496213c5aed67f1401370644/daisamForms/showyourproperty",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            showyourproperty: {
-              name:         formData.name || "-",
-              phone:        formData.phone || "-",
-              email:        formData.email || "-",
-              propertyType: formData.propertyType === "other"   
-                ? formData.otherType || "-"
-                : formData.propertyType || "-",
-              message:      formData.message || "-",
-            },
-          }),
-        }
+      const templateParams = {
+        name: formData.name,
+        phone: formData.phone,
+        email: formData.email,
+        propertyType: formData.propertyType,
+        otherType: formData.otherType,
+        message: formData.message,
+      };
+
+      await emailjs.send(
+        "service_99brxqw",       
+        "template_mgktiud",      
+        templateParams,
+        "wTi9JTgbg-M2py7Oj"     
       );
 
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(JSON.stringify(data));
-      }
-
-      alert(t("request_sent_success"));
-      setFormData({ name: "", phone: "", email: "", propertyType: "", otherType: "", message: "" });
-
+      alert("تم إرسال الرسالة بنجاح!");
+      setFormData({
+        name: "",
+        phone: "",
+        email: "",
+        propertyType: "",
+        otherType: "",
+        message: "",
+      });
     } catch (error) {
       console.error("Error:", error);
-      alert(t("error_occurred") + error.message);
+      alert("حدث خطأ أثناء إرسال الرسالة");
     } finally {
       setLoading(false);
     }

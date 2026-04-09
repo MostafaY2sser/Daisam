@@ -4,6 +4,10 @@ import MainHero from "../../components/common/MainHero";
 import { FaMoneyCheckAlt, FaHome, FaTools, FaHandshake, FaPaperPlane } from "react-icons/fa";
 import FeaturesSection from "../../components/landing/FeaturesSection";
 import { useTranslation } from "react-i18next";
+import emailjs from '@emailjs/browser';
+
+
+
 
 const Financing = () => {
   const  { t} = useTranslation();
@@ -21,22 +25,22 @@ const Financing = () => {
     {
       title: t("financing_opt1_title"),
       desc: t("financing_opt1_desc"),
-      img: "/images/مكان البيت.png",
+      img: "/images/two.png",
     },
     {
       title: t("financing_opt2_title"),
       desc: t("financing_opt2_desc"),
-      img: "/images/السيولة الي تحتاجها.png",
+      img: "/images/one.png",
     },
     {
       title: t("financing_opt3_title"),
       desc: t("financing_opt3_desc"),
-      img: "/images/البناء الذاتي الي تحت 2.png",
+      img: "/images/four.png",
     },
     {
       title: t("financing_opt4_title"),
       desc: t("financing_opt4_desc"),
-      img: "/images/البناء الذاتي الي تحت.png",
+      img: "/images/three.png",
     },
   ];
 
@@ -47,34 +51,73 @@ const Financing = () => {
   };
 
   // Handle submit
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   setLoading(true);
+
+  //   try {
+  //     const response = await fetch(
+  //       "https://api.sheety.co/c66fe777496213c5aed67f1401370644/daisamForms/financing",
+  //       {
+  //         method: "POST",
+  //         headers: { "Content-Type": "application/json" },
+  //         body: JSON.stringify({
+  //           financing: {
+  //             name: formData.name,
+  //             phone: formData.phone,
+  //             employer: formData.employer,
+  //             propertyType: formData.propertyType,
+  //             message: formData.message,
+  //           },
+  //         }),
+  //       }
+  //     );
+
+  //     const data = await response.json();
+  //     console.log("DATA:", data);
+
+  //     alert(t('message_sent_successfully'));
+
+  //     // Reset form
+  //     setFormData({
+  //       name: "",
+  //       phone: "",
+  //       employer: "",
+  //       propertyType: t("property_ready_units"),
+  //       message: "",
+  //     });
+  //   } catch (error) {
+  //     console.error(error);
+  //     alert(t('error_sending_message'));
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
+
+  // Handle submit
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
 
     try {
-      const response = await fetch(
-        "https://api.sheety.co/c66fe777496213c5aed67f1401370644/daisamForms/financing",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            financing: {
-              name: formData.name,
-              phone: formData.phone,
-              employer: formData.employer,
-              propertyType: formData.propertyType,
-              message: formData.message,
-            },
-          }),
-        }
-      );
+      const templateParams = {
+        name: formData.name,
+        phone: formData.phone,
+        employer: formData.employer,
+        propertyType: formData.propertyType,
+        message: formData.message,
+        email: formData.email || '',
+      };
 
-      const data = await response.json();
-      console.log("DATA:", data);
+      await emailjs.send(
+        "service_99brxqw",    
+        "template_pxwpt4h",   
+        templateParams,
+        "wTi9JTgbg-M2py7Oj"    
+      );
 
       alert(t('message_sent_successfully'));
 
-      // Reset form
       setFormData({
         name: "",
         phone: "",
