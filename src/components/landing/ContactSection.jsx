@@ -137,10 +137,10 @@ const ContactSection = () => {
                 {t("contact_email")}
               </h3>
               <a
-                href="mailto:info@daisam.sa"
+                href="mailto:sales3@daisam.sa"
                 className="md:text-lg flex items-center text-white gap-2"
               >
-                <FaEnvelope /> info@daisam.sa
+                <FaEnvelope /> sales@daisam.sa
               </a>
             </div>
           </div>

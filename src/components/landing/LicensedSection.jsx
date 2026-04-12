@@ -3,13 +3,18 @@ import { useTranslation } from "react-i18next";
 const LicensedSection = () => {
   const { t } = useTranslation();
   const logos = [
-    { src: "/images/images.png", name: "Fal" },
+    { src: "/images/shaon.png", name: t("وزراة الشؤون البلدية و القروية والاسكان") },
+    { src: "/images/moshaat.png", name: t("moshaat") },
+    { src: "/images/etmam.png", name: t("etmam") },
+    { src: "/images/Untitled.png", name: t("Untitled") },
     { src: "/images/images-2.png", name: t("real_estate_general_authority") },
+    { src: "/images/balady.png", name: t("خدمات بلدي") },
+    { src: "/images/images.png", name: "Fal" },
     { src: "/images/images-1.png", name: t("saudi_business_center") },
   ];
 
   return (
-    <section className="py-8 md:py-16 bg-muted">
+    <section className="py-8 md:py-16 bg-muted mb-10">
       <div className="max-w-6xl mx-auto px-4 text-center">
 
         {/* Title */}
@@ -29,11 +34,7 @@ const LicensedSection = () => {
         </p>
 
         {/* Logos */}
-       <div className="grid grid-cols-2 sm:grid-cols-3 gap-6 items-center 
-          [&>img:last-child]:col-span-2 
-          [&>img:last-child]:justify-self-center
-          sm:[&>img:last-child]:col-span-1
-        ">
+       <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 items-center">
           {logos.map((logo, index) => (
             <img
               key={index}

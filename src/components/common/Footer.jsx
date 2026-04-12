@@ -50,46 +50,44 @@ const Footer = () => {
         </div>
 
         {/* Quick Links */}
-        <div className={`md:col-span-3 space-y-4 ${isRTL ? 'text-right' : 'text-left'}`}>
-          <h3 className="text-xl font-semibold text-primary mb-2 text-center sm:text-start">{t("quick_links")}</h3>
+        <div className={`md:col-span-3 space-y-4  ${isRTL ? 'text-right mr-28' : 'text-left ml-28'}`}>
+          <h3 className="text-xl font-semibold text-primary mb-2 ">{t("quick_links")}</h3>
           <ul className="text-text space-y-2 text-center sm:text-start ">
-            <li className="flex items-center gap-1 justify-center sm:justify-start "><IoMdArrowDropleft className="text-primary w-8 h-8" /> <a href="/about" className="hover:text-primary transition">{t('about_us')}</a></li>
-            <li className="flex items-center gap-1 justify-center sm:justify-start "><IoMdArrowDropleft className="text-primary w-8 h-8" /> <a href="#projects" className="hover:text-primary transition">{t("projects")}</a></li>
-            <li className="flex items-center gap-1 justify-center sm:justify-start "><IoMdArrowDropleft className="text-primary w-8 h-8" /> <a href="/financing" className="hover:text-primary transition">{t("financing")}</a></li>
-            <li className="flex items-center gap-1 justify-center sm:justify-start "><IoMdArrowDropleft className="text-primary w-8 h-8" /> <a href="/list-your-property" className="hover:text-primary transition">{t("list_your_property")}</a></li>
-            {/* <li className="flex items-center gap-1 justify-center sm:justify-start "><IoMdArrowDropleft className="text-primary w-8 h-8" /> <a href="/contact" className="hover:text-primary transition">{t("contact_us")}</a></li> */}
+            <li className="flex items-center gap-1  "><IoMdArrowDropleft className={`text-primary w-8 h-8 ${isRTL?'':'rotate-180'}`} /> <a href="/about" className="hover:text-primary transition">{t('about_us')}</a></li>
+            <li className="flex items-center gap-1  "><IoMdArrowDropleft className={`text-primary w-8 h-8 ${isRTL?'':'rotate-180'}`} /> <a href="#projects" className="hover:text-primary transition">{t("projects")}</a></li>
+            <li className="flex items-center gap-1  "><IoMdArrowDropleft className={`text-primary w-8 h-8 ${isRTL?'':'rotate-180'}`} /> <a href="/financing" className="hover:text-primary transition">{t("financing")}</a></li>
+            <li className="flex items-center gap-1  "><IoMdArrowDropleft className={`text-primary w-8 h-8 ${isRTL?'':'rotate-180'}`} /> <a href="/list-your-property" className="hover:text-primary transition">{t("list_your_property")}</a></li>
           </ul>
         </div>
 
         {/* Contact Info */}
-        <div className="md:col-span-3 space-y-4">
-          <h3 className={`text-xl font-semibold text-primary mb-2 text-center ${isRTL ? 'sm:text-right' : 'sm:text-left'}`}>
+        <div className={`md:col-span-3 space-y-4  ${isRTL ? 'mr-28' : 'ml-28'}`}>
+          <h3 className={`text-xl font-semibold text-primary mb-2  text-start `}>
             {t("contact_us")}
           </h3>
           <p>
-            <a href={"https://maps.app.goo.gl/C3KL1FKRRbBJUZyN7?g_st=ic"} target="_blank" className="flex justify-center md:justify-start gap-2 text-text">
+            <a href={"https://maps.app.goo.gl/C3KL1FKRRbBJUZyN7?g_st=ic"} target="_blank" className="flex  gap-2 text-text">
               <FaMapMarkerAlt className="text-primary w-4 h-6" /> <span className="text-start">{t('location_name')}</span>
             </a>
           </p>
-          <a href="tel:920020535"  className="flex items-center justify-center md:justify-start gap-2 text-text">
+          <a href="tel:920020535"  className="flex items-center  gap-2 text-text">
             <FaPhoneAlt className="text-primary w-4 h-6" />  920020535
           </a>
-          <a  
-            href="mailto:info@daisam.sa"  
-            className="flex items-center justify-center md:justify-start gap-2 text-text"
-          >
-            <FaEnvelope className="text-primary w-4 h-6" /> info@daisam.sa
-          </a>
-          <a  
-            href="mailto:sales@daisam.sa"  
-            className="flex items-center justify-center md:justify-start gap-2 text-text"
-          >
-            <FaEnvelope className="text-primary w-4 h-6" /> sales@daisam.sa
-          </a>
-          
-        </div>
+          <div className="flex gap-2 ">
+              <FaEnvelope className="text-primary w-4 h-6" />
+              <div className="flex flex-col text-start">
+                  <a  
+                    href="mailto:info@daisam.sa"  
+                    className="text-text"
+                  > info@daisam.sa</a>
+                  <a  
+                    href="mailto:sales@daisam.sa"  
+                    className=" text-text"
+                  > sales@daisam.sa</a>
+              </div>
+          </div>
 
-        
+        </div>
 
       </div>
 
