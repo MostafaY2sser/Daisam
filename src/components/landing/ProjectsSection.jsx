@@ -3,36 +3,19 @@ import React, { useEffect, useState } from "react";
 import ProjectCard from "../../components/landing/ProjectCard";
 import { supabase } from "../../lib/supabase"; 
 import { useTranslation } from "react-i18next"; 
+import { useProjects } from "../../hooks/useProjects";
 
 const ProjectsSection = () => {
   const { t } = useTranslation();
-  const [projects, setProjects] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const {data: projects = [], isLoading, error, } = useProjects({ limit: 6 });
 
-  useEffect(() => {
-    const fetchProjects = async () => {
-      setLoading(true);
-      try {
-        const { data, error } = await supabase
-          .from("projects") 
-          .select("*")
-          .order("created_at", { ascending: false }) 
-          .limit(6); 
+  if (isLoading) {
+    return <p className="text-center py-10">{t("loading_projects")}</p>;
+  }
 
-        if (error) throw error;
-
-        setProjects(data || []);
-      } catch (err) {
-        console.log("Error fetching projects:", err.message);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchProjects();
-  }, []);
-
-  if (loading) return <p className="text-center py-10">{t("loading_projects")}</p>;
+  if (error) {
+    return <p className="text-center py-10">Error loading projects</p>;
+  }
 
   return (
     <section id="projects" className="py-12 md:py-20 bg-secondary">

@@ -3,34 +3,16 @@ import MainHero from '../../components/common/MainHero'
 import { useTranslation } from "react-i18next";
 import ProjectCard from '../../components/landing/ProjectCard'
 import { supabase } from '../../lib/supabase';
+import { useProjects } from '../../hooks/useProjects';
 
 
 const SoldProjects = () => {
     const { t } = useTranslation();
-    const [projects, setProjects] = useState([]);
-    const [loading, setLoading] = useState(true);
-        
-    useEffect(() => {
-    const fetchProjects = async () => {
-        setLoading(true);
-        try {
-        const { data, error } = await supabase
-            .from("projects") 
-            .select("*")
-            .eq("status", "sold");
-
-        if (error) throw error;
-
-        setProjects(data || []);
-        } catch (err) {
-        console.log("Error fetching projects:", err.message);
-        } finally {
-        setLoading(false);
-        }
-    };
-
-    fetchProjects();
-    }, []);
+    const {data: projects = [], isLoading, error,} = useProjects();
+    
+    const soldProjects = projects.filter(
+        (project) => project.status === "sold"
+    );
 
 
 
@@ -66,12 +48,12 @@ const SoldProjects = () => {
             </div>
 
             {/* Projects Grid */}
-            {projects.length !== 0 && (
-                loading 
+            {soldProjects.length !== 0 && (
+                isLoading 
                     ? <p className="text-center py-10 text-xl ">{t("loading_projects")}</p>
                     :(
                         <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                            {projects.map((project, index) => (
+                            {soldProjects.map((project, index) => (
                             <ProjectCard key={index} {...project} />
                             ))}
                         </div>

@@ -4,33 +4,14 @@ import ProjectCardAdmin from "../../components/dashboard/ProjectCardAdmin";
 import { supabase } from "../../lib/supabase"; 
 import Loader from "../../components/common/Loader";
 import { useTranslation } from "react-i18next";
+import { useProjects } from "../../hooks/useProjects";
 
 const ProjectsList = () => {
   const { t } = useTranslation();
-  const [projects, setProjects] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const {data: projects = [], isLoading, error,} = useProjects();
   const [filter, setFilter] = useState("all"); 
   
-  useEffect(() => {
-    const fetchProjects = async () => {
-      setLoading(true);
-      try {
-        const { data, error } = await supabase
-          .from("projects") 
-          .select("*"); 
-
-        if (error) throw error;
-
-        setProjects(data || []);
-      } catch (err) {
-        console.log("Error fetching projects:", err.message);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchProjects();
-    }, []);
+ 
 
     const filteredProjects =
       filter === "all"
@@ -56,7 +37,7 @@ const ProjectsList = () => {
 
 
   // Loader :------ 
-  if (loading) return <Loader />;
+  if (isLoading) return <Loader />;
 
   return (
     <section className="py-6">
