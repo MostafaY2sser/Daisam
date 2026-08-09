@@ -2,9 +2,15 @@ import { FaBullseye, FaEye, FaCheckCircle, FaStar } from "react-icons/fa";
 import MainHero from '../../components/common/MainHero'
 import FeaturesSection from "../../components/landing/FeaturesSection";
 import { useTranslation } from "react-i18next";
+import useSnapViewContent from "../../hooks/useSnapViewContent";
 
 const AboutContent = () => {
   const { t } = useTranslation();
+
+  useSnapViewContent({
+    itemCategory: "about",
+  });
+
   return (
     <div>
 

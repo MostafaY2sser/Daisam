@@ -8,6 +8,7 @@ import { IoClose } from "react-icons/io5";
 import { FiCalendar } from "react-icons/fi";
 import Loader from "../../components/common/Loader";
 import { supabase } from "../../lib/supabase";
+import useSnapViewContent from "../../hooks/useSnapViewContent";
 
 const ProjectsDetails = () => {
   const { t, i18n } = useTranslation();
@@ -16,6 +17,10 @@ const ProjectsDetails = () => {
   const [project, setProject] = useState(null);
   const [loading, setLoading] = useState(true);
   const [lightboxIndex, setLightboxIndex] = useState(null);
+
+  useSnapViewContent({
+    itemCategory: "projectDetails",
+  });
 
   useEffect(() => {
     const fetchProject = async () => {

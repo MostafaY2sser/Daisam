@@ -2,9 +2,15 @@
 import MainHero from "../../components/common/MainHero";
 import ContactSection from "../../components/landing/ContactSection";
 import { useTranslation } from "react-i18next";
+import useSnapViewContent from "../../hooks/useSnapViewContent";
 
 const Contact = () => {
   const { t } = useTranslation();
+
+  useSnapViewContent({
+    itemCategory: "contact",
+  });
+
   return (
     <div>
 

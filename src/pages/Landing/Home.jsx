@@ -10,8 +10,14 @@ import SuccessPartners from '../../components/landing/SuccessPartners'
 import ProjectsSection from '../../components/landing/ProjectsSection'
 import FAQSection from '../../components/landing/FAQSection'
 import TestimonialsSection from '../../components/landing/TestimonialsSection'
+import { useEffect } from 'react'
 
 const Home = () => {
+
+  useEffect(() => {
+    window.snaptr("track", "PAGE_VIEW");
+  }, []);
+
   return (
     <div>
       <HeroSection />

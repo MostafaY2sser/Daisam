@@ -4,6 +4,7 @@ import { FaHome, FaPaperPlane } from "react-icons/fa";
 import MainHero from "../../components/common/MainHero";
 import { useTranslation } from "react-i18next";
 import emailjs from '@emailjs/browser';
+import useSnapViewContent from "../../hooks/useSnapViewContent";
 
 
 const ListProperty = () => {
@@ -17,6 +18,10 @@ const ListProperty = () => {
     message: "",
   });
   const [loading, setLoading] = useState(false);
+
+  useSnapViewContent({
+    itemCategory: "listProperty",
+  });
 
   // Handle input changes
   const handleChange = (e) => {
@@ -45,6 +50,14 @@ const ListProperty = () => {
         templateParams,
         "wTi9JTgbg-M2py7Oj"     
       );
+
+      // Track form submission
+      window.snaptr("track", "SIGN_UP", {
+        sign_up_method: "list_property_form",
+        ...(formData.email && { user_email: formData.email }),
+        ...(formData.phone && { user_phone_number: formData.phone }),
+        ...(formData.name && { firstname: formData.name }),
+      });
 
       alert("تم إرسال الرسالة بنجاح!");
       setFormData({

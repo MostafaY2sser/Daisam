@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import ProjectCard from '../../components/landing/ProjectCard'
 import { supabase } from '../../lib/supabase';
 import { useProjects } from '../../hooks/useProjects';
+import useSnapViewContent from '../../hooks/useSnapViewContent';
 
 
 const SoldProjects = () => {
@@ -14,6 +15,9 @@ const SoldProjects = () => {
         (project) => project.status === "sold"
     );
 
+    useSnapViewContent({
+        itemCategory: "soldProjects",
+    });
 
 
   return (

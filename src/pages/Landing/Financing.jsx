@@ -5,6 +5,7 @@ import { FaMoneyCheckAlt, FaHome, FaTools, FaHandshake, FaPaperPlane } from "rea
 import FeaturesSection from "../../components/landing/FeaturesSection";
 import { useTranslation } from "react-i18next";
 import emailjs from '@emailjs/browser';
+import useSnapViewContent from "../../hooks/useSnapViewContent";
 
 
 
@@ -18,8 +19,11 @@ const Financing = () => {
     propertyType: t("property_ready_units"),
     message: "",
   });
-
   const [loading, setLoading] = useState(false);
+
+  useSnapViewContent({
+    itemCategory: "financing",
+  });
 
   const financingOptions = [
     {
@@ -115,6 +119,13 @@ const Financing = () => {
         templateParams,
         "wTi9JTgbg-M2py7Oj"    
       );
+
+      window.snaptr("track", "SIGN_UP", {
+        sign_up_method: "financing_form",
+        ...(formData.email && { user_email: formData.email }),
+        ...(formData.phone && { user_phone_number: formData.phone }),
+        ...(formData.name && { firstname: formData.name }),
+      });
 
       alert(t('message_sent_successfully'));
 

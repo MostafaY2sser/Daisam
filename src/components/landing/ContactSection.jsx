@@ -58,6 +58,13 @@ const ContactSection = () => {
         message: "",
       });
 
+      window.snaptr("track", "SIGN_UP", {
+        sign_up_method: "contact_form",
+        ...(formData.email && { user_email: formData.email }),
+        ...(formData.phone && { user_phone_number: formData.phone }),
+        ...(formData.name && { firstname: formData.name }),
+      });
+
       alert(t('message_sent_successfully'));
     } catch (error) {
       console.error(error);
