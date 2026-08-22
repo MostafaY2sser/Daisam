@@ -390,5 +390,60 @@
   "project_guarantees": "Guarantees",
   "years": "Years",
   "project_gallery": "Gallery",
-  "view_image": "View"
+  "view_image": "View",
+
+
+
+
+
+
+
+
+
+
+  "privacy_policy":"Privacy Policy",
+  "privacy_hero_desc": "We are committed to protecting your privacy and personal data. This page explains how information is collected, used, and protected when you use the Daisam Real Estate Solutions website and our services.",
+  "privacy_effective_date": "Effective Date: 13-07-2026",
+  "privacy_welcome_title": "Welcome to Daisam Real Estate Solutions",
+  "privacy_welcome_text": "We respect your privacy and are committed to protecting your personal data. This privacy policy explains how we collect, use, and protect the information you provide when visiting our website or when filling out contact forms and service requests, including forms used across our advertising platforms such as Google Ads, Snapchat Ads, Meta Ads, and TikTok Ads.",
+  "privacy_sec1_title": "1. Information We Collect",
+  "privacy_sec1_intro": "When you interact with our website or fill out a service request form, we may collect the following data:",
+  "privacy_sec1_item1": "First name.",
+  "privacy_sec1_item2": "Last name.",
+  "privacy_sec1_item3": "Mobile number.",
+  "privacy_sec1_item4": "Email address.",
+  "privacy_sec1_item5": "Type of service or product.",
+  "privacy_sec1_item6": "Salary.",
+  "privacy_sec1_item7": "Any other information you enter in the contact form.",
+  "privacy_sec2_title": "2. How We Use Your Information",
+  "privacy_sec2_intro": "The information we collect is used for the following purposes:",
+  "privacy_sec2_item1": "Communicating with you regarding your inquiries or requests.",
+  "privacy_sec2_item2": "Providing real estate and financing solutions suitable for your needs.",
+  "privacy_sec2_item3": "Providing the information and services you requested.",
+  "privacy_sec2_item4": "Improving the quality of our services and user experience.",
+  "privacy_sec2_item5": "Sending marketing offers and services after your consent, where applicable.",
+  "privacy_sec2_warning": "We do not sell, rent, or share your personal data with any third party for commercial purposes, and all data is treated with strict confidentiality.",
+  "privacy_sec3_title": "3. Cookies",
+  "privacy_sec3_p1": "Our website may use cookies and similar technologies to improve user experience and measure the performance of advertising campaigns.",
+  "privacy_sec3_p2": "Advertising platforms such as Google, Snapchat, Meta, and TikTok may also use cookies to display ads more relevant to your interests, without collecting personally identifiable information such as name or mobile number.",
+  "privacy_sec3_p3": "You can control or disable cookies through your browser settings.",
+  "privacy_sec4_title": "4. Data Protection",
+  "privacy_sec4_p1": "Daisam Real Estate Solutions is committed to implementing the best security practices to protect customer data from unauthorized access, modification, or disclosure. Data is stored in secure environments accessible only to authorized personnel.",
+  "privacy_sec5_title": "5. Disclosure of Data",
+  "privacy_sec5_intro": "Your data may be disclosed in the following cases:",
+  "privacy_sec5_item1": "If required by applicable regulations or competent government authorities.",
+  "privacy_sec5_item2": "When needed to provide the service in cooperation with banks, financial institutions, or service partners.",
+  "privacy_sec5_item3": "To protect the rights of the company, its customers, or to comply with regulations.",
+  "privacy_sec6_title": "6. Your Consent",
+  "privacy_sec6_p1": "By using the Daisam Real Estate Solutions website or filling out any service form, you agree to this privacy policy and the collection and use of your data in accordance with it.",
+  "privacy_sec7_title": "7. Changes to the Privacy Policy",
+  "privacy_sec7_p1": "The privacy policy may be updated from time to time, and any changes will be posted on this page and become effective as of the date of publication.",
+  "privacy_sec8_title": "8. Contact Us",
+  "privacy_sec8_intro": "If you have any questions about this privacy policy or how your personal data is handled, you can contact us via:",
+  "privacy_company_name": "Daisam Real Estate Solutions",
+  "privacy_address_label": "Address",
+  "privacy_address_value": "Riyadh - Al Malqa",
+  "privacy_website_label": "Website",
+  "privacy_email_label": "Email",
+  "privacy_phone_label": "Customer Service Number"
 }

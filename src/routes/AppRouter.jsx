@@ -12,6 +12,7 @@ const DashboardLayout = lazy(() => import("../layouts/DashboardLayout"));
 const Home = lazy(() => import("../pages/Landing/Home"));
 const About = lazy(() => import("../pages/Landing/About"));
 const Contact = lazy(() => import("../pages/Landing/Contact"));
+const PrivacyPolicy = lazy(() => import("../pages/Landing/Privacy"));
 const Financing = lazy(() => import("../pages/Landing/Financing"));
 const ListProperty = lazy(() => import("../pages/Landing/ListProperty"));
 const SoldProjects = lazy(() => import("../pages/Landing/SoldProjects"));
@@ -105,6 +106,13 @@ const router = createBrowserRouter([
         element: 
           <Suspense fallback={<Loader />}>
             <Contact />
+          </Suspense>
+      },
+      {
+        path: "privacy-policy",
+        element:
+          <Suspense fallback={<Loader />}>
+            <PrivacyPolicy />
           </Suspense>
       },
     ],
