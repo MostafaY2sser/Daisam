@@ -5,8 +5,8 @@ import { FaRulerCombined, FaCheckCircle, FaEdit, FaTrash } from "react-icons/fa"
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
 import { IoClose } from "react-icons/io5";
 import { FiCalendar } from "react-icons/fi";
-import { supabase } from "../../lib/supabase";
-import Loader from "../../components/common/Loader";
+import { supabase } from "../../../lib/supabase";
+import Loader from "../../../components/common/Loader";
 
 const AdminProjectDetails = () => {
   const { t, i18n } = useTranslation();

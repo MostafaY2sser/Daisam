@@ -1,6 +1,6 @@
 
 import React, { useState } from "react";
-import { supabase } from "../../lib/supabase";
+import { supabase } from "../../../lib/supabase";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next"; // <-- ADD THIS
 

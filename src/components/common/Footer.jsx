@@ -23,8 +23,8 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-12 gap-8 text-center md:text-right">
 
         {/* Logo & Description */}
-        <div className="md:col-span-6">
-          <img 
+          <div className="md:col-span-4">
+            <img 
             src="/images/logo_2.png" 
             alt="logo" 
             className={`w-2/3 mx-auto ${isRTL ? 'mr-10 sm:mr-0' : 'ml-10 sm:ml-0'} sm:w-1/3`}
@@ -50,7 +50,10 @@ const Footer = () => {
         </div>
 
         {/* Quick Links */}
-        <div className={`md:col-span-3 space-y-4  ${isRTL ? 'text-right mr-28' : 'text-left ml-28'}`}>
+        <div className={`md:col-span-3 space-y-4 ${
+              isRTL ? "text-right mr-28" : "text-left ml-28"
+            }`}
+          >          
           <h3 className="text-xl font-semibold text-primary mb-2 ">{t("quick_links")}</h3>
           <ul className="text-text space-y-2 text-center sm:text-start ">
             <li className="flex items-center gap-1  "><IoMdArrowDropleft className={`text-primary w-8 h-8 ${isRTL?'':'rotate-180'}`} /> <a href="/about" className="hover:text-primary transition">{t('about_us')}</a></li>
@@ -87,6 +90,13 @@ const Footer = () => {
               </div>
           </div>
 
+        </div>
+
+        {/* Company */}
+        <div className={`md:col-span-2 space-y-4  text-center`}  >
+          <h3 className="text-xl font-semibold text-primary ">
+             {t('one_person')}
+          </h3>
         </div>
 
       </div>

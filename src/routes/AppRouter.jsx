@@ -18,17 +18,19 @@ const ListProperty = lazy(() => import("../pages/Landing/ListProperty"));
 const SoldProjects = lazy(() => import("../pages/Landing/SoldProjects"));
 const ProjectsDetails = lazy(() => import("../pages/Landing/ProjectsDetails"));
 const AvailableProjects = lazy(() => import("../pages/Landing/AvailableProjects"));
+const Auctions = lazy(() => import("../pages/Landing/Auctions"));
+const AuctionsDetails = lazy(() => import("../pages/Landing/AuctionsDetails"));
 
 // Lazy Pages for Dashboard
 const Dashboard = lazy(() => import("../pages/Dashboard/Dashboard"));
-const ProjectsList = lazy(() => import("../pages/Dashboard/ProjectsList"));
-const AddProject = lazy(() => import("../pages/Dashboard/AddProject"));
-const EditProject = lazy(() => import("../pages/Dashboard/EditProject"));
-const AdminProjectDetails = lazy(() => import("../pages/Dashboard/AdminProjectDetails"));
-
-
-
-
+const ProjectsList = lazy(() => import("../pages/Dashboard/Projects/ProjectsList"));
+const AddProject = lazy(() => import("../pages/Dashboard/Projects/AddProject"));
+const EditProject = lazy(() => import("../pages/Dashboard/Projects/EditProject"));
+const AdminProjectDetails = lazy(() => import("../pages/Dashboard/Projects/AdminProjectDetails"));
+const AuctionsList = lazy(() => import("../pages/Dashboard/Auctions/AuctionsList"));
+const AddAuction = lazy(() => import("../pages/Dashboard/Auctions/AddAuction"));
+const AdminAuctionsDetails = lazy(() => import("../pages/Dashboard/Auctions/AdminAuctionsDetails"));
+const EditAuction = lazy(() => import("../pages/Dashboard/Auctions/EditAuction"));
 
 
 // Lazy Auth Page
@@ -42,6 +44,8 @@ import ProtectedRoute from "../components/dashboard/ProtectedRoute";
 
 // Loading Component
 import Loader from "../components/common/Loader";
+
+
 
 
 
@@ -85,6 +89,20 @@ const router = createBrowserRouter([
         element: 
           <Suspense fallback={<Loader />}>
             <ProjectsDetails />
+          </Suspense> 
+      },
+      { 
+        path: "auctions", 
+        element: 
+          <Suspense fallback={<Loader />}>
+            <Auctions />
+          </Suspense> 
+      },
+      { 
+        path: "auctions-details/:id", 
+        element: 
+          <Suspense fallback={<Loader />}>
+            <AuctionsDetails />
           </Suspense> 
       },
       { 
@@ -136,7 +154,7 @@ const router = createBrowserRouter([
         )
       },
       {
-        path: "projects-dashboard",
+        path: "admin/projects",
         element: (
           <Suspense fallback={<Loader />}>
             <ProjectsList />
@@ -167,6 +185,38 @@ const router = createBrowserRouter([
           </Suspense>
         )
       },
+      {
+        path: "admin/auctions",
+        element: (
+          <Suspense fallback={<Loader />}>
+            <AuctionsList />
+          </Suspense>
+        )
+      },
+      {
+        path: "add-auction",
+        element: (
+          <Suspense fallback={<Loader />}>
+            <AddAuction />
+          </Suspense>
+        )
+      },
+      {
+        path: "edit-auction/:id",
+        element: (
+          <Suspense fallback={<Loader />}>
+            <EditAuction />
+          </Suspense>
+        )
+      },
+      {
+        path: "auctions-details/:id",
+        element: (
+            <Suspense fallback={<Loader />}>
+                <AdminAuctionsDetails />
+            </Suspense>
+        )
+    },
     ],
   },
 

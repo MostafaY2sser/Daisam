@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import ProjectCardAdmin from "../../components/dashboard/ProjectCardAdmin";
-import { supabase } from "../../lib/supabase"; 
-import Loader from "../../components/common/Loader";
+import ProjectCardAdmin from "../../../components/dashboard/ProjectCardAdmin";
+import { supabase } from "../../../lib/supabase"; 
+import Loader from "../../../components/common/Loader";
 import { useTranslation } from "react-i18next";
-import { useProjects } from "../../hooks/useProjects";
+import { useProjects } from "../../../hooks/useProjects";
 
 const ProjectsList = () => {
   const { t } = useTranslation();

@@ -5,6 +5,7 @@ import { NavLink } from 'react-router-dom'
 import { IoHomeOutline, IoThermometerOutline } from "react-icons/io5";
 import { GrProjects } from "react-icons/gr";
 import { IoHome } from "react-icons/io5";
+import { FaGavel } from 'react-icons/fa';
 
 
 
@@ -29,7 +30,7 @@ export const Sidebar = ( { sidebarOpen, setSidebarOpen } ) => {
                         {t('home')}
                     </NavLink>
                     <NavLink
-                        to="/dashboard/projects-dashboard"
+                        to="admin/projects"
                         end
                         className={({ isActive }) =>
                             `flex items-center gap-2 p-2 rounded hover:bg-gray-400 hover:text-white ${isActive ? 'bg-primary text-white' : ''}`
@@ -37,6 +38,16 @@ export const Sidebar = ( { sidebarOpen, setSidebarOpen } ) => {
                         >
                         <GrProjects className='w-5 h-5'  />
                         {t('projects')}
+                    </NavLink>
+                    <NavLink
+                        to="admin/auctions"
+                        end
+                        className={({ isActive }) =>
+                            `flex items-center gap-2 p-2 rounded hover:bg-gray-400 hover:text-white ${isActive ? 'bg-primary text-white' : ''}`
+                        }
+                        >
+                        <FaGavel className='w-5 h-5'  />
+                        {t('auctions')}
                     </NavLink>
 
                 </nav>
@@ -81,6 +92,16 @@ export const Sidebar = ( { sidebarOpen, setSidebarOpen } ) => {
                 >
                     <GrProjects className='w-5 h-5' />
                     {t('projects')} 
+                </NavLink>
+                <NavLink
+                    to="/dashboard/auctions-dashboard"
+                    onClick={() => setSidebarOpen(false)}
+                    className={({ isActive }) =>
+                        `flex items-center gap-2 p-2 rounded hover:bg-gray-300 hover:text-primary ${isActive ? 'bg-primary text-white1' : ''}`
+                }
+                >
+                    <FaGavel className='w-5 h-5' />
+                    {t('auctions')} 
                 </NavLink>
 
             </nav>

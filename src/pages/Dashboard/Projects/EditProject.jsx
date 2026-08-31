@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { supabase } from "../../lib/supabase";
-import Loader from "../../components/common/Loader";
+import { supabase } from "../../../lib/supabase";
+import Loader from "../../../components/common/Loader";
 import { useTranslation } from "react-i18next";
 
 const EditProject = () => {

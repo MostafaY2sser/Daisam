@@ -54,49 +54,7 @@ const Financing = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  // Handle submit
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   setLoading(true);
-
-  //   try {
-  //     const response = await fetch(
-  //       "https://api.sheety.co/c66fe777496213c5aed67f1401370644/daisamForms/financing",
-  //       {
-  //         method: "POST",
-  //         headers: { "Content-Type": "application/json" },
-  //         body: JSON.stringify({
-  //           financing: {
-  //             name: formData.name,
-  //             phone: formData.phone,
-  //             employer: formData.employer,
-  //             propertyType: formData.propertyType,
-  //             message: formData.message,
-  //           },
-  //         }),
-  //       }
-  //     );
-
-  //     const data = await response.json();
-  //     console.log("DATA:", data);
-
-  //     alert(t('message_sent_successfully'));
-
-  //     // Reset form
-  //     setFormData({
-  //       name: "",
-  //       phone: "",
-  //       employer: "",
-  //       propertyType: t("property_ready_units"),
-  //       message: "",
-  //     });
-  //   } catch (error) {
-  //     console.error(error);
-  //     alert(t('error_sending_message'));
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
+  
 
   // Handle submit
   const handleSubmit = async (e) => {

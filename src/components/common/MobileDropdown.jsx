@@ -2,7 +2,7 @@ import { useState } from "react";
 import { FaChevronDown } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 
-const MobileDropdown = ({ link }) => {
+const MobileDropdown = ({ link , closeMenu }) => {
   const [open, setOpen] = useState(false);
 
   return (
@@ -25,7 +25,10 @@ const MobileDropdown = ({ link }) => {
           <li key={i}>
             <NavLink
               to={child.path}
-              onClick={() => setOpen(false)}
+              onClick={() => {
+                  setOpen(false);
+                  closeMenu();
+              }}
               className="text-sm font-normal block px-4 py-2 hover:bg-gray-100 rounded-lg"
             >
               {child.label}
