@@ -47,7 +47,7 @@ export const Sidebar = ( { sidebarOpen, setSidebarOpen } ) => {
                         }
                         >
                         <FaGavel className='w-5 h-5'  />
-                        {t('auctions')}
+                        {t('auction')}
                     </NavLink>
 
                 </nav>
@@ -101,7 +101,7 @@ export const Sidebar = ( { sidebarOpen, setSidebarOpen } ) => {
                 }
                 >
                     <FaGavel className='w-5 h-5' />
-                    {t('auctions')} 
+                    {t('auction')} 
                 </NavLink>
 
             </nav>

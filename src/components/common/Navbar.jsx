@@ -32,7 +32,7 @@ const Navbar = () => {
         { path: "/sold-projects", label: t('sold_projects') },
       ],
     },
-    { path: "/auctions", label: t("المزادات") },
+    { path: "/auctions", label: t("auction") },
     { path: "/financing", label: t("financing") },
     { path: "/list-your-property", label: t('list_your_property') },
     { path: "/contact", label: t("contact") },

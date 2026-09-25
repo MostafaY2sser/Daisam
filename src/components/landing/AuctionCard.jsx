@@ -26,14 +26,13 @@ const AuctionCard = ({
   price,
   status,
 }) => {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
   const isRTL = i18n.language === "ar";
 
   const title = isRTL ? name_ar : name_en;
   const city = isRTL ? city_ar : city_en;
   const type = isRTL ? type_ar : type_en;
   const building_type = isRTL ? building_type_ar : building_type_en;
-  const description = isRTL ? description_ar : description_en;
 
   return (
     <div
@@ -73,7 +72,7 @@ const AuctionCard = ({
           {units_count > 0 && (
             <span className="flex items-center gap-1">
               <FaDoorOpen className="text-primary" />
-              {units_count} {isRTL ? "وحدات" : "Units"}
+              {units_count} {t("auction_card_units")}
             </span>
           )}
         </div>
@@ -82,15 +81,11 @@ const AuctionCard = ({
 
       {/* Description */}
       <div className="p-4 bg-white">
-        {/* <p className="text-gray-700 text-base leading-relaxed line-clamp-3">
-          {description}
-        </p> */}
-
         <Link
           to={`/auctions-details/${id}`}
-          className=" block w-full bg-primary rounded-md text-white text-center py-2  hover:bg-primary-dark transition"
+          className="block w-full bg-primary rounded-md text-white text-center py-2 hover:bg-primary-dark transition"
         >
-          {isRTL ? "عرض تفاصيل المزاد" : "View Auction Details"}
+          {t("auction_card_view_details")}
         </Link>
       </div>
 

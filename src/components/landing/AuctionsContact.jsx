@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import emailjs from "@emailjs/browser";
 
 import {
@@ -13,6 +14,7 @@ import {
 import { saudiCities } from "../../data/saudiCities";
 
 const AuctionsContact = () => {
+    const { t } = useTranslation();
     const [loading, setLoading] = useState(false);
     const [success, setSuccess] = useState(false);
     const [error, setError] = useState(false);
@@ -57,15 +59,15 @@ const AuctionsContact = () => {
 
                     {/* Header */}
                     <h3 className="text-2xl font-bold mb-3 text-text text-center">
-                        اعرض عقارك في المزاد
+                        {t("auction_contact_title")}
                     </h3>
 
                     <p className="text-gray-700 text-center mb-3 text-lg">
-                        نُدير الفرصة… نُوسّع المنافسة… ونصنع القيمة.
+                        {t("auction_contact_subtitle")}
                     </p>
 
                     <p className="text-gray-500 text-center mb-0 text-base">
-                        المملكة العربية السعودية
+                        {t("auction_contact_country")}
                     </p>
 
                     <p className="text-gray-800 text-center mb-12">
@@ -82,7 +84,7 @@ const AuctionsContact = () => {
                         {/* Name */}
                         <div>
                             <label className="block mb-2 text-sm text-gray-600">
-                                الاسم
+                                {t("auction_contact_name_label")}
                             </label>
 
                             <div className="relative">
@@ -92,7 +94,7 @@ const AuctionsContact = () => {
                                     type="text"
                                     name="name"
                                     className="w-full border rounded-lg px-4 py-3 pr-11 focus:outline-none focus:ring-2 focus:ring-primary"
-                                    placeholder="أدخل الاسم"
+                                    placeholder={t("auction_contact_name_placeholder")}
                                     required
                                 />
                             </div>
@@ -102,7 +104,7 @@ const AuctionsContact = () => {
                         {/* Phone */}
                         <div>
                             <label className="block mb-2 text-sm text-gray-600">
-                                رقم الهاتف
+                                {t("auction_contact_phone_label")}
                             </label>
 
                             <div className="relative">
@@ -116,7 +118,7 @@ const AuctionsContact = () => {
                                     pattern="05[0-9]{8}"
                                     className="w-full border rounded-lg px-4 py-3 pr-11 focus:outline-none focus:ring-2 focus:ring-primary"
                                     placeholder="05XXXXXXXX"
-                                    title="يرجى إدخال رقم جوال سعودي صحيح يبدأ بـ 05 ويتكون من 10 أرقام"
+                                    title={t("auction_contact_phone_title")}
                                     required
                                 />
                             </div>
@@ -126,7 +128,7 @@ const AuctionsContact = () => {
                         {/* Email */}
                         <div>
                             <label className="block mb-2 text-sm text-gray-600">
-                                البريد الإلكتروني
+                                {t("auction_contact_email_label")}
                             </label>
 
                             <div className="relative">
@@ -146,7 +148,7 @@ const AuctionsContact = () => {
                         {/* Property Type */}
                         <div>
                             <label className="block mb-2 text-sm text-gray-600">
-                                نوع العقار
+                                {t("auction_contact_property_type_label")}
                             </label>
 
                             <div className="relative">
@@ -159,19 +161,19 @@ const AuctionsContact = () => {
                                     required
                                 >
                                     <option value="" disabled>
-                                        اختر نوع العقار
+                                        {t("auction_contact_property_type_placeholder")}
                                     </option>
 
-                                    <option value="فيلا">فيلا</option>
-                                    <option value="شقة">شقة</option>
-                                    <option value="أرض">أرض</option>
-                                    <option value="عقار تجاري">عقار تجاري</option>
-                                    <option value="عمارة">عمارة</option>
-                                    <option value="مزرعة">مزرعة</option>
-                                    <option value="قصر">قصر</option>
-                                    <option value="مستودع">مستودع</option>
-                                    <option value="مكتب">مكتب</option>
-                                    <option value="أخرى">أخرى</option>
+                                    <option value={t("auction_contact_prop_villa")}>{t("auction_contact_prop_villa")}</option>
+                                    <option value={t("auction_contact_prop_apt")}>{t("auction_contact_prop_apt")}</option>
+                                    <option value={t("auction_contact_prop_land")}>{t("auction_contact_prop_land")}</option>
+                                    <option value={t("auction_contact_prop_commercial")}>{t("auction_contact_prop_commercial")}</option>
+                                    <option value={t("auction_contact_prop_building")}>{t("auction_contact_prop_building")}</option>
+                                    <option value={t("auction_contact_prop_farm")}>{t("auction_contact_prop_farm")}</option>
+                                    <option value={t("auction_contact_prop_palace")}>{t("auction_contact_prop_palace")}</option>
+                                    <option value={t("auction_contact_prop_warehouse")}>{t("auction_contact_prop_warehouse")}</option>
+                                    <option value={t("auction_contact_prop_office")}>{t("auction_contact_prop_office")}</option>
+                                    <option value={t("auction_contact_prop_other")}>{t("auction_contact_prop_other")}</option>
                                 </select>
                             </div>
                         </div>
@@ -180,7 +182,7 @@ const AuctionsContact = () => {
                         {/* City */}
                         <div>
                             <label className="block mb-2 text-sm text-gray-600">
-                                المدينة
+                                {t("auction_contact_city_label")}
                             </label>
 
                             <div className="relative">
@@ -193,7 +195,7 @@ const AuctionsContact = () => {
                                     required
                                 >
                                     <option value="" disabled>
-                                        اختر المدينة
+                                        {t("auction_contact_city_placeholder")}
                                     </option>
 
                                     {saudiCities.map((city) => (
@@ -209,7 +211,7 @@ const AuctionsContact = () => {
                         {/* Success */}
                         {success && (
                             <div className="bg-green-100 text-green-700 px-4 py-3 rounded-lg text-center text-sm">
-                                تم إرسال طلبك بنجاح، سنتواصل معك قريبًا.
+                                {t("auction_contact_success")}
                             </div>
                         )}
 
@@ -217,7 +219,7 @@ const AuctionsContact = () => {
                         {/* Error */}
                         {error && (
                             <div className="bg-red-100 text-red-700 px-4 py-3 rounded-lg text-center text-sm">
-                                حدث خطأ أثناء إرسال الطلب، حاول مرة أخرى.
+                                {t("auction_contact_error")}
                             </div>
                         )}
 
@@ -231,8 +233,8 @@ const AuctionsContact = () => {
                             <FaPaperPlane />
 
                             {loading
-                                ? "جاري إرسال الطلب..."
-                                : "إرسال الطلب"
+                                ? t("auction_contact_submitting")
+                                : t("auction_contact_submit")
                             }
                         </button>
 

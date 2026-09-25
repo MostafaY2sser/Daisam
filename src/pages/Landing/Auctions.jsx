@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import MainHero from "../../components/common/MainHero";
 import AuctionsContact from "../../components/landing/AuctionsContact";
 import AuctionsContent from "../../components/landing/AuctionsContent";
@@ -10,7 +11,7 @@ import Loader from "../../components/common/Loader";
 import AuctionsFilter from "../../components/landing/AuctionsFilter";
 
 const Auctions = () => {
-
+    const { t } = useTranslation();
     const [filter, setFilter] = useState("available");
 
     const {
@@ -37,13 +38,13 @@ const Auctions = () => {
         <div dir="rtl">
 
             <MainHero
-                title="دَيسم للمزادات"
-                description="فرص تُطرح… وقيمة تتحقق"
+                title={t("auctions_hero_title")}
+                description={t("auctions_hero_desc")}
                 bgImage="/images/auctions.png"
                 overlayClassName="bg-black/65"
             />
 
-            <MoveToAuctions lable="الانتقال إلى المزادات" />
+            <MoveToAuctions lable={t("auctions_move_label")} />
 
 
             {/* Filter */}
@@ -64,12 +65,11 @@ const Auctions = () => {
                 {/* Header */}
                 <div className="text-center mb-8">
                     <h2 className="text-2xl md:text-3xl font-bold text-text mb-3">
-                        المزادات
+                        {t("auctions_page_title")}
                     </h2>
 
                     <p className="text-gray-600 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
-                        استكشف المزادات العقارية المتاحة والمنتهية
-                        واغتنم الفرص الاستثمارية المميزة.
+                        {t("auctions_page_desc")}
                     </p>
                 </div>
 
@@ -82,21 +82,21 @@ const Auctions = () => {
                 {/* Loading */}
                 {isLoading && (
                     <div className="text-center">
-                        جاري تحميل المزادات...
+                        {t("auctions_loading")}
                     </div>
                 )}
 
                 {/* Error */}
                 {error && (
                     <div className="text-center py-10 text-red-500">
-                        حدث خطأ أثناء تحميل المزادات
+                        {t("auctions_load_error")}
                     </div>
                 )}
 
                 {/* Empty */}
                 {!isLoading && !error && auctions?.length === 0 && (
                     <div className="text-center py-10 text-gray-500">
-                        لا توجد مزادات في هذا القسم
+                        {t("auctions_empty")}
                     </div>
                 )}
 
@@ -123,6 +123,3 @@ const Auctions = () => {
 };
 
 export default Auctions;
-
-
-

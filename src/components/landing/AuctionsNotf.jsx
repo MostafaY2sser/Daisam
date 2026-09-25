@@ -1,29 +1,31 @@
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { FaAnglesDown } from "react-icons/fa6";
 
 const AuctionsNotf = () => {
+  const { t } = useTranslation();
   const [show, setShow] = useState(false);
 
-    useEffect(() => {
-      const section = document.getElementById("auctions");
+  useEffect(() => {
+    const section = document.getElementById("auctions");
 
-      if (!section) return;
+    if (!section) return;
 
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          setShow(!entry.isIntersecting);
-        },
-        {
-          threshold: 0.2,
-        }
-      );
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setShow(!entry.isIntersecting);
+      },
+      {
+        threshold: 0.2,
+      }
+    );
 
-      observer.observe(section);
+    observer.observe(section);
 
-      return () => observer.disconnect();
-    }, []);
+    return () => observer.disconnect();
+  }, []);
 
-    if (!show) return null;
+  if (!show) return null;
 
   return (
     <button
@@ -33,7 +35,7 @@ const AuctionsNotf = () => {
         });
       }}
       className="
-        fixed bottom-2  md:bottom-8 left-[17%] md:left-20
+        fixed bottom-2 md:bottom-8 left-[17%] md:left-20
         z-50
         flex items-center gap-3
         px-5 py-3
@@ -48,7 +50,7 @@ const AuctionsNotf = () => {
     >
 
       <span className="text-text">
-        الاطلاع على المزادات المتاحة
+        {t("auction_notf_label")}
       </span>
 
       <FaAnglesDown className="text-sm text-text animate-bounce" />

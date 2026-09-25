@@ -4,6 +4,8 @@ import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope , FaInstagram, FaSnapchat, FaTik
 import { FaLinkedinIn, FaXTwitter } from "react-icons/fa6";
 import { IoMdArrowDropleft } from "react-icons/io";
 import { useTranslation } from "react-i18next";
+import { Link  } from "react-router-dom";
+
 
 const Footer = () => {
   const { t, i18n } = useTranslation();
@@ -56,10 +58,11 @@ const Footer = () => {
           >          
           <h3 className="text-xl font-semibold text-primary mb-2 ">{t("quick_links")}</h3>
           <ul className="text-text space-y-2 text-center sm:text-start ">
-            <li className="flex items-center gap-1  "><IoMdArrowDropleft className={`text-primary w-8 h-8 ${isRTL?'':'rotate-180'}`} /> <a href="/about" className="hover:text-primary transition">{t('about_us')}</a></li>
-            <li className="flex items-center gap-1  "><IoMdArrowDropleft className={`text-primary w-8 h-8 ${isRTL?'':'rotate-180'}`} /> <a href="#projects" className="hover:text-primary transition">{t("projects")}</a></li>
-            <li className="flex items-center gap-1  "><IoMdArrowDropleft className={`text-primary w-8 h-8 ${isRTL?'':'rotate-180'}`} /> <a href="/financing" className="hover:text-primary transition">{t("financing")}</a></li>
-            <li className="flex items-center gap-1  "><IoMdArrowDropleft className={`text-primary w-8 h-8 ${isRTL?'':'rotate-180'}`} /> <a href="/list-your-property" className="hover:text-primary transition">{t("list_your_property")}</a></li>
+            <li className="flex items-center gap-1  "><IoMdArrowDropleft className={`text-primary w-8 h-8 ${isRTL?'':'rotate-180'}`} /> <Link to="/about" className="hover:text-primary transition">{t('about_us')}</Link></li>
+            <li className="flex items-center gap-1  "><IoMdArrowDropleft className={`text-primary w-8 h-8 ${isRTL?'':'rotate-180'}`} /> <Link to="/available-projects" className="hover:text-primary transition">{t("projects")}</Link></li>
+            <li className="flex items-center gap-1  "><IoMdArrowDropleft className={`text-primary w-8 h-8 ${isRTL?'':'rotate-180'}`} /> <Link to="/auctions" className="hover:text-primary transition">{t("auction")}</Link></li>
+            <li className="flex items-center gap-1  "><IoMdArrowDropleft className={`text-primary w-8 h-8 ${isRTL?'':'rotate-180'}`} /> <Link to="/financing" className="hover:text-primary transition">{t("financing")}</Link></li>
+            <li className="flex items-center gap-1  "><IoMdArrowDropleft className={`text-primary w-8 h-8 ${isRTL?'':'rotate-180'}`} /> <Link to="/list-your-property" className="hover:text-primary transition">{t("list_your_property")}</Link></li>
           </ul>
         </div>
 

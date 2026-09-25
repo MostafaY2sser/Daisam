@@ -1,6 +1,7 @@
+import { useTranslation } from "react-i18next";
 
-
-const AuctionsFilter = ({handleFilterChange , filter}) => {
+const AuctionsFilter = ({ handleFilterChange, filter }) => {
+    const { t } = useTranslation();
 
     const handleShowPropertyForm = () => {
         document.getElementById("list-property")?.scrollIntoView({
@@ -9,8 +10,8 @@ const AuctionsFilter = ({handleFilterChange , filter}) => {
         });
     };
 
-    return(
-        <div className="flex justify-center gap-2 md;gap-3 mb-10">
+    return (
+        <div className="flex justify-center gap-2 md:gap-3 mb-10">
 
             {/* Available */}
             <button
@@ -21,10 +22,10 @@ const AuctionsFilter = ({handleFilterChange , filter}) => {
                         : "bg-gray-100 text-gray-700 hover:bg-gray-200"
                 }`}
             >
-                المزادات المتاحة
+                {t("auction_filter_available")}
             </button>
 
-            {/* Ended */} 
+            {/* Ended */}
             <button
                 onClick={() => handleFilterChange("ended")}
                 className={`px-2 md:px-6 py-1 md:py-2.5 rounded-lg text-sm md:text-base md:font-medium transition ${
@@ -33,19 +34,19 @@ const AuctionsFilter = ({handleFilterChange , filter}) => {
                         : "bg-gray-100 text-gray-700 hover:bg-gray-200"
                 }`}
             >
-                المزادات المنتهية
+                {t("auction_filter_ended")}
             </button>
 
             {/* Add Property */}
             <button
                 onClick={handleShowPropertyForm}
-                className="bg-gray-100 text-gray-700 hover:bg-gray-200 px-2 md:px-6 py-1 md:py-2.5 rounded-lg text-sm md:text-base md:font-medium  transition"
+                className="bg-gray-100 text-gray-700 hover:bg-gray-200 px-2 md:px-6 py-1 md:py-2.5 rounded-lg text-sm md:text-base md:font-medium transition"
             >
-                اعرض عقارك للمزاد
+                {t("auction_filter_list")}
             </button>
 
         </div>
-    )
-}
+    );
+};
 
 export default AuctionsFilter;

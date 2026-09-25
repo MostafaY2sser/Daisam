@@ -78,8 +78,8 @@ const AuctionCardAdmin = ({
                         }`}
                     >
                         {status === "available"
-                            ? "متاح"
-                            : "منتهي"}
+                            ? t('dash_auction_status_available')
+                            : t('dash_auction_status_ended')}
                     </span>
                 </div>
 
@@ -125,7 +125,7 @@ const AuctionCardAdmin = ({
                     to={`/dashboard/auctions-details/${id}`}
                     className="flex-1 bg-primary text-white text-center py-2 rounded-lg hover:bg-primary-dark transition text-sm font-medium"
                 >
-                    عرض التفاصيل
+                    {t('view_details_btn')}
                 </Link>
 
                 {/* Edit */}
@@ -139,7 +139,7 @@ const AuctionCardAdmin = ({
                 {/* Delete */}
                 <button
                     onClick={() => {
-                        if (confirm("هل أنت متأكد من حذف هذا المزاد؟")) {
+                        if (confirm(t('admin_auction_delete_confirm'))) {
                             onDelete(id);
                         }
                     }}

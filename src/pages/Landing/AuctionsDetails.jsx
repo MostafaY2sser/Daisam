@@ -90,17 +90,9 @@ const AuctionsDetails = () => {
   const galleryImages = safeArray(auction.gallery_images);
 
   // Current language arrays
-  const unitFeaturesList = isRTL
-    ? unitFeaturesAr
-    : unitFeaturesEn;
-
-  const featuresList = isRTL
-    ? featuresAr
-    : featuresEn;
-
-  const nearbyPlacesList = isRTL
-    ? nearbyPlacesAr
-    : nearbyPlacesEn;
+  const unitFeaturesList = isRTL ? unitFeaturesAr : unitFeaturesEn;
+  const featuresList = isRTL ? featuresAr : featuresEn;
+  const nearbyPlacesList = isRTL ? nearbyPlacesAr : nearbyPlacesEn;
 
   return (
     <div className="bg-secondary min-h-screen">
@@ -141,58 +133,56 @@ const AuctionsDetails = () => {
         <div className="bg-white p-6 rounded-xl shadow">
 
           <h2 className="text-lg md:text-2xl font-bold mb-4">
-            {isRTL ? "معلومات المزاد" : "Auction Information"}
+            {t("auction_info_title")}
           </h2>
 
           <div className="grid md:grid-cols-2 gap-4 text-sm">
 
             <p className="text-lg">
               <strong className="text-primary">
-                {isRTL ? "اسم المزاد:" : "Auction Name:"}
+                {t("auction_name_label")}
               </strong>{" "}
               {isRTL ? auction.title_ar : auction.title_en}
             </p>
 
             <p className="text-lg">
               <strong className="text-primary">
-                {isRTL ? "الموقع:" : "Location:"}
+                {t("auction_location_label")}
               </strong>{" "}
               {isRTL ? auction.location_ar : auction.location_en}
             </p>
 
             <p className="text-lg">
               <strong className="text-primary">
-                {isRTL ? "المدينة:" : "City:"}
+                {t("auction_city_label")}
               </strong>{" "}
               {isRTL ? auction.city_ar : auction.city_en}
             </p>
 
             <p className="text-lg">
               <strong className="text-primary">
-                {isRTL ? "الحي:" : "District:"}
+                {t("auction_district_label")}
               </strong>{" "}
               {isRTL ? auction.district_ar : auction.district_en}
             </p>
 
             <p className="text-lg">
               <strong className="text-primary">
-                {isRTL ? "نوع المشروع:" : "Project Type:"}
+                {t("auction_type_label")}
               </strong>{" "}
               {isRTL ? auction.type_ar : auction.type_en}
             </p>
 
             <p className="text-lg">
               <strong className="text-primary">
-                {isRTL ? "نوع البناء:" : "Building Type:"}
+                {t("auction_building_type_label")}
               </strong>{" "}
-              {isRTL
-                ? auction.building_type_ar
-                : auction.building_type_en}
+              {isRTL ? auction.building_type_ar : auction.building_type_en}
             </p>
 
             <p className="text-lg flex items-center gap-2">
               <strong className="text-primary">
-                {isRTL ? "السعر:" : "Price:"}
+                {t("auction_price_label")}
               </strong>
 
               <FaGavel className="text-primary" />
@@ -202,21 +192,21 @@ const AuctionsDetails = () => {
 
             <p className="text-lg">
               <strong className="text-primary">
-                {isRTL ? "عدد الوحدات:" : "Units Count:"}
+                {t("auction_units_count_label")}
               </strong>{" "}
               {auction.units_count}
             </p>
 
             <p className="text-lg">
               <strong className="text-primary">
-                {isRTL ? "الوحدات المتاحة:" : "Available Units:"}
+                {t("auction_available_units_label")}
               </strong>{" "}
               {auction.available_units}
             </p>
 
             <p className="text-lg">
               <strong className="text-primary">
-                {isRTL ? "الوحدات المباعة:" : "Sold Units:"}
+                {t("auction_sold_units_label")}
               </strong>{" "}
               {auction.sold_units}
             </p>
@@ -224,7 +214,7 @@ const AuctionsDetails = () => {
             {/* Status */}
             <p className="text-lg">
               <strong className="text-primary">
-                {isRTL ? "الحالة:" : "Status:"}
+                {t("auction_status_label")}
               </strong>{" "}
 
               <span
@@ -235,12 +225,8 @@ const AuctionsDetails = () => {
                 }`}
               >
                 {auction.status === "Available"
-                  ? isRTL
-                    ? "متاح"
-                    : "Available"
-                  : isRTL
-                  ? "منتهي"
-                  : "Ended"}
+                  ? t("auction_status_available")
+                  : t("auction_status_ended")}
               </span>
             </p>
 
@@ -255,7 +241,7 @@ const AuctionsDetails = () => {
             <FiCalendar className="text-primary text-base shrink-0" />
 
             <span>
-              {isRTL ? "تاريخ الإضافة:" : "Added on:"}{" "}
+              {t("auction_added_on_label")}{" "}
               <span className="font-semibold text-gray-700">
                 {formattedDate}
               </span>
@@ -268,13 +254,11 @@ const AuctionsDetails = () => {
         <div className="bg-white p-6 rounded-xl shadow">
 
           <h2 className="text-lg md:text-2xl font-bold mb-4">
-            {isRTL ? "نبذة عن المزاد" : "About the Auction"}
+            {t("auction_about_title")}
           </h2>
 
           <p className="text-gray-700 leading-relaxed">
-            {isRTL
-              ? auction.description_ar
-              : auction.description_en}
+            {isRTL ? auction.description_ar : auction.description_en}
           </p>
 
         </div>
@@ -284,7 +268,7 @@ const AuctionsDetails = () => {
           <div className="bg-white p-6 rounded-2xl shadow-lg">
 
             <h2 className="text-lg md:text-2xl font-bold mb-6">
-              {isRTL ? "تفاصيل الوحدة" : "Unit Details"}
+              {t("auction_unit_details_title")}
             </h2>
 
             {auction.area && (
@@ -293,7 +277,7 @@ const AuctionsDetails = () => {
                 <FaRulerCombined className="text-lg" />
 
                 <span className="font-semibold">
-                  {isRTL ? "المساحة: " : "Area: "}
+                  {t("auction_area_label")}
                   {auction.area}
                 </span>
 
@@ -327,7 +311,7 @@ const AuctionsDetails = () => {
           <div className="bg-white p-6 rounded-xl shadow">
 
             <h2 className="text-lg md:text-2xl font-bold mb-4">
-              {isRTL ? "مميزات المزاد" : "Auction Features"}
+              {t("auction_features_title")}
             </h2>
 
             <div className="grid md:grid-cols-3 gap-3">
@@ -355,9 +339,7 @@ const AuctionsDetails = () => {
           <div className="bg-white p-6 rounded-2xl shadow-md">
 
             <h2 className="text-lg md:text-2xl font-bold mb-6">
-              {isRTL
-                ? "أشهر المعالم القريبة"
-                : "Nearby Landmarks"}
+              {t("auction_nearby_title")}
             </h2>
 
             <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
@@ -389,7 +371,7 @@ const AuctionsDetails = () => {
           <div className="bg-white p-6 rounded-xl shadow">
 
             <h2 className="text-lg md:text-2xl font-bold mb-4">
-              {isRTL ? "ضمانات المزاد" : "Auction Guarantees"}
+              {t("auction_guarantees_title")}
             </h2>
 
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
@@ -401,9 +383,7 @@ const AuctionsDetails = () => {
                 >
 
                   <p className="font-semibold text-sm md:text-base">
-                    {isRTL
-                      ? guarantee.name_ar
-                      : guarantee.name_en}
+                    {isRTL ? guarantee.name_ar : guarantee.name_en}
                   </p>
 
                   <p className="text-primary font-bold">
@@ -423,7 +403,7 @@ const AuctionsDetails = () => {
           <div className="bg-white p-6 rounded-xl shadow">
 
             <h2 className="text-lg md:text-2xl font-bold mb-4">
-              {isRTL ? "صور المزاد" : "Auction Gallery"}
+              {t("auction_gallery_title")}
             </h2>
 
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
@@ -445,7 +425,7 @@ const AuctionsDetails = () => {
                   <div className="absolute inset-0 flex flex-col items-center justify-center gap-1 opacity-0 group-hover:opacity-100 transition">
 
                     <span className="text-white font-bold text-lg">
-                      {isRTL ? "عرض الصورة" : "View Image"}
+                      {t("auction_view_image")}
                     </span>
 
                     <span className="text-white/70 text-sm">
@@ -472,9 +452,7 @@ const AuctionsDetails = () => {
             className="absolute left-0 sm:left-5 text-white bg-primary rounded-full p-4 md:text-3xl font-bold"
             onClick={() =>
               setLightboxIndex((prev) =>
-                prev === 0
-                  ? galleryImages.length - 1
-                  : prev - 1
+                prev === 0 ? galleryImages.length - 1 : prev - 1
               )
             }
           >
@@ -485,9 +463,7 @@ const AuctionsDetails = () => {
             className="absolute right-0 sm:right-5 text-white bg-primary rounded-full p-4 md:text-3xl font-bold"
             onClick={() =>
               setLightboxIndex((prev) =>
-                prev === galleryImages.length - 1
-                  ? 0
-                  : prev + 1
+                prev === galleryImages.length - 1 ? 0 : prev + 1
               )
             }
           >

@@ -118,7 +118,7 @@ const Dashboard = () => {
       </h1>
 
           <h2 className="text-xl md:text-2xl font-bold text-text mb-5">
-            المشاريع
+            {t('dash_projects_title')}
           </h2>
       {/* Main Stats */}
       <div className="grid md:grid-cols-4 gap-6 mb-10">
@@ -205,7 +205,7 @@ const Dashboard = () => {
       <div className="mb-10">
 
             <h2 className="text-xl md:text-2xl font-bold text-text mb-5">
-              المزادات
+              {t('dash_auctions_title')}
             </h2>
 
             <div className="grid md:grid-cols-3 gap-6">
@@ -213,7 +213,7 @@ const Dashboard = () => {
           {/* Total Auctions */}
           <div className="bg-white p-5 rounded-xl shadow">
             <p className="text-gray-500 text-lg font-medium">
-              إجمالي المزادات
+              {t('dash_total_auctions')}
             </p>
 
             <h2 className="text-2xl font-bold text-primary">
@@ -224,7 +224,7 @@ const Dashboard = () => {
           {/* Available Auctions */}
           <div className="bg-white p-5 rounded-xl shadow">
             <p className="text-gray-500 text-lg font-medium">
-              المزادات المتاحة
+              {t('dash_available_auctions')}
             </p>
 
             <h2 className="text-2xl font-bold text-green-500">
@@ -235,7 +235,7 @@ const Dashboard = () => {
           {/* Ended Auctions */}
           <div className="bg-white p-5 rounded-xl shadow">
             <p className="text-gray-500 text-lg font-medium">
-              المزادات المنتهية
+              {t('dash_ended_auctions')}
             </p>
 
             <h2 className="text-2xl font-bold text-red-500">
@@ -254,12 +254,12 @@ const Dashboard = () => {
       <div className="bg-white p-6 rounded-xl shadow">
 
         <h3 className="font-semibold text-lg mb-5">
-          وحدات المزادات
+          {t('dash_auction_units_title')}
         </h3>
 
         <div className="flex justify-between mb-3">
           <span className="text-gray-500">
-            إجمالي الوحدات
+            {t('dash_total_units')}
           </span>
 
           <span className="font-bold">
@@ -269,7 +269,7 @@ const Dashboard = () => {
 
         <div className="flex justify-between mb-3">
           <span className="text-gray-500">
-            الوحدات المتاحة
+            {t('dash_available_units_label')}
           </span>
 
           <span className="font-bold text-green-500">
@@ -279,7 +279,7 @@ const Dashboard = () => {
 
         <div className="flex justify-between">
           <span className="text-gray-500">
-            الوحدات المباعة
+            {t('dash_sold_units_label')}
           </span>
 
           <span className="font-bold text-red-500">
@@ -294,7 +294,7 @@ const Dashboard = () => {
       <div className="bg-white p-6 rounded-xl shadow">
 
         <h3 className="font-semibold text-lg mb-5">
-          المزادات
+          {t('dash_latest_auctions_title')}
         </h3>
 
         {auctions.slice(0, 5).map((auction) => (
@@ -326,8 +326,8 @@ const Dashboard = () => {
               }`}
             >
               {auction.status === "available"
-                ? "متاح"
-                : "منتهي"}
+                ? t('dash_auction_status_available')
+                : t('dash_auction_status_ended')}
             </span>
 
           </div>

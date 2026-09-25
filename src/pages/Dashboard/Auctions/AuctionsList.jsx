@@ -6,9 +6,11 @@ import { supabase } from "../../../lib/supabase";
 import Loader from "../../../components/common/Loader";
 import AuctionCardAdmin from "../../../components/dashboard/AuctionCardAdmin";
 import { useQueryClient } from "@tanstack/react-query";
+import { useTranslation } from "react-i18next";
 
 const AuctionsList = () => {
 
+    const { t, i18n } = useTranslation();
     const queryClient = useQueryClient();
 
     const {
@@ -40,7 +42,7 @@ const AuctionsList = () => {
 
         } catch (err) {
             console.error("Error deleting auction:", err.message);
-            alert("حدث خطأ أثناء حذف المزاد");
+            alert(t('dash_error_loading_data'));
         }
     };
 
@@ -56,7 +58,7 @@ const AuctionsList = () => {
 
                     {/* Section Title */}
                     <h2 className="text-2xl md:text-3xl font-extrabold text-text">
-                        المزادات
+                        {t('auction')}
                     </h2>
 
                     <div className="flex flex-row items-center gap-2 md:gap-6">
@@ -65,7 +67,7 @@ const AuctionsList = () => {
                         <div className="mb-6 flex items-center gap-3">
 
                             <label className="text-sm font-medium text-gray-600">
-                                تصفية
+                                {t('auctions_list_filter_label')}
                             </label>
 
                             <select
@@ -74,15 +76,15 @@ const AuctionsList = () => {
                                 className="px-4 py-2 rounded-lg border border-gray-300 bg-white focus:outline-none focus:ring-2 focus:ring-primary"
                             >
                                 <option value="all">
-                                    كل المزادات
+                                    {t('auctions_list_filter_all')}
                                 </option>
 
                                 <option value="available">
-                                    المزادات المتاحة
+                                    {t('auctions_list_filter_available')}
                                 </option>
 
                                 <option value="ended">
-                                    المزادات المنتهية
+                                    {t('auctions_list_filter_ended')}
                                 </option>
                             </select>
 
@@ -95,7 +97,7 @@ const AuctionsList = () => {
                                 to="/dashboard/add-auction"
                                 className="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-dark transition"
                             >
-                                إضافة مزاد جديد
+                                {t('auctions_list_add_btn')}
                             </Link>
 
                         </div>
@@ -106,14 +108,14 @@ const AuctionsList = () => {
                 {/* Error */}
                 {error && (
                     <p className="text-center text-red-500 py-10">
-                        حدث خطأ أثناء تحميل المزادات
+                        {t('dash_error_loading_data')}
                     </p>
                 )}
 
                 {/* Empty */}
                 {!error && filteredAuctions.length === 0 && (
                     <p className="text-center text-gray-500 py-10">
-                        لا توجد مزادات
+                        {t('dash_no_auctions_found')}
                     </p>
                 )}
 
